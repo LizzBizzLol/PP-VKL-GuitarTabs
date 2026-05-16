@@ -1,0 +1,304 @@
+{
+  "resolved_device": "cuda:0",
+  "evaluated_at": "2026-05-16T15:09:23.195914",
+  "synthtab_val": {
+    "loss": {
+      "loss_total": 2.275470733642578
+    },
+    "multi_pitch": {
+      "precision": 0.6117894547002091,
+      "recall": 0.697823118644598,
+      "f1-score": 0.6321121948523258
+    },
+    "tablature": {
+      "precision": 0.34211635380708527,
+      "recall": 0.5939038929450734,
+      "f1-score": 0.4150866745352556,
+      "tdr": 0.7202190661853431,
+      "accuracy": 0.7177843137254901
+    },
+    "diagnostics": {
+      "ref_silence_ratio": 0.776813725490196,
+      "pred_silence_ratio": 0.6589313725490197,
+      "ref_non_silent_ratio": 0.223186274509804,
+      "pred_non_silent_ratio": 0.3410686274509803,
+      "non_silent_accuracy": 0.5261314751801031,
+      "collapse_to_silence": false,
+      "num_tracks": 34,
+      "tracks": [
+        {
+          "track_id": "electric_muted\\vintage_clean_bridge\\Miossec - Le dCfroquer - gp3__2 - Electric Muted Guitar__midi",
+          "ref_silence_ratio": 0.9066666666666666,
+          "pred_silence_ratio": 0.7573333333333333,
+          "ref_non_silent_ratio": 0.09333333333333338,
+          "pred_non_silent_ratio": 0.2426666666666667,
+          "non_silent_accuracy": 0.8464285714285714
+        },
+        {
+          "track_id": "electric_muted\\peregrine_clean_bridge\\Mano Negra (La) - Noche De Accion - gp4__1 - Electric Muted Guitar__midi",
+          "ref_silence_ratio": 0.78,
+          "pred_silence_ratio": 0.7116666666666667,
+          "ref_non_silent_ratio": 0.21999999999999997,
+          "pred_non_silent_ratio": 0.28833333333333333,
+          "non_silent_accuracy": 0.2787878787878788
+        },
+        {
+          "track_id": "electric_distortion_di\\vintage_clean_bridge\\Seven Hate - Ups And Downs - gp3__3 - Distortion Guitar__midi",
+          "ref_silence_ratio": 0.519,
+          "pred_silence_ratio": 0.32233333333333336,
+          "ref_non_silent_ratio": 0.481,
+          "pred_non_silent_ratio": 0.6776666666666666,
+          "non_silent_accuracy": 0.7636867636867637
+        },
+        {
+          "track_id": "electric_muted\\telecaster_clean_neck\\Koehler, Ben - Dont Know What To Call It - gp4__4 - Electric Muted Guitar__midi",
+          "ref_silence_ratio": 1.0,
+          "pred_silence_ratio": 1.0,
+          "ref_non_silent_ratio": 0.0,
+          "pred_non_silent_ratio": 0.0,
+          "non_silent_accuracy": 0.0
+        },
+        {
+          "track_id": "electric_clean\\stratocaster_clean_neck\\Gallagher, Rory - Fuel To The Fire - gp4__1 - Electric Clean Guitar__midi",
+          "ref_silence_ratio": 1.0,
+          "pred_silence_ratio": 1.0,
+          "ref_non_silent_ratio": 0.0,
+          "pred_non_silent_ratio": 0.0,
+          "non_silent_accuracy": 0.0
+        },
+        {
+          "track_id": "electric_distortion_di\\peregrine_clean_both\\Oasis - Magic Pie - gp3__3 - Distortion Guitar__midi",
+          "ref_silence_ratio": 1.0,
+          "pred_silence_ratio": 1.0,
+          "ref_non_silent_ratio": 0.0,
+          "pred_non_silent_ratio": 0.0,
+          "non_silent_accuracy": 0.0
+        },
+        {
+          "track_id": "electric_distortion_di\\vintage_clean_bridge\\Blind Guardian - Tommyknockers - gp3__1 - Distortion Guitar__midi",
+          "ref_silence_ratio": 0.666,
+          "pred_silence_ratio": 0.3596666666666667,
+          "ref_non_silent_ratio": 0.33399999999999996,
+          "pred_non_silent_ratio": 0.6403333333333333,
+          "non_silent_accuracy": 0.7514970059880239
+        },
+        {
+          "track_id": "electric_distortion_di\\semihollow_clean_finger\\Zhang Zhen Yue - Gan Mei Mei - gp3__1 - Overdriven Guitar__midi",
+          "ref_silence_ratio": 0.8453333333333334,
+          "pred_silence_ratio": 0.777,
+          "ref_non_silent_ratio": 0.15466666666666662,
+          "pred_non_silent_ratio": 0.22299999999999998,
+          "non_silent_accuracy": 0.41594827586206895
+        },
+        {
+          "track_id": "electric_muted\\stratocaster_clean_bridge\\ZZ Top - Planet Of Women - gp4__2 - Electric Muted Guitar__midi",
+          "ref_silence_ratio": 1.0,
+          "pred_silence_ratio": 1.0,
+          "ref_non_silent_ratio": 0.0,
+          "pred_non_silent_ratio": 0.0,
+          "non_silent_accuracy": 0.0
+        },
+        {
+          "track_id": "electric_muted\\lespaul_clean_both\\Cromok, The - Shadowplay - gp4__5 - Electric Muted Guitar__midi",
+          "ref_silence_ratio": 1.0,
+          "pred_silence_ratio": 1.0,
+          "ref_non_silent_ratio": 0.0,
+          "pred_non_silent_ratio": 0.0,
+          "non_silent_accuracy": 0.0
+        },
+        {
+          "track_id": "electric_distortion_di\\peregrine_clean_bridge\\Raimundos - Mulher de fases - gp3__1 - Overdriven Guitar__midi",
+          "ref_silence_ratio": 0.423,
+          "pred_silence_ratio": 0.104,
+          "ref_non_silent_ratio": 0.577,
+          "pred_non_silent_ratio": 0.896,
+          "non_silent_accuracy": 0.8330444829578278
+        },
+        {
+          "track_id": "acoustic\\taylor_pick\\Rodrigo - Aranjuez Guitar Concerto 2nd movement - gp3__1 - Acoustic Nylon Guitar__midi",
+          "ref_silence_ratio": 0.02266666666666667,
+          "pred_silence_ratio": 0.32266666666666666,
+          "ref_non_silent_ratio": 0.9773333333333334,
+          "pred_non_silent_ratio": 0.6773333333333333,
+          "non_silent_accuracy": 0.3195770804911323
+        },
+        {
+          "track_id": "electric_clean\\lespaul_clean_both\\Incubus - A Certain Shade of Green - gp3__1 - Electric Clean Guitar__midi",
+          "ref_silence_ratio": 0.885,
+          "pred_silence_ratio": 0.8426666666666667,
+          "ref_non_silent_ratio": 0.11499999999999999,
+          "pred_non_silent_ratio": 0.15733333333333333,
+          "non_silent_accuracy": 0.8724637681159421
+        },
+        {
+          "track_id": "electric_distortion_di\\peregrine_clean_both\\American Hi-Fi - Flavor of the Weak - gp3__3 - Distortion Guitar__midi",
+          "ref_silence_ratio": 1.0,
+          "pred_silence_ratio": 1.0,
+          "ref_non_silent_ratio": 0.0,
+          "pred_non_silent_ratio": 0.0,
+          "non_silent_accuracy": 0.0
+        },
+        {
+          "track_id": "electric_clean\\peregrine_clean_neck\\Kristi, Agata - Geteroseksualist - gp3__1 - Electric Clean Guitar__midi",
+          "ref_silence_ratio": 0.7366666666666667,
+          "pred_silence_ratio": 0.687,
+          "ref_non_silent_ratio": 0.2633333333333333,
+          "pred_non_silent_ratio": 0.31299999999999994,
+          "non_silent_accuracy": 0.46455696202531643
+        },
+        {
+          "track_id": "electric_muted\\peregrine_clean_neck\\Coheed And Cambria - The Velorium Camper 2_ Backend of Forever - gp4__2 - Electric Muted Guitar__midi",
+          "ref_silence_ratio": 0.9096666666666666,
+          "pred_silence_ratio": 0.847,
+          "ref_non_silent_ratio": 0.09033333333333338,
+          "pred_non_silent_ratio": 0.15300000000000002,
+          "non_silent_accuracy": 0.9261992619926199
+        },
+        {
+          "track_id": "electric_clean\\vintage_clean_bridge\\Pain Of Salvation - Dryad Of The Woods - gp3__1 - Electric Jazz Guitar__midi",
+          "ref_silence_ratio": 0.8786666666666667,
+          "pred_silence_ratio": 0.7756666666666666,
+          "ref_non_silent_ratio": 0.1213333333333333,
+          "pred_non_silent_ratio": 0.22433333333333338,
+          "non_silent_accuracy": 0.8516483516483516
+        },
+        {
+          "track_id": "electric_clean\\lespaul_clean_both\\Dickinson, Bruce - Son of a Gun - gp3__1 - Electric Clean Guitar__midi",
+          "ref_silence_ratio": 1.0,
+          "pred_silence_ratio": 1.0,
+          "ref_non_silent_ratio": 0.0,
+          "pred_non_silent_ratio": 0.0,
+          "non_silent_accuracy": 0.0
+        },
+        {
+          "track_id": "electric_muted\\stratocaster_clean_neckmid\\Status Quo - Pictures Of Matchstick Men (2) - gp4__5 - Electric Muted Guitar__midi",
+          "ref_silence_ratio": 0.37866666666666665,
+          "pred_silence_ratio": 0.381,
+          "ref_non_silent_ratio": 0.6213333333333333,
+          "pred_non_silent_ratio": 0.619,
+          "non_silent_accuracy": 0.6797210300429185
+        },
+        {
+          "track_id": "electric_distortion_di\\lespaul_clean_both\\Iron Maiden - My Generation - gp3__4 - Overdriven Guitar__midi",
+          "ref_silence_ratio": 0.7236666666666667,
+          "pred_silence_ratio": 0.438,
+          "ref_non_silent_ratio": 0.2763333333333333,
+          "pred_non_silent_ratio": 0.562,
+          "non_silent_accuracy": 0.7104945717732207
+        },
+        {
+          "track_id": "electric_clean\\peregrine_clean_neck\\Charlie Brown Jr - Tudo o que ela gosta de escutar - gp3__3 - Electric Clean Guitar__midi",
+          "ref_silence_ratio": 0.49633333333333335,
+          "pred_silence_ratio": 0.226,
+          "ref_non_silent_ratio": 0.5036666666666667,
+          "pred_non_silent_ratio": 0.774,
+          "non_silent_accuracy": 0.8180013236267373
+        },
+        {
+          "track_id": "electric_muted\\peregrine_clean_both\\Eiffel - L_'Affaire - gp3__3 - Electric Muted Guitar__midi",
+          "ref_silence_ratio": 0.819,
+          "pred_silence_ratio": 0.7516666666666667,
+          "ref_non_silent_ratio": 0.18100000000000005,
+          "pred_non_silent_ratio": 0.2483333333333333,
+          "non_silent_accuracy": 0.19152854511970535
+        },
+        {
+          "track_id": "electric_clean\\stratocaster_clean_neckmid\\Stone Temple Pilots - Press Play (2) - gp3__1 - Electric Clean Guitar__midi",
+          "ref_silence_ratio": 0.6633333333333333,
+          "pred_silence_ratio": 0.5566666666666666,
+          "ref_non_silent_ratio": 0.33666666666666667,
+          "pred_non_silent_ratio": 0.44333333333333336,
+          "non_silent_accuracy": 0.35247524752475246
+        },
+        {
+          "track_id": "electric_muted\\stratocaster_clean_bridgemid\\jeroenomo - Blues 13-2 (fingerpicking) - gp3__1 - Electric Muted Guitar__midi",
+          "ref_silence_ratio": 0.7783333333333333,
+          "pred_silence_ratio": 0.5396666666666666,
+          "ref_non_silent_ratio": 0.22166666666666668,
+          "pred_non_silent_ratio": 0.46033333333333337,
+          "non_silent_accuracy": 0.8300751879699249
+        },
+        {
+          "track_id": "electric_distortion_di\\semihollow_clean_pick\\Deftones - Hed Up - gp3__1 - Distortion Guitar__midi",
+          "ref_silence_ratio": 0.884,
+          "pred_silence_ratio": 0.5716666666666667,
+          "ref_non_silent_ratio": 0.11599999999999999,
+          "pred_non_silent_ratio": 0.42833333333333334,
+          "non_silent_accuracy": 0.7729885057471264
+        },
+        {
+          "track_id": "electric_muted\\lespaul_clean_both\\Zazie - Je Ne T'aime Pas - gp3__2 - Electric Muted Guitar__midi",
+          "ref_silence_ratio": 1.0,
+          "pred_silence_ratio": 1.0,
+          "ref_non_silent_ratio": 0.0,
+          "pred_non_silent_ratio": 0.0,
+          "non_silent_accuracy": 0.0
+        },
+        {
+          "track_id": "electric_distortion_di\\lespaul_clean_neck\\Escape From Life - My favourite story - gp3__2 - Distortion Guitar__midi",
+          "ref_silence_ratio": 0.6296666666666667,
+          "pred_silence_ratio": 0.44066666666666665,
+          "ref_non_silent_ratio": 0.3703333333333333,
+          "pred_non_silent_ratio": 0.5593333333333333,
+          "non_silent_accuracy": 0.5976597659765976
+        },
+        {
+          "track_id": "electric_distortion_di\\stratocaster_clean_neckmid\\Kataklysm - As I Slither - gp4__1 - Distortion Guitar__midi",
+          "ref_silence_ratio": 0.952,
+          "pred_silence_ratio": 0.5426666666666666,
+          "ref_non_silent_ratio": 0.04800000000000004,
+          "pred_non_silent_ratio": 0.45733333333333337,
+          "non_silent_accuracy": 0.9027777777777778
+        },
+        {
+          "track_id": "electric_muted\\lespaul_clean_bridge\\Pettersson, Linus - Simple Effect - gp4__1 - Electric Muted Guitar__midi",
+          "ref_silence_ratio": 0.689,
+          "pred_silence_ratio": 0.53,
+          "ref_non_silent_ratio": 0.31100000000000005,
+          "pred_non_silent_ratio": 0.47,
+          "non_silent_accuracy": 0.7320471596998929
+        },
+        {
+          "track_id": "electric_muted\\peregrine_clean_both\\Green Day - When I Come Around - gp3__1 - Electric Muted Guitar__midi",
+          "ref_silence_ratio": 0.5223333333333333,
+          "pred_silence_ratio": 0.5806666666666667,
+          "ref_non_silent_ratio": 0.4776666666666667,
+          "pred_non_silent_ratio": 0.41933333333333334,
+          "non_silent_accuracy": 0.8241451500348919
+        },
+        {
+          "track_id": "electric_clean\\vintage_clean_neck\\Country Licks - Arlen Roth - Country Bending Solo#3 - gp3__1 - Electric Clean Guitar__midi",
+          "ref_silence_ratio": 0.8603333333333333,
+          "pred_silence_ratio": 0.6616666666666666,
+          "ref_non_silent_ratio": 0.13966666666666672,
+          "pred_non_silent_ratio": 0.3383333333333334,
+          "non_silent_accuracy": 0.7756563245823389
+        },
+        {
+          "track_id": "acoustic\\martin_finger\\Skyfire - By God Forsaken - gp4__7 - Acoustic Nylon Guitar__midi",
+          "ref_silence_ratio": 0.878,
+          "pred_silence_ratio": 0.496,
+          "ref_non_silent_ratio": 0.122,
+          "pred_non_silent_ratio": 0.504,
+          "non_silent_accuracy": 0.6420765027322405
+        },
+        {
+          "track_id": "electric_distortion_di\\telecaster_clean_bridge\\Guns N' Roses - Locomotive - gp3__2 - Distortion Guitar__midi",
+          "ref_silence_ratio": 0.706,
+          "pred_silence_ratio": 0.5013333333333333,
+          "ref_non_silent_ratio": 0.29400000000000004,
+          "pred_non_silent_ratio": 0.4986666666666667,
+          "non_silent_accuracy": 0.8832199546485261
+        },
+        {
+          "track_id": "electric_distortion_di\\stratocaster_clean_bridgemid\\Sisters Of Mercy - Temple Of Love - gp3__1 - Overdriven Guitar__midi",
+          "ref_silence_ratio": 0.8583333333333333,
+          "pred_silence_ratio": 0.679,
+          "ref_non_silent_ratio": 0.14166666666666672,
+          "pred_non_silent_ratio": 0.32099999999999995,
+          "non_silent_accuracy": 0.851764705882353
+        }
+      ]
+    }
+  }
+}

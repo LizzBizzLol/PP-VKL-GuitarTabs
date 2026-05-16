@@ -1,0 +1,16 @@
+.venv/
+.venv_*/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+generated/
+artifacts/**/models/
+artifacts/**/events.out.tfevents.*
+
+.idea/
+.vscode/
+
+Thumbs.db
+Desktop.ini
