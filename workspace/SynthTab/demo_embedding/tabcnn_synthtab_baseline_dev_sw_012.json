@@ -1,0 +1,48 @@
+{
+  "paths": {
+    "synthtab": "C:/Users/Liss/Documents/New project/datasets/SynthTab_Dev/SynthTab_Dev",
+    "cache_dir": "./generated/cache",
+    "guitarset": "D:/EJIu3@BetKo/РџР°СЂС‹/Магистратура/tabs_ptoject/data/guitarset"
+  },
+  "features": {
+    "sample_rate": 22050,
+    "hop_length": 512,
+    "n_bins": 192,
+    "bins_per_octave": 24
+  },
+  "train": {
+    "num_frames": 500,
+    "epochs": 12,
+    "checkpoints": 5,
+    "batch_size": 8,
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "scheduler_eta_min": 1e-06,
+    "n_workers": 0,
+    "seed": 0,
+    "reset_data": false,
+    "augment_audio": false,
+    "sample_attempts": 3,
+    "limit_train_tracks": 40,
+    "limit_val_tracks": 10,
+    "sanity_steps": null,
+    "use_class_weights": true,
+    "silence_weight": 0.12,
+    "note_weight": 1.0
+  },
+  "evaluation": {
+    "run_synthtab_val": true,
+    "run_guitarset": false,
+    "guitarset_splits": [
+      "09"
+    ]
+  },
+  "runtime": {
+    "device": "auto",
+    "gpu_id": 0,
+    "experiment_root": "./generated/experiments",
+    "experiment_name": "tabcnn_synthtab_baseline_dev_sw_012",
+    "save_checkpoints": true,
+    "pin_memory": true
+  }
+}

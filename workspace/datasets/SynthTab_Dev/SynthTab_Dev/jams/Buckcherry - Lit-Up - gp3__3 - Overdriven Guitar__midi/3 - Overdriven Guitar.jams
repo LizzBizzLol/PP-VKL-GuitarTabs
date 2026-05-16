@@ -1,0 +1,1914 @@
+{
+  "annotations": [
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 129600.0,
+          "duration": 1920.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 132000.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 132960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 133440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 239040.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 10,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 240000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 8,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 240480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 10,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 240960.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 12,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 241920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 10,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 242400.0,
+          "duration": 1440.0,
+          "value": {
+            "fret": 12,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 246240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 10,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 246720.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 13,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 247680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 15,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 248160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 13,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 248640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 15,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 249120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 13,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 249600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 15,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 250080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 13,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 250560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 15,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 251040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 12,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 251520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 15,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 252000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 13,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 252480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 15,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 252960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 12,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 253440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 13,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 253920.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 13,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 366240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 368640.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 371520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 384960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 385440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 385920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 386400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 386880.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 387840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 388320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 388800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 389280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 389760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 390240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 390720.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 391680.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 392640.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 393600.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 396000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 396960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 398160.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 400320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 402240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 410400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 410880.0,
+          "duration": 2400.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 414720.0,
+          "duration": 8640.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 1,
+        "open_tuning": 64
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 125760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 127680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 128160.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 129120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 129600.0,
+          "duration": 1920.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 131520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 133920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 134400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 134880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 135840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 239040.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 11,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 240960.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 13,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 241920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 11,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 242400.0,
+          "duration": 1440.0,
+          "value": {
+            "fret": 13,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 243840.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 13,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 244080.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 11,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 244800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 11,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 355200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 356160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 358080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 363840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 364800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 365280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 365760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 366240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 366720.0,
+          "duration": 720.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 369600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 370560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 371520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 372480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 373440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 373920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 379680.0,
+          "duration": 720.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 381120.0,
+          "duration": 2880.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 384000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 384480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 384960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 385440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 386880.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 387840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 388320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 388800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 397440.0,
+          "duration": 720.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 399360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 400320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 401280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 402240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 403200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 406560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 407040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 408000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 408960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 409440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 409920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 410880.0,
+          "duration": 2400.0,
+          "value": {
+            "fret": 1,
+            "velocity": 95
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 2,
+        "open_tuning": 59
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 124800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 125280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 126240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 126720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 127200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 127680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 131520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 135360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 136320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 136800.0,
+          "duration": 1920.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 244320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 12,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 245280.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 12,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 354240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 355200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 355680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 356640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 357120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 357600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 358560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 359040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 359520.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 360480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 361440.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 362640.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 362880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 363360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 364320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 364800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 367440.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 367680.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 369600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 370080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 370560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 371040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 372000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 372480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 372960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 374400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 374880.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 375840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 376320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 376800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 377280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 378000.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 378240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 378720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 379200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 380400.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 380640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 394560.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 395520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 396480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 397440.0,
+          "duration": 720.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 398880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 399360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 399840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 400800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 401280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 401760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 402720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 403200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 403680.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 405600.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 406560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 407040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 407520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 408000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 408480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 408960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 413280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 413760.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 3,
+        "open_tuning": 55
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 124320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 354240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 354720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 360960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 362400.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 377760.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 404640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 405120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 4,
+        "open_tuning": 50
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 298560.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 299280.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 299520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 300000.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 300240.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 354720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 5,
+        "open_tuning": 45
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [],
+      "sandbox": {
+        "string_index": 6,
+        "open_tuning": 40
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "tempo",
+      "data": [
+        {
+          "time": 0.0,
+          "duration": 454080.0,
+          "value": 130,
+          "confidence": 1.0
+        }
+      ],
+      "sandbox": {},
+      "time": 0,
+      "duration": null
+    }
+  ],
+  "file_metadata": {
+    "title": "",
+    "artist": "",
+    "release": "",
+    "duration": 454080.0,
+    "identifiers": {},
+    "jams_version": "0.3.4"
+  },
+  "sandbox": {
+    "instrument": 29,
+    "fret_count": 24
+  }
+}

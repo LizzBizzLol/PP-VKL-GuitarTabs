@@ -1,0 +1,6674 @@
+{
+  "annotations": [
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 58560.0,
+          "duration": 3840.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 154560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 155040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 162240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 162720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 169920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 170400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 177600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 178080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 185280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 185760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 192960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 193440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 217920.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 218640.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 219360.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 219840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 220320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 227520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 228000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 235200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 235680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 242880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 243360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 250560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 251040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 258240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 258720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 265920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 266400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 273600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 274080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 281280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 281760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 288960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 289440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 327360.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 327840.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 328320.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 328800.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 329280.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 329760.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 330240.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 330720.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 331200.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 331680.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 332160.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 332640.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 333120.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 333600.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 334080.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 334560.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 1,
+        "open_tuning": 64
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 58560.0,
+          "duration": 3840.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 154560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 155040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 158400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 158880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 162240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 162720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 166080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 166560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 169920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 170400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 173760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 174240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 177600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 178080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 181440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 181920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 185280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 185760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 189120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 189600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 192960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 193440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 196800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 197280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 209760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 210240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 210720.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 210960.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 213600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 214080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 214560.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 214800.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 218160.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 218880.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 219600.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 219840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 220320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 223680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 224160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 227520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 228000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 231360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 231840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 235200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 235680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 239040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 239520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 242880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 243360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 246720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 247200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 250560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 251040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 254400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 254880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 258240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 258720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 262080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 262560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 265920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 266400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 269760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 270240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 273600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 274080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 277440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 277920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 281280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 281760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 285120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 285600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 288960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 289440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 292800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 293280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 305760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 306240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 306720.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 306960.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 309600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 310080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 310560.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 310800.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 312960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 313440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 313920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 314400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 316800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 317280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 317760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 318240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 321120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 321600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 322080.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 322320.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 324960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 325440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 325920.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 326160.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 330000.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 330480.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 330960.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 333840.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 334320.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 334800.0,
+          "duration": 4080.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 2,
+        "open_tuning": 59
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 156480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 157440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 158400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 158880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 160320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 161280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 164160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 165120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 166080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 166560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 168000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 168960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 169440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 171840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 172800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 173760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 174240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 175680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 176640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 179520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 180480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 181440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 181920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 183360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 184320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 184800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 187200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 188160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 189120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 189600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 191040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 192000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 194880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 195840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 196800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 197280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 198720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 199680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 200160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 209760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 210240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 213600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 214080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 218400.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 219120.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 221760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 222720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 223680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 224160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 225600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 226560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 229440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 230400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 231360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 231840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 233280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 234240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 234720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 237120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 238080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 239040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 239520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 240960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 241920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 244800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 245760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 246720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 247200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 248640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 249600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 250080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 252480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 253440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 254400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 254880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 256320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 257280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 260160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 261120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 262080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 262560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 264000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 264960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 265440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 267840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 268800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 269760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 270240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 271680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 272640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 275520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 276480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 277440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 277920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 279360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 280320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 280800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 283200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 284160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 285120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 285600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 287040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 288000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 290880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 291840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 292800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 293280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 294720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 295680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 296160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 305760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 306240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 309600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 310080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 312960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 313440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 313920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 314400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 316800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 317280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 317760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 318240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 321120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 321600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 324960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 325440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 366720.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "slide": [
+              "shiftSlideTo"
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "time": 367920.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 368400.0,
+          "duration": 1200.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bendRelease",
+              "points": {
+                "position": [
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 374400.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "slide": [
+              "shiftSlideTo"
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "time": 375600.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 376080.0,
+          "duration": 1200.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bendRelease",
+              "points": {
+                "position": [
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 377760.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 385920.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "slide": [
+              "shiftSlideTo"
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "time": 387120.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 387600.0,
+          "duration": 1200.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bendRelease",
+              "points": {
+                "position": [
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 393600.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "slide": [
+              "shiftSlideTo"
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "time": 394800.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 395280.0,
+          "duration": 1200.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "bend": {
+              "type": "bendRelease",
+              "points": {
+                "position": [
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 396960.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 401280.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 405600.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 408960.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 3,
+        "open_tuning": 55
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 24480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 24960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 26400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 26880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 28320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 28800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 29280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 32160.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 32400.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 36000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 36480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 37920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 38400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 39840.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 40080.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 40320.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 40560.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 42720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 58560.0,
+          "duration": 3840.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 156480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 157440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 160320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 161280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 164160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 165120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 168000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 168960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 169440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 171840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 172800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 175680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 176640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 179520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 180480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 183360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 184320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 184800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 187200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 188160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 191040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 192000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 194880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 195840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 198720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 199680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 200160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 221760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 222720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 225600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 226560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 229440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 230400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 233280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 234240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 234720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 237120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 238080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 240960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 241920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 244800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 245760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 248640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 249600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 250080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 252480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 253440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 256320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 257280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 260160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 261120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 264000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 264960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 265440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 267840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 268800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 271680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 272640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 275520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 276480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 279360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 280320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 280800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 283200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 284160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 287040.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 288000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 290880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 291840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 6,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 294720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 295680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 296160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "bend": {
+              "type": "bend",
+              "points": {
+                "position": [
+                  0.0,
+                  0.5,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 339360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 339840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 341280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 341760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 343200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 343680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 344160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 347040.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 347280.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 350880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 351360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 352800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 353280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 354720.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 354960.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 355200.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 355440.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 357600.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 366720.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "slide": [
+              "shiftSlideTo"
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "time": 367920.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 368400.0,
+          "duration": 1200.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "bend": {
+              "type": "bendRelease",
+              "points": {
+                "position": [
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 374400.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "slide": [
+              "shiftSlideTo"
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "time": 375600.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 376080.0,
+          "duration": 1200.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "bend": {
+              "type": "bendRelease",
+              "points": {
+                "position": [
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 377520.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 378000.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 385920.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "slide": [
+              "shiftSlideTo"
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "time": 387120.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 387600.0,
+          "duration": 1200.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "bend": {
+              "type": "bendRelease",
+              "points": {
+                "position": [
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 393600.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "slide": [
+              "shiftSlideTo"
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "time": 394800.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 395280.0,
+          "duration": 1200.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "bend": {
+              "type": "bendRelease",
+              "points": {
+                "position": [
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 396720.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 397200.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 401520.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 401760.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 405360.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 405840.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 409200.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 409440.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 7,
+            "velocity": 95
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 4,
+        "open_tuning": 50
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 30240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 30720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 32640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 33600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 34080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 34560.0,
+          "duration": 720.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 42720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 66240.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 67200.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 68160.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 69120.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 112320.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 113280.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 113400.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 113520.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 113640.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 113760.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 113880.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 114000.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 114120.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 114240.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 115200.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 115320.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 115440.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 115560.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 115680.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 115800.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 115920.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 116040.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 116160.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 117120.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 117240.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 117360.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 117480.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 117600.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 117720.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 117840.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 117960.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 118080.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 118200.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 118320.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 118440.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 118560.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 118680.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 118800.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 118920.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 119040.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 120000.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 120960.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 121080.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 121200.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 121320.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 121440.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 121560.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 121680.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 121800.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 121920.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 122880.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 123000.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 123120.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 123240.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 123360.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 123480.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 123600.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 123720.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 123840.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 124800.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 124920.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 125040.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 125160.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 125280.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 125400.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 125520.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 125640.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 125760.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 125880.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 126000.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 126120.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 126240.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 126360.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 126480.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 126600.0,
+          "duration": 120.0,
+          "value": {
+            "fret": 0,
+            "velocity": 63
+          },
+          "confidence": null
+        },
+        {
+          "time": 126720.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 345120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 345600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 347520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 348480.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 348960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 349440.0,
+          "duration": 720.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 357600.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 366720.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "slide": [
+              "shiftSlideTo"
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "time": 367920.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 368400.0,
+          "duration": 1200.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "bend": {
+              "type": "bendRelease",
+              "points": {
+                "position": [
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 374400.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "slide": [
+              "shiftSlideTo"
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "time": 375600.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 376080.0,
+          "duration": 1200.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "bend": {
+              "type": "bendRelease",
+              "points": {
+                "position": [
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 377280.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 385920.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "slide": [
+              "shiftSlideTo"
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "time": 387120.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 387600.0,
+          "duration": 1200.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "bend": {
+              "type": "bendRelease",
+              "points": {
+                "position": [
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 393600.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "slide": [
+              "shiftSlideTo"
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "time": 394800.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 395280.0,
+          "duration": 1200.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95,
+            "bend": {
+              "type": "bendRelease",
+              "points": {
+                "position": [
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1.0
+                ],
+                "height": [
+                  0.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "vibrato": [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ]
+              }
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 396480.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 402000.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 405120.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 409680.0,
+          "duration": 240.0,
+          "value": {
+            "fret": 5,
+            "velocity": 95
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 5,
+        "open_tuning": 45
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 24000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 25440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 25920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 27360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 27840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 29760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 31200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 31680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 33120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 34560.0,
+          "duration": 720.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 35520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 36960.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 37440.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 38880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 39360.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 40800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 41280.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 41760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 42240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 42720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 338880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 340320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 340800.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 342240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 342720.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 344640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 346080.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 346560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 348000.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 349440.0,
+          "duration": 720.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 350400.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 351840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 352320.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 353760.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 354240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 355680.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 356160.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 356640.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "hammer": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 357120.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95,
+            "grace": {
+              "fret": 2,
+              "transition": "bend",
+              "velocity": 95,
+              "duration": 7680,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 357600.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 0,
+            "velocity": 95
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 6,
+        "open_tuning": 40
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "tempo",
+      "data": [
+        {
+          "time": 0.0,
+          "duration": 423360.0,
+          "value": 120,
+          "confidence": 1.0
+        }
+      ],
+      "sandbox": {},
+      "time": 0,
+      "duration": null
+    }
+  ],
+  "file_metadata": {
+    "title": "",
+    "artist": "",
+    "release": "",
+    "duration": 423360.0,
+    "identifiers": {},
+    "jams_version": "0.3.4"
+  },
+  "sandbox": {
+    "instrument": 28,
+    "fret_count": 24
+  }
+}

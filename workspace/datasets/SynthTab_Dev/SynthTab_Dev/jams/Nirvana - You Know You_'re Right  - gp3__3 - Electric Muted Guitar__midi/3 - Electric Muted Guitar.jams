@@ -1,0 +1,1541 @@
+{
+  "annotations": [
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 2880.0,
+          "duration": 2880.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 6720.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 10560.0,
+          "duration": 3840.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 14400.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 16320.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 18240.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 22080.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 24960.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 63,
+            "ghost_note": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 25920.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 29760.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 386880.0,
+          "duration": 2880.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 390720.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 394560.0,
+          "duration": 3840.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 398400.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 400320.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 402240.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 406080.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 408960.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 63,
+            "ghost_note": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 409920.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 413760.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 417600.0,
+          "duration": 2880.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 421440.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 425280.0,
+          "duration": 3840.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 429120.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 431040.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 432960.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 436800.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 439680.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 63,
+            "ghost_note": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 440640.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 444480.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 1,
+        "open_tuning": 63
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [],
+      "sandbox": {
+        "string_index": 2,
+        "open_tuning": 58
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 3840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 63,
+            "ghost_note": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 7680.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 11520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 63,
+            "ghost_note": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 15360.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 19200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 23040.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 26880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 30720.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 387840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 63,
+            "ghost_note": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 391680.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 395520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 63,
+            "ghost_note": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 399360.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 403200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 407040.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 410880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 414720.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 418560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 63,
+            "ghost_note": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 422400.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 426240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 63,
+            "ghost_note": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 430080.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95
+          },
+          "confidence": null
+        },
+        {
+          "time": 433920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 437760.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 441600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 445440.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 3,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 3,
+        "open_tuning": 54
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 1920.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 3840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 5760.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 7680.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 9600.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 11520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 13440.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 15360.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 17280.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 19200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 21120.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 23040.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 24960.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 26880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 28800.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 30720.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 385920.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 387840.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 389760.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 391680.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 393600.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 395520.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 397440.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 399360.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 401280.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 403200.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 405120.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 407040.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 408960.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 410880.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 412800.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 414720.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 416640.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 418560.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 420480.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 422400.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 424320.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 426240.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 428160.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 430080.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 432000.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 433920.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 435840.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 437760.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 439680.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 441600.0,
+          "duration": 480.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 443520.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 63,
+            "ghost_note": true,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 445440.0,
+          "duration": 960.0,
+          "value": {
+            "fret": 4,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 4,
+        "open_tuning": 49
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [],
+      "sandbox": {
+        "string_index": 5,
+        "open_tuning": 44
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "note_tab",
+      "data": [
+        {
+          "time": 960.0,
+          "duration": 3360.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "grace": {
+              "fret": 0,
+              "transition": "hammer",
+              "velocity": 95,
+              "duration": 960,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 4320.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 8640.0,
+          "duration": 3360.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "grace": {
+              "fret": 0,
+              "transition": "bend",
+              "velocity": 95,
+              "duration": 960,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 12000.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 16320.0,
+          "duration": 3360.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "grace": {
+              "fret": 0,
+              "transition": "bend",
+              "velocity": 95,
+              "duration": 960,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 19680.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 24000.0,
+          "duration": 3360.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "grace": {
+              "fret": 0,
+              "transition": "bend",
+              "velocity": 95,
+              "duration": 960,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 27360.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 384960.0,
+          "duration": 3360.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "grace": {
+              "fret": 0,
+              "transition": "hammer",
+              "velocity": 95,
+              "duration": 960,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 388320.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 392640.0,
+          "duration": 3360.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "grace": {
+              "fret": 0,
+              "transition": "bend",
+              "velocity": 95,
+              "duration": 960,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 396000.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 400320.0,
+          "duration": 3360.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "grace": {
+              "fret": 0,
+              "transition": "bend",
+              "velocity": 95,
+              "duration": 960,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 403680.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 408000.0,
+          "duration": 3360.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "grace": {
+              "fret": 0,
+              "transition": "bend",
+              "velocity": 95,
+              "duration": 960,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 411360.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 415680.0,
+          "duration": 3360.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "grace": {
+              "fret": 0,
+              "transition": "hammer",
+              "velocity": 95,
+              "duration": 960,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 419040.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 423360.0,
+          "duration": 3360.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "grace": {
+              "fret": 0,
+              "transition": "bend",
+              "velocity": 95,
+              "duration": 960,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 426720.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 431040.0,
+          "duration": 3360.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "grace": {
+              "fret": 0,
+              "transition": "bend",
+              "velocity": 95,
+              "duration": 960,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 434400.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        },
+        {
+          "time": 438720.0,
+          "duration": 3360.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "grace": {
+              "fret": 0,
+              "transition": "bend",
+              "velocity": 95,
+              "duration": 960,
+              "on_beat": false,
+              "dead": false
+            }
+          },
+          "confidence": null
+        },
+        {
+          "time": 442080.0,
+          "duration": 4320.0,
+          "value": {
+            "fret": 2,
+            "velocity": 95,
+            "let_ring": true
+          },
+          "confidence": null
+        }
+      ],
+      "sandbox": {
+        "string_index": 6,
+        "open_tuning": 39
+      },
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "tempo",
+      "data": [
+        {
+          "time": 0.0,
+          "duration": 454080.0,
+          "value": 165,
+          "confidence": 1.0
+        }
+      ],
+      "sandbox": {},
+      "time": 0,
+      "duration": null
+    }
+  ],
+  "file_metadata": {
+    "title": "",
+    "artist": "",
+    "release": "",
+    "duration": 454080.0,
+    "identifiers": {},
+    "jams_version": "0.3.4"
+  },
+  "sandbox": {
+    "instrument": 28,
+    "fret_count": 24
+  }
+}
