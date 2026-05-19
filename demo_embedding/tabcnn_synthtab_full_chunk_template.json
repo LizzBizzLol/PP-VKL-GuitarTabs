@@ -1,0 +1,54 @@
+{
+  "paths": {
+    "synthtab": "D:/DATA/SynthTab_Full/current_chunk",
+    "cache_dir": "./generated/cache_full_chunks",
+    "guitarset": null
+  },
+  "features": {
+    "sample_rate": 22050,
+    "hop_length": 512,
+    "n_bins": 192,
+    "bins_per_octave": 24
+  },
+  "train": {
+    "num_frames": 500,
+    "epochs": 28,
+    "checkpoints": 500,
+    "batch_size": 8,
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "scheduler_eta_min": 1e-06,
+    "n_workers": 0,
+    "seed": 0,
+    "reset_data": false,
+    "augment_audio": false,
+    "sample_attempts": 3,
+    "limit_train_tracks": null,
+    "limit_val_tracks": null,
+    "sanity_steps": null,
+    "use_class_weights": true,
+    "silence_weight": 0.1,
+    "note_weight": 1.0,
+    "resume_from": null,
+    "resume_strict": true,
+    "save_full_checkpoints": true,
+    "sampler": "balanced",
+    "balance_by_group": true,
+    "balance_by_silence": false
+  },
+  "evaluation": {
+    "run_synthtab_val": true,
+    "run_guitarset": false,
+    "guitarset_splits": [
+      "09"
+    ]
+  },
+  "runtime": {
+    "device": "auto",
+    "gpu_id": 0,
+    "experiment_root": "./generated/experiments",
+    "experiment_name": "tabcnn_synthtab_full_chunk_balanced",
+    "save_checkpoints": true,
+    "pin_memory": true
+  }
+}

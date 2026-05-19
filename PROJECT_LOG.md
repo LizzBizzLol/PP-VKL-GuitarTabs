@@ -402,3 +402,24 @@
   - рост продолжается и после `20` эпох, но уже более умеренно
   - новый лучший baseline проекта: `134/34`, `24` эпохи, `silence_weight = 0.100`
   - по характеру прироста похоже, что мы приближаемся к зоне замедления выигрыша, но явного переобучения пока не видно
+
+## 2026-05-19 23:54 ? Laptop engineering pass: resumable chunk training prep
+
+Implemented/updated on the laptop side for the next full-SynthTab stage:
+
+- Added resumable training-state checkpoints to `workspace/SynthTab/demo_embedding/train.py`.
+  - New files are saved as `training-state-<iter>.pt` alongside legacy `model-<iter>.pt` and optimizer state files.
+  - Full state includes model weights, optimizer, scheduler, epoch/next_epoch, `model.iter`, Python/NumPy/Torch/CUDA RNG states, and config snapshot.
+- Added resume support in `workspace/SynthTab/demo_embedding/tabcnn_synthtab_pipeline.py` via `train.resume_from`.
+  - Resume expects `training-state-*.pt` checkpoints.
+  - Legacy model-only checkpoints remain intended for eval mode, not safe resume.
+- Added sampler configuration:
+  - `train.sampler = "shuffle"` keeps old behavior.
+  - `train.sampler = "balanced"` enables weighted balanced sampling.
+  - Current v1 balances by track group/timbre path; optional `balance_by_silence` can estimate note-density buckets from JAMS without loading audio.
+- Added smoke config: `workspace/SynthTab/demo_embedding/tabcnn_synthtab_resume_balanced_smoke.json` and mirrored it to `demo_embedding/`.
+- Added full/chunk template config: `workspace/SynthTab/demo_embedding/tabcnn_synthtab_full_chunk_template.json` and mirrored it to `demo_embedding/`.
+
+Mirrored the updated pipeline and training loop into root `demo_embedding/` as well, because `README.md` uses that entrypoint.
+
+Laptop constraints remain: no visible NVIDIA/CUDA through `nvidia-smi`, and full SynthTab is not downloaded here. Use SynthTab Dev for smoke checks; run heavy chunk-based training on the desktop.

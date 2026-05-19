@@ -59,6 +59,18 @@ python demo_embedding/tabcnn_synthtab_pipeline.py --mode train --config demo_emb
 python demo_embedding/tabcnn_synthtab_pipeline.py --mode eval --config demo_embedding/tabcnn_synthtab_baseline_dev_full_train_28ep.json --model-path path/to/model.pt
 ```
 
+
+## Resume and balanced-sampler prep
+
+The pipeline now supports long-run preparation for chunk-based full SynthTab training:
+
+- `train.resume_from` can resume from `training-state-*.pt` full training-state checkpoints.
+- `train.sampler = "balanced"` enables weighted balanced sampling by track/timbre group, with optional JAMS-based note-density buckets.
+- `demo_embedding/tabcnn_synthtab_resume_balanced_smoke.json` is a small CPU smoke config for SynthTab Dev.
+- `demo_embedding/tabcnn_synthtab_full_chunk_template.json` is a template for later full/chunk SynthTab runs on the desktop.
+
+Legacy `model-*.pt` files remain usable for evaluation; use `training-state-*.pt` for resume.
+
 ## Notes
 
 - Paths inside saved configs still point to the original local machine and must be adjusted before rerunning elsewhere.

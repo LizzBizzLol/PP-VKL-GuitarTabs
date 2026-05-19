@@ -5,16 +5,55 @@ from amt_tools import tools
 from tensorboardX import SummaryWriter
 from tqdm import tqdm
 
-import torch
 import os
+import random
+
+import numpy as np
+import torch
 
 __all__ = [
     'train'
 ]
 
 
+def _collect_random_state():
+    state = {
+        'python': random.getstate(),
+        'numpy': np.random.get_state(),
+        'torch': torch.random.get_rng_state(),
+        'cuda': None,
+    }
+    if torch.cuda.is_available():
+        state['cuda'] = torch.cuda.get_rng_state_all()
+    return state
+
+
+def _save_training_state(model, optimizer, scheduler, log_dir, epoch, next_epoch, config_snapshot=None):
+    model_iter = int(getattr(model, 'iter', 0))
+    payload = {
+        'checkpoint_type': 'tabcnn_synthtab_training_state',
+        'model_state_dict': model.state_dict(),
+        'optimizer_state_dict': optimizer.state_dict(),
+        'scheduler_state_dict': scheduler.state_dict() if scheduler is not None else None,
+        'epoch': int(epoch),
+        'next_epoch': int(next_epoch),
+        'model_iter': model_iter,
+        'random_state': _collect_random_state(),
+        'config': config_snapshot,
+    }
+    torch.save(payload, os.path.join(log_dir, f'training-state-{model_iter}.{tools.PYT_EXT}'))
+
+
+def _save_legacy_state(model, optimizer, log_dir):
+    model_iter = int(getattr(model, 'iter', 0))
+    torch.save(model, os.path.join(log_dir, f'{tools.PYT_MODEL}-{model_iter}.{tools.PYT_EXT}'))
+    torch.save(optimizer.state_dict(), os.path.join(log_dir, f'{tools.PYT_STATE}-{model_iter}.{tools.PYT_EXT}'))
+
+
 def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
-          scheduler=None, val_set=None, estimator=None, evaluator=None):
+          scheduler=None, val_set=None, estimator=None, evaluator=None,
+          start_epoch=0, sanity_steps=None, save_full_checkpoints=True,
+          config_snapshot=None):
     """
     Implements the training loop for an experiment.
 
@@ -41,6 +80,14 @@ def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
       Estimation protocol to use during validation
     evaluator : Evaluator
       Evaluation protocol to use during validation
+    start_epoch : int
+      Epoch to start from when resuming a full training-state checkpoint
+    sanity_steps : int or None
+      Optional total number of batches to run before stopping early for smoke tests
+    save_full_checkpoints : bool
+      Save resumable training-state checkpoints in addition to legacy model/optimizer files
+    config_snapshot : dict or None
+      Serialized run config stored inside full training-state checkpoints
 
     Returns
     ----------
@@ -48,16 +95,17 @@ def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
       Trained model
     """
 
+    os.makedirs(log_dir, exist_ok=True)
+
     # Initialize a writer to log any reported results
     writer = SummaryWriter(log_dir)
-
-    # Start at iteration 0 by default
-    start_iter = 0
 
     # Make sure the model is in training mode
     model.train()
 
-    for epoch in tqdm(range(start_iter, epochs)):
+    steps_this_run = 0
+
+    for epoch in tqdm(range(start_epoch, epochs)):
         # Collection of losses for each batch in the loop
         train_loss = dict()
         # Loop through the dataset
@@ -82,30 +130,51 @@ def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
 
             # Increase the iteration count by one
             model.iter += 1
+            steps_this_run += 1
 
-            if model.iter % checkpoints == 0:
-                # Save the model checkpoint
-                torch.save(model, os.path.join(log_dir, f'{tools.PYT_MODEL}-{model.iter}.{tools.PYT_EXT}'))
-                # Save the optimizer state at the checkpoint
-                torch.save(optimizer.state_dict(), os.path.join(log_dir, f'{tools.PYT_STATE}-{model.iter}.{tools.PYT_EXT}'))
+            if checkpoints and model.iter % checkpoints == 0:
+                _save_legacy_state(model, optimizer, log_dir)
+                if save_full_checkpoints:
+                    _save_training_state(
+                        model, optimizer, scheduler, log_dir,
+                        epoch=epoch, next_epoch=epoch, config_snapshot=config_snapshot
+                    )
 
                 if val_set is not None and evaluator is not None:
                     # Validate the current model weights
                     validate(model, val_set, evaluator, estimator)
                     # Average the results, log them, and reset the tracking
                     evaluator.finalize(writer, model.iter)
-                    # TODO - add forced stopping criterion?
                     # Make sure the model is back in training mode
                     model.train()
+
+            if sanity_steps is not None and steps_this_run >= sanity_steps:
+                if save_full_checkpoints:
+                    _save_training_state(
+                        model, optimizer, scheduler, log_dir,
+                        epoch=epoch, next_epoch=epoch, config_snapshot=config_snapshot
+                    )
+                _save_legacy_state(model, optimizer, log_dir)
+                writer.close()
+                return model
 
         if scheduler is not None:
             # Perform a learning rate scheduler step
             scheduler.step()
 
-    # Save the final model
-    torch.save(model, os.path.join(log_dir, f'{tools.PYT_MODEL}-{model.iter}.{tools.PYT_EXT}'))
-    # Save the final optimizer state
-    torch.save(optimizer.state_dict(), os.path.join(log_dir, f'{tools.PYT_STATE}-{model.iter}.{tools.PYT_EXT}'))
+        if save_full_checkpoints:
+            _save_training_state(
+                model, optimizer, scheduler, log_dir,
+                epoch=epoch, next_epoch=epoch + 1, config_snapshot=config_snapshot
+            )
+
+    # Save the final model and optimizer state
+    _save_legacy_state(model, optimizer, log_dir)
+    if save_full_checkpoints:
+        _save_training_state(
+            model, optimizer, scheduler, log_dir,
+            epoch=max(start_epoch, epochs) - 1, next_epoch=epochs, config_snapshot=config_snapshot
+        )
 
     if val_set is not None and evaluator is not None:
         # Validate the current model weights
@@ -113,4 +182,5 @@ def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
         # Average the results, log them, and reset the tracking
         evaluator.finalize(writer, model.iter)
 
+    writer.close()
     return model

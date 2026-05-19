@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import random
 import sys
 from dataclasses import asdict, dataclass, field
 from datetime import datetime
@@ -11,7 +12,7 @@ from typing import Any
 
 import numpy as np
 import torch
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, WeightedRandomSampler
 
 import amt_tools.tools as tools
 from amt_tools.evaluate import (
@@ -32,7 +33,7 @@ if str(CURRENT_DIR) not in sys.path:
     sys.path.insert(0, str(CURRENT_DIR))
 
 from GuitarSet import GuitarSet
-from SynthTab import SynthTab
+from SynthTab import SynthTab, load_stacked_notes_jams
 from train import train
 
 
@@ -74,6 +75,12 @@ class TrainConfig:
     use_class_weights: bool = True
     silence_weight: float = 0.1
     note_weight: float = 1.0
+    resume_from: str | None = None
+    resume_strict: bool = True
+    save_full_checkpoints: bool = True
+    sampler: str = "shuffle"
+    balance_by_group: bool = True
+    balance_by_silence: bool = False
 
 
 @dataclass
@@ -234,16 +241,122 @@ def create_guitarset_dataset(
     )
 
 
-def build_dataloader(dataset: Any, cfg: PipelineConfig, shuffle: bool) -> DataLoader:
-    return DataLoader(
+def track_group(track: str) -> str:
+    parts = Path(track).parts
+    if len(parts) >= 2:
+        return "/".join(parts[:2])
+    if parts:
+        return parts[0]
+    return "unknown"
+
+
+def estimate_track_non_silent_ratio(dataset: Any, track: str) -> float | None:
+    """Estimate track note density from cached ground truth/JAMS without touching audio."""
+    try:
+        jams_path = dataset.get_jams_path(track)
+        stacked_notes = load_stacked_notes_jams(jams_path)
+    except Exception:
+        return None
+
+    durations = []
+    latest_end = 0.0
+    for string_notes in stacked_notes.values():
+        # amt-tools stacked notes are usually stored as (pitches, intervals).
+        if isinstance(string_notes, tuple) and len(string_notes) >= 2:
+            intervals = string_notes[1]
+        else:
+            intervals = string_notes
+
+        for interval in np.asarray(intervals):
+            if np.asarray(interval).size < 2:
+                continue
+            start = float(interval[0])
+            end = float(interval[1])
+            if end > start:
+                durations.append(end - start)
+                latest_end = max(latest_end, end)
+
+    if latest_end <= 0.0:
+        return 0.0
+
+    # Sum note durations across strings. Clamp to 1.0 because overlapping notes can exceed wall-clock time.
+    return min(1.0, float(sum(durations) / latest_end))
+
+
+def silence_bucket(non_silent_ratio: float | None) -> str:
+    if non_silent_ratio is None:
+        return "unknown_density"
+    if non_silent_ratio < 0.15:
+        return "low_density"
+    if non_silent_ratio < 0.45:
+        return "mid_density"
+    return "high_density"
+
+
+def build_balanced_sampler(dataset: Any, cfg: PipelineConfig) -> tuple[WeightedRandomSampler, dict[str, Any]]:
+    tracks = list(getattr(dataset, "tracks", []))
+    if not tracks:
+        raise ValueError("Cannot build a balanced sampler for a dataset without tracks.")
+
+    keys = []
+    metadata = []
+    for track in tracks:
+        group = track_group(track) if cfg.train.balance_by_group else "all_groups"
+        ratio = estimate_track_non_silent_ratio(dataset, track) if cfg.train.balance_by_silence else None
+        density = silence_bucket(ratio) if cfg.train.balance_by_silence else "all_densities"
+        key = f"{group}|{density}"
+        keys.append(key)
+        metadata.append({"track": track, "group": group, "non_silent_ratio": ratio, "density_bucket": density})
+
+    counts: dict[str, int] = {}
+    for key in keys:
+        counts[key] = counts.get(key, 0) + 1
+
+    weights = torch.as_tensor([1.0 / counts[key] for key in keys], dtype=torch.double)
+    generator = torch.Generator()
+    generator.manual_seed(cfg.train.seed)
+    sampler = WeightedRandomSampler(weights=weights, num_samples=len(weights), replacement=True, generator=generator)
+    summary = {
+        "strategy": "balanced",
+        "balance_by_group": cfg.train.balance_by_group,
+        "balance_by_silence": cfg.train.balance_by_silence,
+        "num_tracks": len(tracks),
+        "num_buckets": len(counts),
+        "bucket_counts": dict(sorted(counts.items())),
+        "tracks": metadata,
+    }
+    return sampler, summary
+
+
+def build_dataloader(dataset: Any, cfg: PipelineConfig, shuffle: bool) -> tuple[DataLoader, dict[str, Any]]:
+    sampler = None
+    sampler_summary: dict[str, Any] = {"strategy": "shuffle" if shuffle else "sequential"}
+    use_shuffle = shuffle
+
+    if shuffle and cfg.train.sampler == "balanced":
+        sampler, sampler_summary = build_balanced_sampler(dataset, cfg)
+        use_shuffle = False
+    elif cfg.train.sampler not in {"shuffle", "balanced"}:
+        raise ValueError(f"Unsupported train.sampler='{cfg.train.sampler}'. Expected 'shuffle' or 'balanced'.")
+
+    loader = DataLoader(
         dataset=dataset,
         batch_size=cfg.train.batch_size,
-        shuffle=shuffle,
+        shuffle=use_shuffle,
+        sampler=sampler,
         pin_memory=cfg.runtime.pin_memory and torch.cuda.is_available(),
         num_workers=cfg.train.n_workers,
         drop_last=shuffle,
     )
+    return loader, sampler_summary
 
+
+
+def safe_torch_load(path: Path, device: torch.device) -> Any:
+    try:
+        return torch.load(path, map_location=device, weights_only=False)
+    except TypeError:
+        return torch.load(path, map_location=device)
 
 def build_model(cfg: PipelineConfig, data_proc: CQT, profile: tools.GuitarProfile, device: torch.device) -> TabCNN:
     model = TabCNN(
@@ -260,6 +373,53 @@ def build_model(cfg: PipelineConfig, data_proc: CQT, profile: tools.GuitarProfil
     model.change_device(device)
     model.train()
     return model
+
+
+def load_training_checkpoint(
+    checkpoint_path: Path,
+    model: TabCNN,
+    optimizer: torch.optim.Optimizer,
+    scheduler: torch.optim.lr_scheduler.LRScheduler | None,
+    device: torch.device,
+    strict: bool,
+) -> tuple[TabCNN, int]:
+    payload = safe_torch_load(checkpoint_path, device)
+
+    if isinstance(payload, dict) and payload.get("checkpoint_type") == "tabcnn_synthtab_training_state":
+        model.load_state_dict(payload["model_state_dict"], strict=strict)
+        optimizer.load_state_dict(payload["optimizer_state_dict"])
+        if scheduler is not None and payload.get("scheduler_state_dict") is not None:
+            scheduler.load_state_dict(payload["scheduler_state_dict"])
+
+        if hasattr(model, "change_device"):
+            model.change_device(device)
+        if "model_iter" in payload:
+            model.iter = int(payload["model_iter"])
+
+        random_state = payload.get("random_state", {})
+        if "python" in random_state:
+            random.setstate(random_state["python"])
+        if "numpy" in random_state:
+            np.random.set_state(random_state["numpy"])
+        if "torch" in random_state:
+            torch.random.set_rng_state(random_state["torch"])
+        if device.type == "cuda" and random_state.get("cuda") is not None:
+            torch.cuda.set_rng_state_all(random_state["cuda"])
+
+        return model, int(payload.get("next_epoch", payload.get("epoch", -1) + 1))
+
+    # Backward compatibility note: legacy model-only files are still supported in eval mode,
+    # but they do not contain optimizer/scheduler/RNG state and are unsafe for resume.
+    if hasattr(payload, "run_on_batch"):
+        raise ValueError(
+            f"'{checkpoint_path}' is a legacy model-only checkpoint. "
+            "Use it with --mode eval, or resume from training-state-*.pt."
+        )
+
+    raise ValueError(
+        f"Unsupported checkpoint format in '{checkpoint_path}'. "
+        "Expected a full training-state checkpoint created as training-state-*.pt."
+    )
 
 
 def make_experiment_dir(cfg: PipelineConfig, override: Path | None) -> Path:
@@ -388,7 +548,7 @@ def run_train(cfg: PipelineConfig, experiment_dir: Path) -> None:
 
     train_set = create_synthtab_dataset(cfg, "train", data_proc, profile)
     val_set = create_synthtab_dataset(cfg, "val", data_proc, profile)
-    train_loader = build_dataloader(train_set, cfg, shuffle=True)
+    train_loader, sampler_summary = build_dataloader(train_set, cfg, shuffle=True)
 
     model = build_model(cfg, data_proc, profile, device)
     optimizer = torch.optim.AdamW(
@@ -398,12 +558,24 @@ def run_train(cfg: PipelineConfig, experiment_dir: Path) -> None:
         optimizer, T_max=cfg.train.epochs, eta_min=cfg.train.scheduler_eta_min
     )
 
+    start_epoch = 0
+    resume_path = Path(cfg.train.resume_from) if cfg.train.resume_from else None
+    if resume_path is not None:
+        model, start_epoch = load_training_checkpoint(
+            resume_path, model, optimizer, scheduler, device, strict=cfg.train.resume_strict
+        )
+
     metadata = {
         "config": asdict(cfg),
         "resolved_device": str(device),
         "train_tracks": len(train_set),
         "val_tracks": len(val_set),
         "started_at": datetime.now().isoformat(),
+        "run_mode": "resume" if resume_path is not None else "fresh",
+        "resume_from": str(resume_path.resolve()) if resume_path is not None else None,
+        "start_epoch": start_epoch,
+        "start_iter": int(getattr(model, "iter", 0)),
+        "sampler": sampler_summary,
     }
     write_json(experiment_dir / "run_config.json", metadata)
 
@@ -421,9 +593,20 @@ def run_train(cfg: PipelineConfig, experiment_dir: Path) -> None:
         val_set=val_set,
         estimator=estimator,
         evaluator=evaluator,
+        start_epoch=start_epoch,
+        sanity_steps=cfg.train.sanity_steps,
+        save_full_checkpoints=cfg.train.save_full_checkpoints and cfg.runtime.save_checkpoints,
+        config_snapshot=asdict(cfg),
     )
 
     eval_results = run_evaluation(cfg, experiment_dir, model=model, data_proc=data_proc, profile=profile)
+    eval_results["training_run"] = {
+        "run_mode": "resume" if resume_path is not None else "fresh",
+        "resume_from": str(resume_path.resolve()) if resume_path is not None else None,
+        "sampler": sampler_summary,
+        "final_iter": int(getattr(model, "iter", 0)),
+        "finished_at": datetime.now().isoformat(),
+    }
     write_json(experiment_dir / "results" / "summary.json", eval_results)
 
 
@@ -446,7 +629,7 @@ def run_evaluation(
     if model is None:
         if model_path is None:
             raise ValueError("model_path is required when evaluating without an in-memory model.")
-        model = torch.load(model_path, map_location=device)
+        model = safe_torch_load(model_path, device)
         model.change_device(device)
         model.eval()
 
