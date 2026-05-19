@@ -5,12 +5,23 @@ import amt_tools.tools as tools
 # Regular imports
 import numpy as np
 import torchaudio
+import soundfile as sf
 import guitarpro
 import librosa
 import torch
 import jams
 import os
 import random
+
+
+def load_audio_file(path):
+    """Load audio with torchaudio, falling back to soundfile on TorchCodec/FFmpeg issues."""
+    try:
+        return torchaudio.load(path)
+    except Exception:
+        audio_np, sample_rate = sf.read(path, always_2d=True, dtype='float32')
+        audio = torch.from_numpy(audio_np.T.copy())
+        return audio, sample_rate
 
 
 # Include the namespace for our tablature note-events
@@ -199,7 +210,7 @@ class SynthTab(TranscriptionDataset):
 
             for path in audio_paths:
                 # Load and normalize the audio
-                audio_, fs_ = torchaudio.load(path)
+                audio_, fs_ = load_audio_file(path)
                 # Extract the first channel
                 audio_ = audio_[0].unsqueeze(0)
                 # Resample audio to appropriate sampling rate

@@ -71,6 +71,21 @@ The pipeline now supports long-run preparation for chunk-based full SynthTab tra
 
 Legacy `model-*.pt` files remain usable for evaluation; use `training-state-*.pt` for resume.
 
+
+## Laptop smoke verification
+
+A CPU-only notebook smoke path was verified on SynthTab Dev:
+
+```powershell
+py -3.10 -m venv .venv
+./.venv/Scripts/python.exe -m pip install --upgrade pip setuptools wheel
+./.venv/Scripts/python.exe -m pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+./.venv/Scripts/python.exe -m pip install -r workspace/SynthTab/requirements.txt
+./.venv/Scripts/python.exe demo_embedding/tabcnn_synthtab_pipeline.py --mode inspect --config demo_embedding/tabcnn_synthtab_resume_balanced_smoke.json --experiment-dir generated/experiments/laptop_inspect_smoke_root
+```
+
+For resume testing, use `training-state-*.pt` files, not legacy `model-*.pt` files. Generated smoke outputs are ignored under `generated/`.
+
 ## Notes
 
 - Paths inside saved configs still point to the original local machine and must be adjusted before rerunning elsewhere.

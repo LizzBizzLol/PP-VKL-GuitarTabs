@@ -423,3 +423,27 @@ Implemented/updated on the laptop side for the next full-SynthTab stage:
 Mirrored the updated pipeline and training loop into root `demo_embedding/` as well, because `README.md` uses that entrypoint.
 
 Laptop constraints remain: no visible NVIDIA/CUDA through `nvidia-smi`, and full SynthTab is not downloaded here. Use SynthTab Dev for smoke checks; run heavy chunk-based training on the desktop.
+
+## 2026-05-20 00:25 ? Laptop smoke verification on SynthTab Dev
+
+Verified the notebook-side pipeline with a local `.venv` on CPU only:
+
+- Created `.venv` with Python 3.10 and installed `workspace/SynthTab/requirements.txt`.
+- Installed CPU PyTorch stack; `torch.cuda.is_available()` is `False` on this laptop.
+- `inspect` passed on SynthTab Dev using the workspace entrypoint and the root `demo_embedding` entrypoint.
+- Fresh smoke training passed with `tabcnn_synthtab_resume_balanced_smoke.json`:
+  - `sanity_steps = 2`
+  - generated legacy `model-*.pt`
+  - generated legacy optimizer state
+  - generated new `training-state-*.pt`
+  - final fresh smoke iter: `2`
+- Resume smoke training passed from `generated/experiments/laptop_train_smoke_fresh/models/training-state-2.pt`:
+  - `run_mode = resume`
+  - `start_iter = 2`
+  - final resume iter: `4`
+- Balanced sampler metadata is written to `run_config.json` and `results/summary.json`.
+- Optional `balance_by_silence = true` smoke run passed on 6 tracks and produced JAMS-derived density buckets.
+- Added a `soundfile` fallback in `SynthTab.py` because modern `torchaudio.load()` can require TorchCodec/FFmpeg DLLs on Windows.
+- Mirrored missing root entrypoint support files so README-style `demo_embedding/tabcnn_synthtab_pipeline.py` inspect works.
+
+Generated smoke outputs live under `generated/experiments/` and remain ignored by git. Do not commit `.venv`, generated cache, model checkpoints, optimizer states, TensorBoard events, or smoke outputs.
