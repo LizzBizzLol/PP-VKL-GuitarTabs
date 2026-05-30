@@ -484,3 +484,16 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - final resume iter: `4`
 - Проверено, что `generated/` остается ignored и не попадает в Git.
 - Full SynthTab пока не скачивался; следующий шаг — подключать JAMS/MIDI и первый маленький audio chunk в `D:\DATA\SynthTab_Full`.
+
+## 2026-05-30 15:14 +05:00 — Old C: repo cleanup after D: migration
+
+- Уникальная старая папка экспериментов перенесена со старой копии на `C:` в новый рабочий репозиторий:
+  - source: `C:\Users\Liss\Documents\New project\SynthTab-TabCNN-Baseline\workspace\generated`
+  - destination: `D:\PP-VKL-GuitarTabs\workspace\generated`
+- Проверка после копирования:
+  - `530` папок
+  - `1562` файла
+  - `6.535 GB`
+- Подтверждено, что `D:\PP-VKL-GuitarTabs\workspace\generated` игнорируется Git через правило `generated/`.
+- Старая копия репозитория `C:\Users\Liss\Documents\New project\SynthTab-TabCNN-Baseline` удалена после проверки переноса.
+- Родительский указатель `C:\Users\Liss\Documents\New project\PROJECT_LOG.md` обновлен на актуальный путь `D:\PP-VKL-GuitarTabs\PROJECT_LOG.md`.
