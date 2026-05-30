@@ -447,3 +447,40 @@ Verified the notebook-side pipeline with a local `.venv` on CPU only:
 - Mirrored missing root entrypoint support files so README-style `demo_embedding/tabcnn_synthtab_pipeline.py` inspect works.
 
 Generated smoke outputs live under `generated/experiments/` and remain ignored by git. Do not commit `.venv`, generated cache, model checkpoints, optimizer states, TensorBoard events, or smoke outputs.
+
+## 2026-05-30 15:00 +05:00 — Desktop migration to D: and smoke verification
+
+- Перенесена рабочая точка проекта на диск `D:` через fresh clone:
+  - новый основной путь: `D:\PP-VKL-GuitarTabs`
+  - remote: `https://github.com/LizzBizzLol/PP-VKL-GuitarTabs.git`
+- Созданы директории для будущей работы с full SynthTab вне Git:
+  - `D:\DATA\SynthTab_Full\jams_midi`
+  - `D:\DATA\SynthTab_Full\current_chunk`
+  - `D:\DATA\SynthTab_Full\archive`
+- При первом clone Windows уперся в ограничение длины путей на SynthTab Dev; исправлено через `git config --global core.longpaths true` и повторный clone.
+- Git LFS подтянут: `1831` LFS-файл, checkout завершился успешно.
+- Создано новое окружение `D:\PP-VKL-GuitarTabs\.venv` на Python `3.11.9`.
+- Установлен CUDA-stack:
+  - `torch 2.5.1+cu121`
+  - `torchaudio 2.5.1+cu121`
+  - `torchvision 0.20.1+cu121`
+- Проверка CUDA из нового окружения:
+  - `torch.cuda.is_available() == True`
+  - GPU: `NVIDIA GeForce GTX 1660 Ti`
+- Проверен `inspect` на SynthTab Dev из нового пути:
+  - `D:\PP-VKL-GuitarTabs\workspace\datasets\SynthTab_Dev\SynthTab_Dev`
+  - датасет найден
+  - CUDA видна
+- Fresh smoke train на `D:` успешно завершился:
+  - experiment: `generated\experiments\desktop_d_train_smoke_fresh`
+  - `sanity_steps = 2`
+  - созданы `model-*.pt`, `opt-state-*.pt`, `training-state-*.pt`
+  - final fresh iter: `2`
+- Resume smoke train успешно завершился:
+  - resume checkpoint: `generated\experiments\desktop_d_train_smoke_fresh\models\training-state-2.pt`
+  - experiment: `generated\experiments\desktop_d_train_smoke_resume`
+  - `run_mode = resume`
+  - `start_iter = 2`
+  - final resume iter: `4`
+- Проверено, что `generated/` остается ignored и не попадает в Git.
+- Full SynthTab пока не скачивался; следующий шаг — подключать JAMS/MIDI и первый маленький audio chunk в `D:\DATA\SynthTab_Full`.
