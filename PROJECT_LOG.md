@@ -569,3 +569,35 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - chunk имеет `454` batch/epoch при `batch_size = 8`
   - smoke показывает, что полный запуск займет много часов или больше
   - следующий запуск нужно делать осознанно отдельной длинной сессией из `demo_embedding\tabcnn_synthtab_full_chunk_template.json`
+
+## 2026-05-30 18:40 +05:00 — First meaningful full-chunk run started
+
+- Создан tracked config для первого чистого meaningful run:
+  - `demo_embedding\tabcnn_synthtab_full_chunk_semihollow_clean_finger_28ep.json`
+- Run запущен fresh, не из smoke checkpoint:
+  - experiment: `generated\experiments\full_chunk_semihollow_clean_finger_28ep_fresh`
+  - chunk: `electric_clean\semihollow_clean_finger`
+  - `epochs = 28`
+  - `batch_size = 8`
+  - `checkpoints = 0`
+  - `silence_weight = 0.1`
+  - `note_weight = 1.0`
+  - `sampler = balanced`
+  - `balance_by_group = true`
+  - `balance_by_silence = false`
+  - `run_synthtab_val = true`
+- Preflight checks перед запуском:
+  - Git был чистый и синхронизирован с `origin/main`
+  - CUDA доступна: `NVIDIA GeForce GTX 1660 Ti`
+  - `py_compile` для `SynthTab.py` и `tabcnn_synthtab_pipeline.py` прошел
+  - `inspect` на SynthTab Dev прошел
+  - `inspect` на full chunk прошел
+  - свободное место на `D:` перед запуском: примерно `350.86 GB`
+- `run_config.json` после старта подтверждает:
+  - `run_mode = fresh`
+  - `start_iter = 0`
+  - `train_tracks = 3632`
+  - `val_tracks = 908`
+  - `device = cuda:0`
+- Первые минуты обучения прошли без CUDA OOM на `batch_size = 8`.
+- Оценка по фактическому старту: около `50-55` минут на эпоху, полный train может занять около суток плюс финальная validation.
