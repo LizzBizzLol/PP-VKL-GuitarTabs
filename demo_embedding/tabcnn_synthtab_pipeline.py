@@ -45,6 +45,7 @@ class DatasetPaths:
     synthtab: str
     cache_dir: str
     guitarset: str | None = None
+    jams_dir: str | None = None
 
 
 @dataclass
@@ -170,16 +171,18 @@ def build_estimators(profile: tools.GuitarProfile) -> tuple[ComboEstimator, Comb
     return estimator, evaluator
 
 
-def ensure_synthtab_layout(base_dir: Path) -> None:
+def ensure_synthtab_layout(base_dir: Path, jams_dir: str | None = None) -> None:
     standard_ok = all((base_dir / split).exists() for split in SynthTab.available_splits())
-    dev_layout = ["acoustic", "electric_clean", "electric_distortion_di", "electric_muted", "jams"]
-    dev_ok = all((base_dir / name).exists() for name in dev_layout)
+    dev_partitions = ["acoustic", "electric_clean", "electric_distortion_di", "electric_muted"]
+    jams_root = Path(jams_dir) if jams_dir else base_dir / "jams"
+    dev_ok = any((base_dir / name).exists() for name in dev_partitions) and jams_root.exists()
 
     if not standard_ok and not dev_ok:
         raise FileNotFoundError(
             f"SynthTab layout was not recognized under '{base_dir}'. "
-            "Expected either train/val directories or the dev-set layout "
-            "(acoustic, electric_clean, electric_distortion_di, electric_muted, jams)."
+            "Expected either train/val directories or a dev/full chunk layout "
+            "with at least one audio partition and a matching JAMS root. "
+            f"Resolved JAMS root: '{jams_root}'."
         )
 
 
@@ -210,6 +213,7 @@ def create_synthtab_dataset(
         save_data=True,
         save_loc=cfg.paths.cache_dir,
         seed=cfg.train.seed,
+        jams_dir=cfg.paths.jams_dir,
     )
     limit = cfg.train.limit_train_tracks if split == "train" else cfg.train.limit_val_tracks
     if limit is not None:
@@ -402,9 +406,16 @@ def load_training_checkpoint(
         if "numpy" in random_state:
             np.random.set_state(random_state["numpy"])
         if "torch" in random_state:
-            torch.random.set_rng_state(random_state["torch"])
+            torch_state = random_state["torch"]
+            if isinstance(torch_state, torch.Tensor):
+                torch_state = torch_state.detach().cpu()
+            torch.random.set_rng_state(torch_state)
         if device.type == "cuda" and random_state.get("cuda") is not None:
-            torch.cuda.set_rng_state_all(random_state["cuda"])
+            cuda_states = [
+                state.detach().cpu() if isinstance(state, torch.Tensor) else state
+                for state in random_state["cuda"]
+            ]
+            torch.cuda.set_rng_state_all(cuda_states)
 
         return model, int(payload.get("next_epoch", payload.get("epoch", -1) + 1))
 
@@ -513,14 +524,22 @@ def inspect_environment(cfg: PipelineConfig) -> dict[str, Any]:
     synthtab_dir = Path(cfg.paths.synthtab)
     cache_dir = Path(cfg.paths.cache_dir)
     guitarset_dir = Path(cfg.paths.guitarset) if cfg.paths.guitarset else None
+    jams_dir = Path(cfg.paths.jams_dir) if cfg.paths.jams_dir else synthtab_dir / "jams"
 
-    ensure_synthtab_layout(synthtab_dir)
+    ensure_synthtab_layout(synthtab_dir, cfg.paths.jams_dir)
 
     summary = {
         "synthtab_path": str(synthtab_dir.resolve()),
         "synthtab_exists": synthtab_dir.exists(),
         "synthtab_train_exists": (synthtab_dir / "train").exists(),
         "synthtab_val_exists": (synthtab_dir / "val").exists(),
+        "synthtab_audio_partitions": [
+            name
+            for name in ["acoustic", "electric_clean", "electric_distortion_di", "electric_muted"]
+            if (synthtab_dir / name).exists()
+        ],
+        "jams_dir": str(jams_dir.resolve()),
+        "jams_dir_exists": jams_dir.exists(),
         "cache_dir": str(cache_dir),
         "cache_exists": cache_dir.exists(),
         "guitarset_path": str(guitarset_dir.resolve()) if guitarset_dir else None,
@@ -539,7 +558,7 @@ def run_train(cfg: PipelineConfig, experiment_dir: Path) -> None:
     device = resolve_device(cfg.runtime)
     tools.seed_everything(cfg.train.seed)
 
-    ensure_synthtab_layout(Path(cfg.paths.synthtab))
+    ensure_synthtab_layout(Path(cfg.paths.synthtab), cfg.paths.jams_dir)
     Path(cfg.paths.cache_dir).mkdir(parents=True, exist_ok=True)
 
     data_proc = build_feature_extractor(cfg)

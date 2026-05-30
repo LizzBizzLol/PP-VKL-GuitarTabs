@@ -2,7 +2,8 @@
   "paths": {
     "synthtab": "D:/DATA/SynthTab_Full/current_chunk",
     "cache_dir": "./generated/cache_full_chunks",
-    "guitarset": null
+    "guitarset": null,
+    "jams_dir": "D:/DATA/SynthTab_Full/jams_midi/outall"
   },
   "features": {
     "sample_rate": 22050,

@@ -12,6 +12,8 @@ import torch
 import jams
 import os
 import random
+import json
+import hashlib
 
 
 def load_audio_file(path):
@@ -106,10 +108,12 @@ class SynthTab(TranscriptionDataset):
     Implements a wrapper for SynthTab (https://synthtab.dev).
     """
 
+    DEV_PARTITIONS = ('acoustic', 'electric_clean', 'electric_distortion_di', 'electric_muted')
+
     def __init__(self, base_dir=None, splits=None, hop_length=512, sample_rate=44100, data_proc=None,
                        profile=None, num_frames=None, audio_norm=np.inf, reset_data=False, store_data=True,
                        save_data=True, save_loc=None, guitars=None, sample_attempts=1, augment_audio=False,
-                       include_onsets=False, seed=0):
+                       include_onsets=False, seed=0, jams_dir=None):
         """
         Initialize an instance of the SynthTab dataset.
 
@@ -132,6 +136,7 @@ class SynthTab(TranscriptionDataset):
         self.augment_audio = augment_audio
         self.include_onsets = include_onsets
         self.dataset_seed = seed
+        self.jams_dir = os.path.abspath(jams_dir) if jams_dir else None
 
         super().__init__(base_dir, splits, hop_length, sample_rate, data_proc, profile, num_frames,
                          audio_norm, False, reset_data, store_data, save_data, save_loc, seed)
@@ -159,8 +164,8 @@ class SynthTab(TranscriptionDataset):
 
         raise FileNotFoundError(
             f"Unrecognized SynthTab layout under '{self.base_dir}'. "
-            "Expected either train/val directories or dev-set directories "
-            "such as acoustic, electric_clean, electric_distortion_di, electric_muted, and jams."
+            "Expected either train/val directories or at least one dev/full chunk audio "
+            "partition with a matching jams directory."
         )
 
     def get_track_data(self, track, seq_length=None):
@@ -402,7 +407,9 @@ class SynthTab(TranscriptionDataset):
             jams_path = os.path.join(self.base_dir, os.path.dirname(track), 'ground_truth.jams')
         else:
             song = os.path.basename(track)
-            jams_dir = os.path.join(self.base_dir, 'jams', song)
+            jams_dir = self._get_jams_song_dir(song)
+            if not os.path.isdir(jams_dir):
+                raise FileNotFoundError(f"No JAMS directory was found for '{song}' at '{jams_dir}'.")
             jams_candidates = sorted(
                 [os.path.join(jams_dir, name) for name in os.listdir(jams_dir) if name.lower().endswith('.jams')]
             )
@@ -455,8 +462,14 @@ class SynthTab(TranscriptionDataset):
         return all(os.path.isdir(os.path.join(self.base_dir, split)) for split in self.available_splits())
 
     def _is_dev_layout(self):
-        required = ['acoustic', 'electric_clean', 'electric_distortion_di', 'electric_muted', 'jams']
-        return all(os.path.isdir(os.path.join(self.base_dir, name)) for name in required)
+        has_audio_partition = any(os.path.isdir(os.path.join(self.base_dir, name)) for name in self.DEV_PARTITIONS)
+        return has_audio_partition and os.path.isdir(self._get_jams_root())
+
+    def _get_jams_root(self):
+        return self.jams_dir if self.jams_dir else os.path.join(self.base_dir, 'jams')
+
+    def _get_jams_song_dir(self, song):
+        return os.path.join(self._get_jams_root(), song)
 
     def _get_tracks_standard(self, split):
         tracks = list()
@@ -471,10 +484,30 @@ class SynthTab(TranscriptionDataset):
         return tracks
 
     def _get_tracks_dev(self, split):
-        partitions = ['acoustic', 'electric_clean', 'electric_distortion_di', 'electric_muted']
-        tracks = []
+        candidates = self._get_dev_track_candidates()
+        cache_path = self._get_dev_track_cache_path(candidates)
+        tracks = self._load_dev_track_cache(cache_path)
 
-        for partition in partitions:
+        if tracks is None:
+            tracks = self._validate_dev_track_candidates(candidates)
+            self._save_dev_track_cache(cache_path, tracks)
+
+        rng = random.Random(self.dataset_seed)
+        rng.shuffle(tracks)
+
+        if not tracks:
+            return tracks
+
+        cut = max(1, int(round(len(tracks) * 0.8)))
+        if split == 'train':
+            return tracks[:cut]
+        if split == 'val':
+            return tracks[cut:]
+        return tracks
+
+    def _get_dev_track_candidates(self):
+        candidates = []
+        for partition in self.DEV_PARTITIONS:
             partition_dir = os.path.join(self.base_dir, partition)
             if not os.path.isdir(partition_dir):
                 continue
@@ -491,43 +524,89 @@ class SynthTab(TranscriptionDataset):
                     if not os.path.isdir(song_dir):
                         continue
 
-                    jams_dir = os.path.join(self.base_dir, 'jams', song)
-                    jams_candidates = []
-                    if os.path.isdir(jams_dir):
-                        jams_candidates = [
-                            os.path.join(jams_dir, name)
-                            for name in os.listdir(jams_dir)
-                            if name.lower().endswith('.jams')
-                        ]
+                    candidates.append((os.path.join(partition, guitar, song), song))
 
-                    has_jams = bool(jams_candidates)
+        return candidates
+
+    def _validate_dev_track_candidates(self, candidates):
+        tracks = []
+        for track, song in candidates:
+            jams_dir = self._get_jams_song_dir(song)
+            jams_candidates = []
+            if os.path.isdir(jams_dir):
+                jams_candidates = [
+                    os.path.join(jams_dir, name)
+                    for name in os.listdir(jams_dir)
+                    if name.lower().endswith('.jams')
+                ]
+
+            has_jams = bool(jams_candidates)
+            matches_profile = False
+
+            if has_jams:
+                try:
+                    stacked_notes = load_stacked_notes_jams(sorted(jams_candidates)[0])
+                    matches_profile = len(stacked_notes) == self.profile.get_num_dofs()
+                except Exception:
                     matches_profile = False
 
-                    if has_jams:
-                        try:
-                            stacked_notes = load_stacked_notes_jams(sorted(jams_candidates)[0])
-                            matches_profile = len(stacked_notes) == self.profile.get_num_dofs()
-                        except Exception:
-                            matches_profile = False
+            # Some dev/full audio folders do not have a matching JAMS directory.
+            # Others have annotations incompatible with the current guitar profile.
+            # Filter them out up front so larger train/val runs stay reproducible.
+            has_audio = bool(self.get_audio_paths(track))
 
-                    # Some dev-set audio folders do not have a matching JAMS directory.
-                    # Others have annotations incompatible with the current guitar profile.
-                    # Filter them out up front so larger train/val runs stay reproducible.
-                    if has_jams and matches_profile:
-                        tracks.append(os.path.join(partition, guitar, song))
+            if has_audio and has_jams and matches_profile:
+                tracks.append(track)
 
-        rng = random.Random(self.dataset_seed)
-        rng.shuffle(tracks)
-
-        if not tracks:
-            return tracks
-
-        cut = max(1, int(round(len(tracks) * 0.8)))
-        if split == 'train':
-            return tracks[:cut]
-        if split == 'val':
-            return tracks[cut:]
         return tracks
+
+    def _get_dev_track_cache_path(self, candidates):
+        if not self.save_loc:
+            return None
+
+        payload = {
+            'version': 2,
+            'base_dir': os.path.abspath(self.base_dir),
+            'jams_root': os.path.abspath(self._get_jams_root()),
+            'guitars': self.guitars,
+            'profile_dofs': self.profile.get_num_dofs() if self.profile is not None else None,
+            'seed': self.dataset_seed,
+            'tracks': [track for track, _song in candidates],
+        }
+        digest = hashlib.sha1(json.dumps(payload, sort_keys=True).encode('utf-8')).hexdigest()[:16]
+        return os.path.join(self.save_loc, self.dataset_name(), f'dev-track-index-{digest}.json')
+
+    def _load_dev_track_cache(self, cache_path):
+        if cache_path is None or not os.path.exists(cache_path):
+            return None
+
+        try:
+            with open(cache_path, 'r', encoding='utf-8') as handle:
+                payload = json.load(handle)
+            if payload.get('version') != 2:
+                return None
+            tracks = payload.get('tracks')
+            if isinstance(tracks, list) and all(isinstance(track, str) for track in tracks):
+                return tracks
+        except Exception as e:
+            print(f'Error loading SynthTab track index cache \'{cache_path}\': {repr(e)}')
+
+        return None
+
+    def _save_dev_track_cache(self, cache_path, tracks):
+        if cache_path is None:
+            return
+
+        os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+        payload = {
+            'version': 2,
+            'base_dir': os.path.abspath(self.base_dir),
+            'jams_root': os.path.abspath(self._get_jams_root()),
+            'num_tracks': len(tracks),
+            'tracks': tracks,
+        }
+        with open(cache_path, 'w', encoding='utf-8') as handle:
+            json.dump(payload, handle, indent=2)
 
     @staticmethod
     def download(save_dir):

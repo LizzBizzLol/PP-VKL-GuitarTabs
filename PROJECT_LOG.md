@@ -497,3 +497,75 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
 - Подтверждено, что `D:\PP-VKL-GuitarTabs\workspace\generated` игнорируется Git через правило `generated/`.
 - Старая копия репозитория `C:\Users\Liss\Documents\New project\SynthTab-TabCNN-Baseline` удалена после проверки переноса.
 - Родительский указатель `C:\Users\Liss\Documents\New project\PROJECT_LOG.md` обновлен на актуальный путь `D:\PP-VKL-GuitarTabs\PROJECT_LOG.md`.
+
+## 2026-05-30 15:32 +05:00 — Full SynthTab chunk setup started
+
+- Проверена структура официального Box-архива SynthTab Full:
+  - root folder: `SynthTab_Full`
+  - JAMS/MIDI archive: `all_jams_midi_V2_60000_tracks.zip`
+  - выбран первый маленький audio chunk: `electric_clean/semihollow_clean_finger.zip`
+- Скачан JAMS/MIDI archive в `D:\DATA\SynthTab_Full\archive\all_jams_midi_V2_60000_tracks.zip`.
+- JAMS/MIDI распакованы в `D:\DATA\SynthTab_Full\jams_midi`:
+  - `60634` папки
+  - `392681` файл
+  - примерно `14.014 GB`
+- Начата загрузка первого audio chunk:
+  - target: `D:\DATA\SynthTab_Full\archive\semihollow_clean_finger.zip`
+  - ожидаемый размер: `26.78 GiB`
+  - curl запущен с resume через `--continue-at -`
+- Pipeline подготовлен к full-chunk layout:
+  - добавлен опциональный `paths.jams_dir`
+  - `tabcnn_synthtab_full_chunk_template.json` теперь указывает на `D:\DATA\SynthTab_Full\jams_midi\outall`
+  - loader допускает частичный dev/full layout: достаточно одного audio partition и JAMS root
+- Regression check после правки:
+  - `py_compile` для `SynthTab.py` и `tabcnn_synthtab_pipeline.py` прошел
+  - `inspect` на SynthTab Dev прошел из нового D:-пути
+  - CUDA по-прежнему видна: `NVIDIA GeForce GTX 1660 Ti`
+
+## 2026-05-30 17:23 +05:00 — First SynthTab Full chunk smoke/resume passed
+
+- Первый audio chunk успешно скачан и распакован:
+  - archive: `D:\DATA\SynthTab_Full\archive\semihollow_clean_finger.zip`
+  - downloaded size: `26.785 GiB`
+  - extracted path: `D:\DATA\SynthTab_Full\current_chunk\electric_clean\semihollow_clean_finger`
+  - extracted content: `4561` song dirs, `27295` files, примерно `27.362 GiB`
+- `inspect` на full chunk прошел:
+  - `paths.synthtab = D:\DATA\SynthTab_Full\current_chunk`
+  - `paths.jams_dir = D:\DATA\SynthTab_Full\jams_midi\outall`
+  - audio partition: `electric_clean`
+  - CUDA: `NVIDIA GeForce GTX 1660 Ti`
+- Loader доработан под реальный full-chunk layout:
+  - `paths.jams_dir` поддерживает JAMS/MIDI отдельно от audio chunk
+  - partial dev/full layout теперь разрешает один audio partition вместо обязательных четырех
+  - dev/full track index кешируется в ignored `generated/cache_full_chunks`
+  - cache key учитывает base path, JAMS root, profile, seed и список candidate tracks
+  - valid track теперь требует не только подходящий JAMS, но и наличие audio file
+- Реальный track split после фильтрации:
+  - train: `3632`
+  - val: `908`
+  - отфильтровано `7` JAMS-valid tracks без audio
+- Fresh full-chunk smoke прошел:
+  - config: `generated\experiments\full_chunk_smoke_config.json`
+  - experiment: `generated\experiments\full_chunk_smoke_fresh_v2`
+  - `device = cuda:0`
+  - `batch_size = 8`
+  - `sanity_steps = 2`
+  - `run_mode = fresh`
+  - `start_iter = 0`
+  - `final_iter = 2`
+  - созданы `model-2.pt`, `opt-state-2.pt`, `training-state-2.pt`
+- Resume full-chunk smoke прошел:
+  - config: `generated\experiments\full_chunk_smoke_resume_config.json`
+  - experiment: `generated\experiments\full_chunk_smoke_resume_v3`
+  - resume checkpoint: `generated\experiments\full_chunk_smoke_fresh_v2\models\training-state-2.pt`
+  - `run_mode = resume`
+  - `start_iter = 2`
+  - `final_iter = 4`
+  - созданы `model-4.pt`, `opt-state-4.pt`, `training-state-4.pt`
+- По ходу smoke найдены и исправлены два full-run бага:
+  - checkpoint validation падал на track без audio; исправлено фильтром `has_audio`
+  - resume на CUDA падал при восстановлении CPU RNG state после `map_location=cuda`; исправлено переносом RNG state обратно на CPU перед `torch.random.set_rng_state`
+- Meaningful 28-epoch full-chunk run пока не запущен:
+  - chunk имеет `454` batch/epoch при `batch_size = 8`
+  - smoke показывает, что полный запуск займет много часов или больше
+  - следующий запуск нужно делать осознанно отдельной длинной сессией из `demo_embedding\tabcnn_synthtab_full_chunk_template.json`
