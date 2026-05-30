@@ -13,8 +13,8 @@
   },
   "train": {
     "num_frames": 500,
-    "epochs": 28,
-    "checkpoints": 500,
+    "epochs": 1,
+    "checkpoints": 0,
     "batch_size": 8,
     "learning_rate": 0.001,
     "weight_decay": 1e-05,
@@ -26,7 +26,7 @@
     "sample_attempts": 3,
     "limit_train_tracks": null,
     "limit_val_tracks": null,
-    "sanity_steps": null,
+    "sanity_steps": 2,
     "use_class_weights": true,
     "silence_weight": 0.1,
     "note_weight": 1.0,
@@ -35,11 +35,11 @@
     "save_full_checkpoints": true,
     "sampler": "balanced",
     "balance_by_group": true,
-    "balance_by_silence": false,
+    "balance_by_silence": true,
     "use_amp": false
   },
   "evaluation": {
-    "run_synthtab_val": true,
+    "run_synthtab_val": false,
     "run_guitarset": false,
     "guitarset_splits": [
       "09"
@@ -49,7 +49,7 @@
     "device": "auto",
     "gpu_id": 0,
     "experiment_root": "./generated/experiments",
-    "experiment_name": "tabcnn_synthtab_full_chunk_balanced",
+    "experiment_name": "tabcnn_synthtab_full_chunk_semihollow_clean_finger_balance_by_silence_smoke",
     "save_checkpoints": true,
     "pin_memory": true
   }

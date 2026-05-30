@@ -7,6 +7,7 @@ from tqdm import tqdm
 
 import os
 import random
+from contextlib import nullcontext
 
 import numpy as np
 import torch
@@ -28,13 +29,15 @@ def _collect_random_state():
     return state
 
 
-def _save_training_state(model, optimizer, scheduler, log_dir, epoch, next_epoch, config_snapshot=None):
+def _save_training_state(model, optimizer, scheduler, log_dir, epoch, next_epoch,
+                         config_snapshot=None, scaler=None):
     model_iter = int(getattr(model, 'iter', 0))
     payload = {
         'checkpoint_type': 'tabcnn_synthtab_training_state',
         'model_state_dict': model.state_dict(),
         'optimizer_state_dict': optimizer.state_dict(),
         'scheduler_state_dict': scheduler.state_dict() if scheduler is not None else None,
+        'scaler_state_dict': scaler.state_dict() if scaler is not None else None,
         'epoch': int(epoch),
         'next_epoch': int(next_epoch),
         'model_iter': model_iter,
@@ -50,10 +53,33 @@ def _save_legacy_state(model, optimizer, log_dir):
     torch.save(optimizer.state_dict(), os.path.join(log_dir, f'{tools.PYT_STATE}-{model_iter}.{tools.PYT_EXT}'))
 
 
+def _make_grad_scaler(amp_enabled):
+    if not amp_enabled:
+        return None
+
+    if hasattr(torch, 'amp') and hasattr(torch.amp, 'GradScaler'):
+        try:
+            return torch.amp.GradScaler('cuda', enabled=True)
+        except TypeError:
+            return torch.amp.GradScaler(enabled=True)
+
+    return torch.cuda.amp.GradScaler(enabled=True)
+
+
+def _amp_autocast(amp_enabled):
+    if not amp_enabled:
+        return nullcontext()
+
+    if hasattr(torch, 'amp') and hasattr(torch.amp, 'autocast'):
+        return torch.amp.autocast('cuda', enabled=True)
+
+    return torch.cuda.amp.autocast(enabled=True)
+
+
 def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
           scheduler=None, val_set=None, estimator=None, evaluator=None,
           start_epoch=0, sanity_steps=None, save_full_checkpoints=True,
-          config_snapshot=None):
+          config_snapshot=None, use_amp=False, device=None, scaler=None):
     """
     Implements the training loop for an experiment.
 
@@ -88,6 +114,12 @@ def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
       Save resumable training-state checkpoints in addition to legacy model/optimizer files
     config_snapshot : dict or None
       Serialized run config stored inside full training-state checkpoints
+    use_amp : bool
+      Use CUDA automatic mixed precision when running on a CUDA device
+    device : torch.device or None
+      Resolved training device used to decide whether AMP can be enabled
+    scaler : GradScaler or None
+      Optional scaler restored from a full training-state checkpoint
 
     Returns
     ----------
@@ -103,6 +135,10 @@ def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
     # Make sure the model is in training mode
     model.train()
 
+    amp_enabled = bool(use_amp and device is not None and getattr(device, 'type', None) == 'cuda')
+    if scaler is None:
+        scaler = _make_grad_scaler(amp_enabled)
+
     steps_this_run = 0
 
     for epoch in tqdm(range(start_epoch, epochs)):
@@ -113,15 +149,24 @@ def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
             # Zero the accumulated gradients
             optimizer.zero_grad()
             # Get the predictions and loss for the batch
-            preds = model.run_on_batch(batch)
+            with _amp_autocast(amp_enabled):
+                preds = model.run_on_batch(batch)
             # Extract the loss from the output
             batch_loss = preds[tools.KEY_LOSS]
             # Compute gradients based on total loss
-            batch_loss[tools.KEY_LOSS_TOTAL].backward()
+            total_loss = batch_loss[tools.KEY_LOSS_TOTAL]
+            if scaler is not None:
+                scaler.scale(total_loss).backward()
+            else:
+                total_loss.backward()
             # Add all of the losses to the collection
             train_loss = append_results(train_loss, tools.dict_to_array(batch_loss))
             # Perform an optimization step
-            optimizer.step()
+            if scaler is not None:
+                scaler.step(optimizer)
+                scaler.update()
+            else:
+                optimizer.step()
 
             # Average the loss from all of the batches within this loop
             train_loss = average_results(train_loss)
@@ -137,7 +182,8 @@ def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
                 if save_full_checkpoints:
                     _save_training_state(
                         model, optimizer, scheduler, log_dir,
-                        epoch=epoch, next_epoch=epoch, config_snapshot=config_snapshot
+                        epoch=epoch, next_epoch=epoch, config_snapshot=config_snapshot,
+                        scaler=scaler
                     )
 
                 if val_set is not None and evaluator is not None:
@@ -152,7 +198,8 @@ def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
                 if save_full_checkpoints:
                     _save_training_state(
                         model, optimizer, scheduler, log_dir,
-                        epoch=epoch, next_epoch=epoch, config_snapshot=config_snapshot
+                        epoch=epoch, next_epoch=epoch, config_snapshot=config_snapshot,
+                        scaler=scaler
                     )
                 _save_legacy_state(model, optimizer, log_dir)
                 writer.close()
@@ -165,7 +212,8 @@ def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
         if save_full_checkpoints:
             _save_training_state(
                 model, optimizer, scheduler, log_dir,
-                epoch=epoch, next_epoch=epoch + 1, config_snapshot=config_snapshot
+                epoch=epoch, next_epoch=epoch + 1, config_snapshot=config_snapshot,
+                scaler=scaler
             )
 
     # Save the final model and optimizer state
@@ -173,7 +221,8 @@ def train(model, train_loader, optimizer, epochs, checkpoints=0, log_dir='.',
     if save_full_checkpoints:
         _save_training_state(
             model, optimizer, scheduler, log_dir,
-            epoch=max(start_epoch, epochs) - 1, next_epoch=epochs, config_snapshot=config_snapshot
+            epoch=max(start_epoch, epochs) - 1, next_epoch=epochs, config_snapshot=config_snapshot,
+            scaler=scaler
         )
 
     if val_set is not None and evaluator is not None:

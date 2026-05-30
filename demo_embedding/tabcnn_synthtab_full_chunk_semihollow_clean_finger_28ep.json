@@ -35,7 +35,8 @@
     "save_full_checkpoints": true,
     "sampler": "balanced",
     "balance_by_group": true,
-    "balance_by_silence": false
+    "balance_by_silence": false,
+    "use_amp": false
   },
   "evaluation": {
     "run_synthtab_val": true,

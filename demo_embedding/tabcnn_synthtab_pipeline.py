@@ -82,6 +82,7 @@ class TrainConfig:
     sampler: str = "shuffle"
     balance_by_group: bool = True
     balance_by_silence: bool = False
+    use_amp: bool = False
 
 
 @dataclass
@@ -379,6 +380,19 @@ def build_model(cfg: PipelineConfig, data_proc: CQT, profile: tools.GuitarProfil
     return model
 
 
+def build_grad_scaler(amp_enabled: bool) -> Any:
+    if not amp_enabled:
+        return None
+
+    if hasattr(torch, "amp") and hasattr(torch.amp, "GradScaler"):
+        try:
+            return torch.amp.GradScaler("cuda", enabled=True)
+        except TypeError:
+            return torch.amp.GradScaler(enabled=True)
+
+    return torch.cuda.amp.GradScaler(enabled=True)
+
+
 def load_training_checkpoint(
     checkpoint_path: Path,
     model: TabCNN,
@@ -386,6 +400,7 @@ def load_training_checkpoint(
     scheduler: torch.optim.lr_scheduler.LRScheduler | None,
     device: torch.device,
     strict: bool,
+    scaler: Any = None,
 ) -> tuple[TabCNN, int]:
     payload = safe_torch_load(checkpoint_path, device)
 
@@ -394,6 +409,8 @@ def load_training_checkpoint(
         optimizer.load_state_dict(payload["optimizer_state_dict"])
         if scheduler is not None and payload.get("scheduler_state_dict") is not None:
             scheduler.load_state_dict(payload["scheduler_state_dict"])
+        if scaler is not None and payload.get("scaler_state_dict") is not None:
+            scaler.load_state_dict(payload["scaler_state_dict"])
 
         if hasattr(model, "change_device"):
             model.change_device(device)
@@ -576,12 +593,15 @@ def run_train(cfg: PipelineConfig, experiment_dir: Path) -> None:
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
         optimizer, T_max=cfg.train.epochs, eta_min=cfg.train.scheduler_eta_min
     )
+    amp_enabled = bool(cfg.train.use_amp and device.type == "cuda")
+    scaler = build_grad_scaler(amp_enabled)
 
     start_epoch = 0
     resume_path = Path(cfg.train.resume_from) if cfg.train.resume_from else None
     if resume_path is not None:
         model, start_epoch = load_training_checkpoint(
-            resume_path, model, optimizer, scheduler, device, strict=cfg.train.resume_strict
+            resume_path, model, optimizer, scheduler, device,
+            strict=cfg.train.resume_strict, scaler=scaler
         )
 
     metadata = {
@@ -594,6 +614,7 @@ def run_train(cfg: PipelineConfig, experiment_dir: Path) -> None:
         "resume_from": str(resume_path.resolve()) if resume_path is not None else None,
         "start_epoch": start_epoch,
         "start_iter": int(getattr(model, "iter", 0)),
+        "amp_enabled": amp_enabled,
         "sampler": sampler_summary,
     }
     write_json(experiment_dir / "run_config.json", metadata)
@@ -616,6 +637,9 @@ def run_train(cfg: PipelineConfig, experiment_dir: Path) -> None:
         sanity_steps=cfg.train.sanity_steps,
         save_full_checkpoints=cfg.train.save_full_checkpoints and cfg.runtime.save_checkpoints,
         config_snapshot=asdict(cfg),
+        use_amp=amp_enabled,
+        device=device,
+        scaler=scaler,
     )
 
     eval_results = run_evaluation(cfg, experiment_dir, model=model, data_proc=data_proc, profile=profile)

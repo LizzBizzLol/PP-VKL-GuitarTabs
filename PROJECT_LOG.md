@@ -601,3 +601,28 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - `device = cuda:0`
 - Первые минуты обучения прошли без CUDA OOM на `batch_size = 8`.
 - Оценка по фактическому старту: около `50-55` минут на эпоху, полный train может занять около суток плюс финальная validation.
+
+## 2026-05-30 21:57 +05:00 — Parallel prep while full-chunk run continues
+
+- Текущий meaningful run не остановлен и не изменен.
+- Добавлен легкий CLI-отчетчик:
+  - `demo_embedding\summarize_synthtab_run.py`
+  - читает только `run_config.json`, `results\summary.json` и список `training-state-*.pt`
+  - не импортирует training pipeline и не загружает модель
+- Добавлен fallback smoke config на случай collapse-to-silence:
+  - `demo_embedding\tabcnn_synthtab_full_chunk_semihollow_clean_finger_balance_by_silence_smoke.json`
+  - `balance_by_silence = true`
+  - `sanity_steps = 2`
+  - `run_synthtab_val = false`
+- Подготовлен opt-in AMP API:
+  - `train.use_amp = false` по умолчанию
+  - при `true` CUDA-run использует autocast и GradScaler
+  - scaler state сохраняется в full `training-state-*.pt` и восстанавливается при resume
+  - текущий running experiment это не меняет, потому что он уже запущен со старым loaded code и `use_amp = false`
+- Проверки после parallel prep:
+  - `py_compile` прошел для `summarize_synthtab_run.py`, `train.py`, `tabcnn_synthtab_pipeline.py`
+  - JSON validation прошла для новых и обновленных configs
+  - analyzer dry-run прошел на `artifacts\baseline_dev_full_train_28ep_run`
+  - analyzer корректно сообщает `summary: missing` для текущего незавершенного full run
+  - `inspect` на SynthTab Dev прошел
+  - `inspect` на current full chunk прошел
