@@ -626,3 +626,41 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - analyzer корректно сообщает `summary: missing` для текущего незавершенного full run
   - `inspect` на SynthTab Dev прошел
   - `inspect` на current full chunk прошел
+
+## 2026-05-31 13:08 +05:00 — First meaningful full-chunk run completed
+
+- Первый meaningful run на SynthTab Full chunk успешно завершен:
+  - experiment: `generated\experiments\full_chunk_semihollow_clean_finger_28ep_fresh`
+  - chunk: `electric_clean\semihollow_clean_finger`
+  - run mode: `fresh`
+  - train tracks: `3632`
+  - val tracks: `908`
+  - epochs: `28`
+  - batch size: `8`
+  - final iter: `12712`
+  - runtime по `summary.json`: `18:30:15`
+  - final checkpoint: `generated\experiments\full_chunk_semihollow_clean_finger_28ep_fresh\models\training-state-12712.pt`
+- Итоговые метрики на SynthTab Full validation:
+  - `multi_pitch precision = 0.7020`
+  - `multi_pitch recall = 0.7233`
+  - `multi_pitch f1 = 0.7071`
+  - `tablature precision = 0.4004`
+  - `tablature recall = 0.6643`
+  - `tablature f1 = 0.4872`
+  - `tablature tdr = 0.7496`
+  - `tablature accuracy = 0.8018`
+  - `pred_silence_ratio = 0.6225`
+  - `ref_silence_ratio = 0.7509`
+  - `non_silent_accuracy = 0.6589`
+  - `collapse_to_silence = false`
+- Сравнение с лучшим Dev baseline:
+  - `multi_pitch f1`: `0.6321 -> 0.7071`
+  - `tablature f1`: `0.4151 -> 0.4872`
+  - `tablature accuracy`: `0.7178 -> 0.8018`
+  - `non_silent_accuracy`: `0.5261 -> 0.6589`
+- Практический вывод:
+  - первый full-chunk workflow подтвержден end-to-end
+  - модель не схлопнулась в silence
+  - архитектуру и базовые параметры пока не менять
+  - следующий training запуск делать через `resume_from` от `training-state-12712.pt`
+  - следующий chunk выбирать для расширения тембров: сначала небольшой `electric_distortion`, затем `electric_muted`, затем другой `electric_clean`, затем `acoustic`
