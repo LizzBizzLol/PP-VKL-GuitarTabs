@@ -174,7 +174,7 @@ def build_estimators(profile: tools.GuitarProfile) -> tuple[ComboEstimator, Comb
 
 def ensure_synthtab_layout(base_dir: Path, jams_dir: str | None = None) -> None:
     standard_ok = all((base_dir / split).exists() for split in SynthTab.available_splits())
-    dev_partitions = ["acoustic", "electric_clean", "electric_distortion_di", "electric_muted"]
+    dev_partitions = ["acoustic", "electric_clean", "electric_distortion", "electric_distortion_di", "electric_muted"]
     jams_root = Path(jams_dir) if jams_dir else base_dir / "jams"
     dev_ok = any((base_dir / name).exists() for name in dev_partitions) and jams_root.exists()
 
@@ -552,7 +552,7 @@ def inspect_environment(cfg: PipelineConfig) -> dict[str, Any]:
         "synthtab_val_exists": (synthtab_dir / "val").exists(),
         "synthtab_audio_partitions": [
             name
-            for name in ["acoustic", "electric_clean", "electric_distortion_di", "electric_muted"]
+            for name in ["acoustic", "electric_clean", "electric_distortion", "electric_distortion_di", "electric_muted"]
             if (synthtab_dir / name).exists()
         ],
         "jams_dir": str(jams_dir.resolve()),

@@ -108,7 +108,7 @@ class SynthTab(TranscriptionDataset):
     Implements a wrapper for SynthTab (https://synthtab.dev).
     """
 
-    DEV_PARTITIONS = ('acoustic', 'electric_clean', 'electric_distortion_di', 'electric_muted')
+    DEV_PARTITIONS = ('acoustic', 'electric_clean', 'electric_distortion', 'electric_distortion_di', 'electric_muted')
 
     def __init__(self, base_dir=None, splits=None, hop_length=512, sample_rate=44100, data_proc=None,
                        profile=None, num_frames=None, audio_norm=np.inf, reset_data=False, store_data=True,
