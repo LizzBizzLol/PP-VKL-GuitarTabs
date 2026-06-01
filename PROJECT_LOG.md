@@ -664,3 +664,44 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - архитектуру и базовые параметры пока не менять
   - следующий training запуск делать через `resume_from` от `training-state-12712.pt`
   - следующий chunk выбирать для расширения тембров: сначала небольшой `electric_distortion`, затем `electric_muted`, затем другой `electric_clean`, затем `acoustic`
+
+## 2026-06-02 01:31 +05:00 — Second full-chunk run completed
+
+- Второй meaningful SynthTab Full chunk завершен через resume от первого full-run:
+  - experiment: `generated\experiments\full_chunk_electric_distortion_semihollow_clean_finger_28ep_resume_from_12712`
+  - chunk: `electric_distortion\semihollow_clean_finger`
+  - run mode: `resume`
+  - train tracks: `3953`
+  - val tracks: `988`
+  - epochs target: `56`
+  - batch size: `8`
+  - start iter последнего continuation: `25062`
+  - final iter: `26544`
+  - runtime последнего continuation по `summary.json`: `01:39:26`
+  - final checkpoint: `generated\experiments\full_chunk_electric_distortion_semihollow_clean_finger_28ep_resume_from_12712\models\training-state-26544.pt`
+- Итоговые метрики на SynthTab Full validation:
+  - `multi_pitch precision = 0.6773`
+  - `multi_pitch recall = 0.7155`
+  - `multi_pitch f1 = 0.6902`
+  - `tablature precision = 0.3983`
+  - `tablature recall = 0.6464`
+  - `tablature f1 = 0.4811`
+  - `tablature tdr = 0.7406`
+  - `tablature accuracy = 0.8118`
+  - `pred_silence_ratio = 0.6521`
+  - `ref_silence_ratio = 0.7762`
+  - `non_silent_accuracy = 0.6604`
+  - `collapse_to_silence = false`
+- Сравнение с первым full chunk:
+  - `multi_pitch f1`: `0.7071 -> 0.6902`
+  - `tablature f1`: `0.4872 -> 0.4811`
+  - `tablature accuracy`: `0.8018 -> 0.8118`
+  - `non_silent_accuracy`: `0.6589 -> 0.6604`
+  - `pred_silence_ratio`: `0.6225 -> 0.6521`
+- Практический вывод:
+  - второй chunk не дал заметного прироста качества, но и не сломал модель
+  - `collapse_to_silence` не появился, значит базовые веса и balanced sampler остаются рабочими
+  - качество tablature остается слабым для готового продукта: около `48% F1`
+  - перед следующим long-run целесообразна короткая диагностика ошибок, а не слепое масштабирование на много chunks
+  - если продолжать обучение, следующий meaningful run должен resume от `training-state-26544.pt`
+  - архитектуру, `balance_by_silence`, AMP и batch size пока не менять без отдельной диагностики
