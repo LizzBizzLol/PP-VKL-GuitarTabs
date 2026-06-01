@@ -57,7 +57,7 @@
 - [x] Зафиксировать итог второго full-chunk run в `PROJECT_LOG.md`.
 - [ ] Продолжить chunk-based обучение на следующих частях SynthTab Full через `resume_from` последнего `training-state-*.pt`.
 - [ ] После каждого следующего chunk сохранять метрики и выводы.
-- [ ] Выполнить короткую диагностику ошибок перед третьим long-run: pitch, string/fret assignment, silence/non-silence, worst/best validation tracks.
+- [x] Выполнить короткую диагностику ошибок перед третьим long-run: pitch, string/fret assignment, silence/non-silence, worst/best validation tracks.
 - [ ] После нескольких chunks оценить, нужны ли изменения в балансировке, AMP, batch size или архитектуре.
 - [ ] Подготовить сравнение с внешними сервисами/подходами.
 - [ ] Позже перейти к дообучению на собственных данных.
