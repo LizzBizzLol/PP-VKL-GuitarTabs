@@ -50,6 +50,7 @@
 - Collapse-to-silence на первом full chunk не произошел.
 - Второй full chunk `electric_distortion/semihollow_clean_finger` обучен через resume до `training-state-26544.pt`.
 - Метрики второго full chunk сохранены; collapse-to-silence не произошел, но прирост качества почти отсутствует.
+- Третий контрастный chunk `electric_muted` скачан, подключен, прошел inspect и resume smoke от `training-state-26544.pt`.
 
 Осталось:
 
@@ -58,6 +59,7 @@
 - [ ] Продолжить chunk-based обучение на следующих частях SynthTab Full через `resume_from` последнего `training-state-*.pt`.
 - [ ] После каждого следующего chunk сохранять метрики и выводы.
 - [x] Выполнить короткую диагностику ошибок перед третьим long-run: pitch, string/fret assignment, silence/non-silence, worst/best validation tracks.
+- [x] Подготовить третий контрастный chunk и проверить его через inspect/resume smoke.
 - [ ] После нескольких chunks оценить, нужны ли изменения в балансировке, AMP, batch size или архитектуре.
 - [ ] Подготовить сравнение с внешними сервисами/подходами.
 - [ ] Позже перейти к дообучению на собственных данных.

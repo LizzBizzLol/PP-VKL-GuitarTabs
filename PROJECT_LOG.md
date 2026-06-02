@@ -705,3 +705,37 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - перед следующим long-run целесообразна короткая диагностика ошибок, а не слепое масштабирование на много chunks
   - если продолжать обучение, следующий meaningful run должен resume от `training-state-26544.pt`
   - архитектуру, `balance_by_silence`, AMP и batch size пока не менять без отдельной диагностики
+
+## 2026-06-02 20:08 +05:00 — Third chunk `electric_muted` prepared and smoke-tested
+
+- Выбран контрастный третий chunk:
+  - Box item: `electric_muted.zip`
+  - archive: `D:\DATA\SynthTab_Full\archive\electric_muted.zip`
+  - expected/downloaded size: `45755744178` bytes
+  - downloaded size: `42.61 GiB`
+- Active chunk переключен:
+  - старый active `electric_distortion` перенесен в `D:\DATA\SynthTab_Full\archive\extracted_backups\electric_distortion_20260602_042059`
+  - новый active path: `D:\DATA\SynthTab_Full\current_chunk\electric_muted`
+  - в active chunk найдено `17` timbre/group directories
+- Inspect по tracked config прошел:
+  - config: `demo_embedding\tabcnn_synthtab_full_chunk_electric_muted_28ep_resume.json`
+  - `synthtab_audio_partitions = ["electric_muted"]`
+  - `jams_dir_exists = true`
+  - CUDA доступна: `NVIDIA GeForce GTX 1660 Ti`
+- Resume smoke прошел:
+  - smoke config: `generated\experiments\full_chunk_electric_muted_resume_smoke_config.json`
+  - smoke experiment: `generated\experiments\full_chunk_electric_muted_resume_smoke_v2`
+  - resume checkpoint: `generated\experiments\full_chunk_electric_distortion_semihollow_clean_finger_28ep_resume_from_12712\models\training-state-26544.pt`
+  - `run_mode = resume`
+  - `start_epoch = 56`
+  - `start_iter = 26544`
+  - train tracks: `6814`
+  - val tracks: `1703`
+  - `sanity_steps = 2`
+  - создан checkpoint: `training-state-26546.pt`
+- Практический вывод:
+  - `electric_muted` chunk подключен и pipeline подтвержден без long-run
+  - следующий meaningful run можно запускать от `training-state-26544.pt`
+  - tracked config уже задает абсолютную цель `epochs = 84`, то есть еще `28` дополнительных эпох после старта
+  - базовые параметры оставлены прежними: `batch_size = 8`, `silence_weight = 0.1`, `note_weight = 1.0`, `sampler = balanced`, `balance_by_group = true`, `balance_by_silence = false`, `use_amp = false`
+  - если третий meaningful run снова останется около `48%` tablature F1, дальше нужно переходить к tab head/loss/label representation, а не просто добавлять похожие chunks
