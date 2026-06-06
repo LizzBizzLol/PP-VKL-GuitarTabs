@@ -26,6 +26,16 @@ def load_audio_file(path):
         return audio, sample_rate
 
 
+def sanitize_audio(audio, track=None):
+    """Replace NaN/Inf samples before feature extraction."""
+    if torch.isfinite(audio).all():
+        return audio
+
+    label = f" for track '{track}'" if track else ""
+    print(f"Warning: non-finite audio samples detected{label}; replacing with zeros.")
+    return torch.nan_to_num(audio, nan=0.0, posinf=0.0, neginf=0.0)
+
+
 # Include the namespace for our tablature note-events
 NOTE_TAB_NAMESPACE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'gp_to_JAMS', 'note_tab.json')
 jams.schema.add_namespace(NOTE_TAB_NAMESPACE)
@@ -202,6 +212,7 @@ class SynthTab(TranscriptionDataset):
             if self.save_data and os.path.exists(audio_path):
                 # Load and unpack the audio
                 audio = torch.load(audio_path)
+                audio = sanitize_audio(audio, track=track)
         except Exception as e:
             # Print offending track to console and regenerate audio
             print(f'Error loading audio for track \'{track}\': {repr(e)}')
@@ -220,10 +231,14 @@ class SynthTab(TranscriptionDataset):
                 audio_ = audio_[0].unsqueeze(0)
                 # Resample audio to appropriate sampling rate
                 audio_ = torchaudio.functional.resample(audio_, fs_, self.sample_rate)
+                # Some SynthTab acoustic renders contain NaN/Inf samples.
+                audio_ = sanitize_audio(audio_, track=track)
 
                 if self.audio_norm == np.inf or self.audio_norm == torch.inf:
                     # Normalize the audio to the range [-1, 1]
-                    audio_ /= audio_.max()
+                    max_abs = torch.max(torch.abs(audio_))
+                    if torch.isfinite(max_abs) and max_abs > 0:
+                        audio_ /= max_abs
                 else:
                     # TODO
                     return NotImplementedError
