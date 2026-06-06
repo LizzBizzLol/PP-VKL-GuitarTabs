@@ -739,3 +739,43 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - tracked config уже задает абсолютную цель `epochs = 84`, то есть еще `28` дополнительных эпох после старта
   - базовые параметры оставлены прежними: `batch_size = 8`, `silence_weight = 0.1`, `note_weight = 1.0`, `sampler = balanced`, `balance_by_group = true`, `balance_by_silence = false`, `use_amp = false`
   - если третий meaningful run снова останется около `48%` tablature F1, дальше нужно переходить к tab head/loss/label representation, а не просто добавлять похожие chunks
+
+## 2026-06-06 09:02 +05:00 — Third full-chunk run completed
+
+- Третий meaningful SynthTab Full chunk завершен через resume от второго full-run:
+  - experiment: `generated\experiments\full_chunk_electric_muted_28ep_resume_from_26544`
+  - chunk: `electric_muted`
+  - run mode: `resume`
+  - train tracks: `6814`
+  - val tracks: `1703`
+  - epochs target: `84`
+  - batch size: `8`
+  - start iter последнего continuation: `36756`
+  - final iter: `50372`
+  - runtime последнего continuation по `summary.json`: `12:32:05`
+  - final checkpoint: `generated\experiments\full_chunk_electric_muted_28ep_resume_from_26544\models\training-state-50372.pt`
+- Итоговые метрики на SynthTab Full validation:
+  - `multi_pitch precision = 0.7175`
+  - `multi_pitch recall = 0.7525`
+  - `multi_pitch f1 = 0.7307`
+  - `tablature precision = 0.4794`
+  - `tablature recall = 0.7227`
+  - `tablature f1 = 0.5625`
+  - `tablature tdr = 0.7681`
+  - `tablature accuracy = 0.8725`
+  - `pred_silence_ratio = 0.6920`
+  - `ref_silence_ratio = 0.7855`
+  - `non_silent_accuracy = 0.7079`
+  - `collapse_to_silence = false`
+- Сравнение со вторым full chunk:
+  - `multi_pitch f1`: `0.6902 -> 0.7307`
+  - `tablature f1`: `0.4811 -> 0.5625`
+  - `tablature accuracy`: `0.8118 -> 0.8725`
+  - `non_silent_accuracy`: `0.6604 -> 0.7079`
+  - `pred_silence_ratio`: `0.6521 -> 0.6920`
+- Практический вывод:
+  - контрастный `electric_muted` chunk дал заметный прирост после стагнации на втором chunk
+  - `collapse_to_silence` не появился, поэтому `balance_by_silence=true` включать не нужно
+  - текущие параметры остаются рабочими: `batch_size = 8`, `silence_weight = 0.1`, `note_weight = 1.0`, `sampler = balanced`, `balance_by_group = true`, `balance_by_silence = false`, `use_amp = false`
+  - следующий meaningful run должен resume от `training-state-50372.pt`
+  - следующий chunk лучше выбирать контрастный к уже пройденным: сначала `acoustic`, затем новый `electric_clean` timbre/group, затем новый `electric_distortion`

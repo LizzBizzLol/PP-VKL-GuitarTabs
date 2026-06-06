@@ -51,6 +51,8 @@
 - Второй full chunk `electric_distortion/semihollow_clean_finger` обучен через resume до `training-state-26544.pt`.
 - Метрики второго full chunk сохранены; collapse-to-silence не произошел, но прирост качества почти отсутствует.
 - Третий контрастный chunk `electric_muted` скачан, подключен, прошел inspect и resume smoke от `training-state-26544.pt`.
+- Третий full chunk `electric_muted` обучен через resume до `training-state-50372.pt`.
+- Метрики третьего full chunk сохранены; `tablature F1` вырос до `56.25%`, collapse-to-silence не произошел.
 
 Осталось:
 
@@ -60,6 +62,7 @@
 - [ ] После каждого следующего chunk сохранять метрики и выводы.
 - [x] Выполнить короткую диагностику ошибок перед третьим long-run: pitch, string/fret assignment, silence/non-silence, worst/best validation tracks.
 - [x] Подготовить третий контрастный chunk и проверить его через inspect/resume smoke.
+- [x] Обучить третий контрастный chunk и зафиксировать метрики.
 - [ ] После нескольких chunks оценить, нужны ли изменения в балансировке, AMP, batch size или архитектуре.
 - [ ] Подготовить сравнение с внешними сервисами/подходами.
 - [ ] Позже перейти к дообучению на собственных данных.
