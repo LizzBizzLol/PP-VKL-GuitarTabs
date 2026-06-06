@@ -1,6 +1,6 @@
 # Error Analysis
 
-Короткая диагностика после трех meaningful SynthTab Full chunks.
+Короткая диагностика после четырех meaningful SynthTab Full chunks.
 
 ## Runs
 
@@ -9,14 +9,16 @@
 | 1 | `electric_clean/semihollow_clean_finger` | `training-state-12712.pt` | 70.71% | 48.72% | 80.18% | 65.89% | false |
 | 2 | `electric_distortion/semihollow_clean_finger` | `training-state-26544.pt` | 69.02% | 48.11% | 81.18% | 66.04% | false |
 | 3 | `electric_muted` | `training-state-50372.pt` | 73.07% | 56.25% | 87.25% | 70.79% | false |
+| 4 | `acoustic/luthier_pick/part_1_-_1_to_B_C` | `training-state-58184.pt` | 77.25% | 58.47% | 78.01% | 76.57% | false |
 
 ## What Changed
 
 - Второй chunk не дал заметного прироста: `tablature F1` остался около `48%`.
 - `multi_pitch F1` тоже не вырос: `70.71% -> 69.02%`.
 - Третий contrastive chunk `electric_muted` дал заметный прирост: `tablature F1` вырос до `56.25%`, `multi_pitch F1` до `73.07%`.
-- `accuracy` и `non_silent_accuracy` тоже выросли, но главным сигналом остается рост F1.
-- `collapse_to_silence=false` на всех трех chunks, значит anti-collapse параметры работают.
+- Четвертый acoustic chunk дал дополнительный прирост: `tablature F1` вырос до `58.47%`, `multi_pitch F1` до `77.25%`, `non_silent_accuracy` до `76.57%`.
+- `accuracy` на acoustic chunk ниже, чем на muted, потому что validation менее silence-heavy: `ref_silence_ratio=67.64%` против `78.55%` на muted.
+- `collapse_to_silence=false` на всех четырех chunks, значит anti-collapse параметры работают.
 
 ## Main Failure Mode
 
@@ -27,8 +29,9 @@
 | Clean | 87.16% | 56.15% | 20.80% | 22.00% |
 | Distortion | 85.38% | 55.31% | 18.57% | 20.91% |
 | Muted | 90.62% | 63.20% | 13.63% | 16.82% |
+| Acoustic | 85.99% | 65.31% | 17.40% | 18.77% |
 
-Практический вывод: проблема string/fret assignment остается, но `electric_muted` уменьшил MP-Tab gap. Значит не всякое масштабирование бесполезно: правильно выбранные контрастные chunks пока могут улучшать модель.
+Практический вывод: проблема string/fret assignment остается. `electric_muted` сильнее всего уменьшил MP-Tab gap, а acoustic поднял aggregate F1 и non-silent accuracy, но gap снова стал около `17-19 pp`. Значит правильно выбранные контрастные chunks пока помогают, но после еще одного run стоит снова оценить, не пора ли переходить к tab head/loss/label representation.
 
 ## Silence Behavior
 
@@ -37,6 +40,7 @@
 | Clean | 75.09% | 62.25% | -12.84 pp |
 | Distortion | 77.62% | 65.21% | -12.41 pp |
 | Muted | 78.55% | 69.20% | -9.35 pp |
+| Acoustic | 67.64% | 53.24% | -14.40 pp |
 
 Модель не схлопнулась в silence. Наоборот, она системно предсказывает больше non-silent, чем есть в reference. Это не повод включать `balance_by_silence=true` прямо сейчас: проблема не в трусливом молчании, а в лишней активности и string/fret ошибках.
 
@@ -45,6 +49,7 @@
 - Clean: среди non-silent tracks `530/708` треков имеют pred silence ниже ref silence больше чем на `10 pp`.
 - Distortion: среди non-silent tracks `595/807` треков имеют pred silence ниже ref silence больше чем на `10 pp`.
 - Muted: pred silence все еще ниже ref silence, но разрыв сократился до `-9.35 pp`.
+- Acoustic: pred silence снова заметно ниже ref silence, разрыв `-14.40 pp`.
 - Under-prediction notes по-прежнему не выглядит основной проблемой: на первых двух runs было только по `6` tracks с pred silence выше ref silence больше чем на `10 pp`.
 
 ## Example Tracks
@@ -72,21 +77,24 @@ Typical tracks still show a large tab gap:
 | Clean | about 56% | about 77-98% | about 21-42 pp |
 | Distortion | about 55% | about 80-98% | about 24-43 pp |
 | Muted | about 63% | about 88-97% | about 25-34 pp |
+| Acoustic | about 65% | about 81-96% | about 16-31 pp |
 
 Best tracks prove the model can solve some cases:
 
 - Clean best examples reach `98-99%` tablature F1.
 - Distortion best examples reach `95-100%` tablature F1.
 - Muted best examples reach `99-100%` tablature F1.
+- Acoustic best examples reach `97-99%` tablature F1.
 - Failures are not uniform; data shape and tab-position ambiguity matter.
 
 ## Decision
 
 - Do not change architecture immediately, but do not blindly run many more similar chunks.
-- The third contrastive chunk helped, so the next default step can remain chunk-based scaling.
-- Prefer the next chunk to be different from the already used data: first `acoustic` if size fits, then a new `electric_clean` timbre/group, then a new `electric_distortion`.
+- The third and fourth contrastive chunks helped, so the next default step can remain chunk-based scaling.
+- Next resume checkpoint is `training-state-58184.pt`.
+- Prefer the next chunk to be different from the already used data: a new electric_clean timbre/group, another acoustic timbre/group, or a new electric_distortion only if it adds clear data contrast.
 - Keep current baseline settings for the next smoke and long run: `silence_weight=0.1`, `note_weight=1.0`, `sampler=balanced`, `balance_by_group=true`, `balance_by_silence=false`, `batch_size=8`, `use_amp=false`.
-- If the next contrastive chunk drops back near `48%` tablature F1 or degrades, then shift focus from data scaling to tab head/loss/label representation.
+- If the next contrastive chunk stalls or degrades, then shift focus from data scaling to tab head/loss/label representation.
 - Do not enable `balance_by_silence=true` unless a future run shows `collapse_to_silence=true` or pred silence moving toward `1.0`.
 
 ## Repro
@@ -98,7 +106,9 @@ Analyzer:
   generated\experiments\full_chunk_semihollow_clean_finger_28ep_fresh `
   generated\experiments\full_chunk_electric_distortion_semihollow_clean_finger_28ep_resume_from_12712 `
   generated\experiments\full_chunk_electric_muted_28ep_resume_from_26544 `
+  generated\experiments\full_chunk_acoustic_luthier_pick_part1_28ep_resume_from_50372 `
   --label "Clean chunk" `
   --label "Distortion chunk" `
-  --label "Muted chunk"
+  --label "Muted chunk" `
+  --label "Acoustic luthier_pick part1"
 ```

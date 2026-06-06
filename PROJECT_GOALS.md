@@ -53,6 +53,9 @@
 - Третий контрастный chunk `electric_muted` скачан, подключен, прошел inspect и resume smoke от `training-state-26544.pt`.
 - Третий full chunk `electric_muted` обучен через resume до `training-state-50372.pt`.
 - Метрики третьего full chunk сохранены; `tablature F1` вырос до `56.25%`, collapse-to-silence не произошел.
+- Четвертый full chunk `acoustic/luthier_pick/part_1` обучен через resume до `training-state-58184.pt`.
+- Метрики четвертого full chunk сохранены; `tablature F1` вырос до `58.47%`, collapse-to-silence не произошел.
+- Добавлен loader-fix для non-finite audio samples в SynthTab chunks.
 
 Осталось:
 
@@ -63,6 +66,7 @@
 - [x] Выполнить короткую диагностику ошибок перед третьим long-run: pitch, string/fret assignment, silence/non-silence, worst/best validation tracks.
 - [x] Подготовить третий контрастный chunk и проверить его через inspect/resume smoke.
 - [x] Обучить третий контрастный chunk и зафиксировать метрики.
+- [x] Подготовить четвертый acoustic chunk с контролем диска, проверить через inspect/resume smoke, обучить и зафиксировать метрики.
 - [ ] После нескольких chunks оценить, нужны ли изменения в балансировке, AMP, batch size или архитектуре.
 - [ ] Подготовить сравнение с внешними сервисами/подходами.
 - [ ] Позже перейти к дообучению на собственных данных.

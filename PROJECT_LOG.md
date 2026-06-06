@@ -779,3 +779,50 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - текущие параметры остаются рабочими: `batch_size = 8`, `silence_weight = 0.1`, `note_weight = 1.0`, `sampler = balanced`, `balance_by_group = true`, `balance_by_silence = false`, `use_amp = false`
   - следующий meaningful run должен resume от `training-state-50372.pt`
   - следующий chunk лучше выбирать контрастный к уже пройденным: сначала `acoustic`, затем новый `electric_clean` timbre/group, затем новый `electric_distortion`
+
+## 2026-06-06 21:58 +05:00 — Fourth full-chunk run completed
+
+- Четвертый meaningful SynthTab Full chunk завершен через resume от третьего full-run:
+  - experiment: `generated\experiments\full_chunk_acoustic_luthier_pick_part1_28ep_resume_from_50372`
+  - chunk: `acoustic\luthier_pick\part_1_-_1_to_B_C`
+  - run mode: `resume`
+  - train tracks: `2237`
+  - val tracks: `559`
+  - epochs target: `112`
+  - batch size: `8`
+  - start iter: `50372`
+  - final iter: `58184`
+  - runtime по `summary.json`: `07:09:23`
+  - final checkpoint: `generated\experiments\full_chunk_acoustic_luthier_pick_part1_28ep_resume_from_50372\models\training-state-58184.pt`
+- Перед запуском была выполнена безопасная очистка диска:
+  - удален rebuildable full-chunk cache
+  - удалены старые full chunk zip/extracted backups
+  - сохранены JAMS/MIDI, финальные summaries и checkpoints
+  - свободное место выросло примерно с `147 GiB` до `633 GiB`
+- Для acoustic chunk добавлен loader-fix:
+  - `demo_embedding\SynthTab.py` теперь заменяет `NaN/Inf` audio samples на нули перед feature extraction
+  - причина: некоторые acoustic renders содержат non-finite samples, из-за чего `librosa` падала с `Audio buffer is not finite everywhere`
+- Итоговые метрики на SynthTab Full validation:
+  - `multi_pitch precision = 0.7394`
+  - `multi_pitch recall = 0.8194`
+  - `multi_pitch f1 = 0.7725`
+  - `tablature precision = 0.4868`
+  - `tablature recall = 0.7599`
+  - `tablature f1 = 0.5847`
+  - `tablature tdr = 0.8462`
+  - `tablature accuracy = 0.7801`
+  - `pred_silence_ratio = 0.5324`
+  - `ref_silence_ratio = 0.6764`
+  - `non_silent_accuracy = 0.7657`
+  - `collapse_to_silence = false`
+- Сравнение с третьим full chunk:
+  - `multi_pitch f1`: `0.7307 -> 0.7725`
+  - `tablature f1`: `0.5625 -> 0.5847`
+  - `non_silent_accuracy`: `0.7079 -> 0.7657`
+  - `pred_silence_ratio`: `0.6920 -> 0.5324`
+- Практический вывод:
+  - acoustic chunk дал дополнительный прирост, особенно по multi-pitch и non-silent accuracy
+  - tablature F1 растет медленнее, но тренд положительный: `48.11% -> 56.25% -> 58.47%` на последних трех chunks
+  - collapse-to-silence не появился, поэтому базовые параметры и `balance_by_silence=false` оставляем
+  - следующий meaningful run должен resume от `training-state-58184.pt`
+  - после еще одного контрастного chunk стоит переоценить, продолжать ли scaling или перейти к tab head/loss/label representation
