@@ -878,3 +878,25 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - лучший checkpoint по метрикам пока остается `training-state-58184.pt` от acoustic run
   - последний технический checkpoint цепочки: `training-state-83608.pt`
   - следующий шаг: не запускать еще один похожий clean chunk вслепую, а диагностировать string/fret bottleneck и распределение ошибок
+
+## 2026-06-08 20:41 +05:00 — Tab/string-fret bottleneck diagnostic added
+
+- Добавлен CPU-only диагностический скрипт:
+  - `demo_embedding\diagnose_tablature_gap.py`
+  - читает только `summary.json` и per-track `.txt` метрики
+  - не импортирует training pipeline
+  - не загружает аудио, модель или checkpoint
+  - не использует GPU
+- Добавлен tracked отчет:
+  - `TAB_HEAD_DIAGNOSTIC.md`
+- Диагностика по шести completed runs:
+  - best-by-metrics checkpoint: `training-state-58184.pt` от acoustic run
+  - latest chronological checkpoint: `training-state-83608.pt`
+  - `collapse_to_silence=false` на всех шести runs
+  - на clean chunks примерно треть validation tracks имеет высокий `multi_pitch F1` при слабом `tablature F1`
+  - mean MP-Tab gap на двух последних clean chunks вернулся к `~22 pp`
+- Практический вывод:
+  - текущий bottleneck ближе к string/fret assignment, чем к pitch detection или silence-collapse
+  - `balance_by_silence=true` не включать
+  - следующий похожий `electric_clean` long-run вслепую не запускать
+  - следующий полезный шаг: маленький string/fret-focused эксперимент, post-processing diagnostic или план изменения tab head/loss/label representation

@@ -59,6 +59,7 @@
 - Пятый full chunk `electric_clean/peregrine_clean_neck` обучен через resume до `training-state-70896.pt`.
 - Шестой full chunk `electric_clean/lespaul_clean_both` обучен через resume до `training-state-83608.pt`.
 - Выполнена оценка после нескольких chunks: похожие `electric_clean` chunks не улучшили качество относительно acoustic peak.
+- Диагностика `electric_clean` просадки зафиксирована в `TAB_HEAD_DIAGNOSTIC.md`: основной bottleneck сейчас string/fret assignment, а не silence-collapse.
 
 Осталось:
 
@@ -72,7 +73,8 @@
 - [x] Подготовить четвертый acoustic chunk с контролем диска, проверить через inspect/resume smoke, обучить и зафиксировать метрики.
 - [x] Обучить пятый и шестой chunks через resume и зафиксировать метрики.
 - [x] После нескольких chunks оценить, нужны ли изменения в балансировке, AMP, batch size или архитектуре.
-- [ ] Диагностировать просадку `electric_clean` и принять решение по tab head/loss/label representation или post-processing.
+- [x] Диагностировать просадку `electric_clean` и принять решение по tab head/loss/label representation или post-processing.
+- [ ] Спланировать и проверить маленький string/fret-focused эксперимент: post-processing diagnostic или изменение tab head/loss/label representation.
 - [ ] Подготовить сравнение с внешними сервисами/подходами.
 - [ ] Позже перейти к дообучению на собственных данных.
 

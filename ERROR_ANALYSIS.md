@@ -110,6 +110,20 @@ Best tracks prove the model can solve some cases:
 - Do not enable `balance_by_silence=true`: pred silence is not close to `1.0`, and collapse-to-silence is false.
 - If another data run is needed later, prefer a clearly contrastive chunk rather than another similar clean group.
 
+## Tab Head Diagnostic
+
+Добавлен отдельный CPU-only отчет `TAB_HEAD_DIAGNOSTIC.md`.
+
+Ключевой вывод отчета: на clean chunks примерно треть validation треков имеет высокий `multi_pitch F1` при слабом `tablature F1`, а значит узкое место сейчас ближе к string/fret assignment, чем к базовому pitch detection или silence-collapse.
+
+Практическое решение не изменилось:
+
+- не запускать следующий похожий `electric_clean` long-run вслепую;
+- не включать `balance_by_silence=true`;
+- использовать `training-state-58184.pt` как best-by-metrics baseline;
+- использовать `training-state-83608.pt` только если нужно продолжать хронологическую training chain;
+- следующим шагом планировать маленький string/fret-focused эксперимент или post-processing diagnostic.
+
 ## Repro
 
 Analyzer:
