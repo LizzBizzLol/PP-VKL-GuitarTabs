@@ -40,7 +40,8 @@ Raw counts for `training-state-83608.pt`:
 
 - Do not roll back to `training-state-58184.pt` for the active clean-domain subset; `training-state-83608.pt` is better here.
 - Do not implement hard canonical post-processing.
-- Next useful engineering step is logits-aware or model-aware string/fret work: inspect `SoftmaxGroups` probabilities, add top-k position diagnostics, then decide between smarter decoding and loss/head changes.
+- Logits-aware top-k diagnostics are now recorded in `LOGITS_TOPK_EXPERIMENT.md`.
+- Correct string/fret is usually available in top-k, so the next useful engineering step is top-k constrained decoding before loss/head changes.
 - Blindly adding another similar `electric_clean` chunk is still not justified.
 
 ## Repro

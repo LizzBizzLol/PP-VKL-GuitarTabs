@@ -132,6 +132,14 @@ Best tracks prove the model can solve some cases:
 
 Canonical hard post-processing не подходит: он хуже exact output (`58.71%` против `65.43%`). Следующий шаг должен быть logits-aware/top-k diagnostic или изменение tab head/loss/label representation.
 
+## Logits Top-K Experiment
+
+Logits-aware диагностика зафиксирована в `LOGITS_TOPK_EXPERIMENT.md`.
+
+Новый вывод: correct string/fret доступен в top-5 для `98.40%` reference notes и для `99.78%` pitch-correct/tab-wrong notes. Это означает, что модель часто “видит” правильную позицию, но top-1 decoding выбирает другую.
+
+Следующий шаг: не новый chunk и не canonical hard rule, а top-k constrained decoding. Если constrained decoding не даст прироста, тогда переходить к tab head/loss/label representation.
+
 ## Repro
 
 Analyzer:

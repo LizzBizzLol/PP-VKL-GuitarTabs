@@ -29,7 +29,7 @@
 - [x] Провести inspect, smoke и resume на первом full chunk.
 - [x] Провести хотя бы один meaningful run на части full SynthTab.
 - [x] После каждого значимого запуска сохранять метрики, параметры, chunk, checkpoint, дату, длительность и выводы.
-- [ ] Подготовить объяснимую историю для преподавателей: какие данные использовались, почему не весь full SynthTab сразу, какие метрики выросли, какие ограничения остались.
+- [x] Подготовить объяснимую историю для преподавателей: неактуально, предмет завершен, отчет для преподавателей больше не нужен.
 - [ ] После обучения на большем объеме данных сравнить результат с другими сервисами/подходами на одинаковых аудиофрагментах.
 - [ ] Подготовить базу для будущего дообучения на собственных данных: ручные табы плюс аудио гитариста; возможно через LoRA или другой легкий fine-tuning.
 
@@ -61,6 +61,7 @@
 - Выполнена оценка после нескольких chunks: похожие `electric_clean` chunks не улучшили качество относительно acoustic peak.
 - Диагностика `electric_clean` просадки зафиксирована в `TAB_HEAD_DIAGNOSTIC.md`: основной bottleneck сейчас string/fret assignment, а не silence-collapse.
 - Маленький string/fret-focused eval experiment зафиксирован в `STRING_FRET_EXPERIMENT.md`: `training-state-83608.pt` лучше `58184` на lespaul subset, но string/fret oracle gap остается около `13.8 pp`.
+- Logits-aware top-k диагностика зафиксирована в `LOGITS_TOPK_EXPERIMENT.md`: correct string/fret есть в top-5 для `98.40%` reference notes и `99.78%` pitch-correct/tab-wrong notes.
 
 Осталось:
 
@@ -76,7 +77,8 @@
 - [x] После нескольких chunks оценить, нужны ли изменения в балансировке, AMP, batch size или архитектуре.
 - [x] Диагностировать просадку `electric_clean` и принять решение по tab head/loss/label representation или post-processing.
 - [x] Спланировать и проверить маленький string/fret-focused эксперимент: post-processing diagnostic или изменение tab head/loss/label representation.
-- [ ] Спланировать logits-aware/top-k string-fret диагностику или изменение tab head/loss/label representation.
+- [x] Спланировать logits-aware/top-k string-fret диагностику или изменение tab head/loss/label representation.
+- [ ] Спланировать top-k constrained decoding experiment перед изменением tab head/loss.
 - [ ] Подготовить сравнение с внешними сервисами/подходами.
 - [ ] Позже перейти к дообучению на собственных данных.
 

@@ -89,6 +89,46 @@ class Counts:
 
 
 @dataclass
+class TopKCounts:
+    ref_notes: int = 0
+    pitch_correct_wrong_notes: int = 0
+    exact_matched_notes: int = 0
+    extra_notes: int = 0
+    correct_top1: int = 0
+    correct_top2: int = 0
+    correct_top3: int = 0
+    correct_top5: int = 0
+    pitch_compatible_top1: int = 0
+    pitch_compatible_top2: int = 0
+    pitch_compatible_top3: int = 0
+    pitch_compatible_top5: int = 0
+    pcw_correct_top1: int = 0
+    pcw_correct_top2: int = 0
+    pcw_correct_top3: int = 0
+    pcw_correct_top5: int = 0
+    pcw_pitch_compatible_top1: int = 0
+    pcw_pitch_compatible_top2: int = 0
+    pcw_pitch_compatible_top3: int = 0
+    pcw_pitch_compatible_top5: int = 0
+    correct_rank_sum: float = 0.0
+    pitch_compatible_rank_sum: float = 0.0
+    pcw_correct_rank_sum: float = 0.0
+    pcw_pitch_compatible_rank_sum: float = 0.0
+    correct_prob_sum: float = 0.0
+    string_top1_prob_sum: float = 0.0
+    pcw_margin_top1_minus_correct_sum: float = 0.0
+    extra_note_margin_sum: float = 0.0
+    extra_note_prob_sum: float = 0.0
+    extra_silence_prob_sum: float = 0.0
+    weak_extra_margin_005: int = 0
+    weak_extra_margin_010: int = 0
+
+    def add(self, other: "TopKCounts") -> None:
+        for field_name in self.__dataclass_fields__:
+            setattr(self, field_name, getattr(self, field_name) + getattr(other, field_name))
+
+
+@dataclass
 class TrackReport:
     track_id: str
     bucket: str
@@ -97,6 +137,18 @@ class TrackReport:
     source_gap: float | None
     source_ref_silence_ratio: float | None
     counts: Counts
+    metrics: dict[str, float | int | str | None] = field(default_factory=dict)
+
+
+@dataclass
+class TopKTrackReport:
+    track_id: str
+    bucket: str
+    source_multi_pitch_f1: float | None
+    source_tablature_f1: float | None
+    source_gap: float | None
+    source_ref_silence_ratio: float | None
+    counts: TopKCounts
     metrics: dict[str, float | int | str | None] = field(default_factory=dict)
 
 
@@ -171,6 +223,46 @@ def summarize_counts(counts: Counts) -> dict[str, float | int]:
         "extra_share_of_pred": rate(counts.extra_notes, counts.pred_notes),
         "ref_active_frame_ratio": rate(counts.active_frames_ref, counts.frames),
         "pred_active_frame_ratio": rate(counts.active_frames_pred, counts.frames),
+    }
+
+
+def summarize_topk_counts(counts: TopKCounts) -> dict[str, float | int]:
+    return {
+        "ref_notes": counts.ref_notes,
+        "pitch_correct_wrong_notes": counts.pitch_correct_wrong_notes,
+        "exact_matched_notes": counts.exact_matched_notes,
+        "extra_notes": counts.extra_notes,
+        "correct_top1_rate": rate(counts.correct_top1, counts.ref_notes),
+        "correct_top2_rate": rate(counts.correct_top2, counts.ref_notes),
+        "correct_top3_rate": rate(counts.correct_top3, counts.ref_notes),
+        "correct_top5_rate": rate(counts.correct_top5, counts.ref_notes),
+        "pitch_compatible_top1_rate": rate(counts.pitch_compatible_top1, counts.ref_notes),
+        "pitch_compatible_top2_rate": rate(counts.pitch_compatible_top2, counts.ref_notes),
+        "pitch_compatible_top3_rate": rate(counts.pitch_compatible_top3, counts.ref_notes),
+        "pitch_compatible_top5_rate": rate(counts.pitch_compatible_top5, counts.ref_notes),
+        "pcw_correct_top1_rate": rate(counts.pcw_correct_top1, counts.pitch_correct_wrong_notes),
+        "pcw_correct_top2_rate": rate(counts.pcw_correct_top2, counts.pitch_correct_wrong_notes),
+        "pcw_correct_top3_rate": rate(counts.pcw_correct_top3, counts.pitch_correct_wrong_notes),
+        "pcw_correct_top5_rate": rate(counts.pcw_correct_top5, counts.pitch_correct_wrong_notes),
+        "pcw_pitch_compatible_top1_rate": rate(counts.pcw_pitch_compatible_top1, counts.pitch_correct_wrong_notes),
+        "pcw_pitch_compatible_top2_rate": rate(counts.pcw_pitch_compatible_top2, counts.pitch_correct_wrong_notes),
+        "pcw_pitch_compatible_top3_rate": rate(counts.pcw_pitch_compatible_top3, counts.pitch_correct_wrong_notes),
+        "pcw_pitch_compatible_top5_rate": rate(counts.pcw_pitch_compatible_top5, counts.pitch_correct_wrong_notes),
+        "avg_correct_rank": rate(counts.correct_rank_sum, counts.ref_notes),
+        "avg_pitch_compatible_rank": rate(counts.pitch_compatible_rank_sum, counts.ref_notes),
+        "avg_pcw_correct_rank": rate(counts.pcw_correct_rank_sum, counts.pitch_correct_wrong_notes),
+        "avg_pcw_pitch_compatible_rank": rate(counts.pcw_pitch_compatible_rank_sum, counts.pitch_correct_wrong_notes),
+        "avg_correct_prob": rate(counts.correct_prob_sum, counts.ref_notes),
+        "avg_string_top1_prob": rate(counts.string_top1_prob_sum, counts.ref_notes),
+        "avg_pcw_top1_minus_correct_prob": rate(
+            counts.pcw_margin_top1_minus_correct_sum,
+            counts.pitch_correct_wrong_notes,
+        ),
+        "avg_extra_note_margin": rate(counts.extra_note_margin_sum, counts.extra_notes),
+        "avg_extra_note_prob": rate(counts.extra_note_prob_sum, counts.extra_notes),
+        "avg_extra_silence_prob": rate(counts.extra_silence_prob_sum, counts.extra_notes),
+        "weak_extra_margin_005_rate": rate(counts.weak_extra_margin_005, counts.extra_notes),
+        "weak_extra_margin_010_rate": rate(counts.weak_extra_margin_010, counts.extra_notes),
     }
 
 
@@ -312,6 +404,142 @@ def compare_tablature(reference: np.ndarray, estimated: np.ndarray, profile: too
     return counts
 
 
+def rank_descending(scores: np.ndarray, target_index: int) -> int:
+    target_score = float(scores[target_index])
+    return int(np.sum(scores > target_score) + 1)
+
+
+def increment_topk(counts: TopKCounts, prefix: str, rank: int) -> None:
+    for k in [1, 2, 3, 5]:
+        if rank <= k:
+            field_name = f"{prefix}_top{k}"
+            setattr(counts, field_name, getattr(counts, field_name) + 1)
+
+
+def best_pitch_compatible_rank(
+    frame_probs: np.ndarray,
+    profile: tools.GuitarProfile,
+    pitch: int,
+    silence_class: int,
+) -> int | None:
+    valid_positions = [
+        (string_idx, fret)
+        for string_idx, fret in profile.get_valid_positions(pitch)
+        if 0 <= fret < silence_class
+    ]
+    if not valid_positions:
+        return None
+
+    note_scores = frame_probs[:, :silence_class].reshape(-1)
+    best_rank = None
+    for string_idx, fret in valid_positions:
+        flat_index = string_idx * silence_class + fret
+        rank = rank_descending(note_scores, flat_index)
+        if best_rank is None or rank < best_rank:
+            best_rank = rank
+    return best_rank
+
+
+def run_raw_tablature(track_data: dict[str, Any], model: Any) -> tuple[np.ndarray, np.ndarray]:
+    track_data = tools.dict_to_dtype(track_data, dtype=tools.FLOAT32)
+    batch = tools.dict_unsqueeze(tools.dict_to_tensor(track_data))
+
+    with torch.no_grad():
+        batch = model.pre_proc(batch)
+        raw_logits = model(batch[tools.KEY_FEATS])[tools.KEY_TABLATURE]
+        output_layer = model.dense[-1]
+        predicted = output_layer.finalize_output(raw_logits)
+        logits_grouped = raw_logits.view(
+            raw_logits.size(0),
+            raw_logits.size(1),
+            output_layer.num_groups,
+            output_layer.num_classes,
+        )
+        probabilities = torch.softmax(logits_grouped, dim=-1)
+
+    return (
+        predicted.detach().cpu().numpy()[0],
+        probabilities.detach().cpu().numpy()[0],
+    )
+
+
+def analyze_topk(
+    reference: np.ndarray,
+    predicted: np.ndarray,
+    probabilities: np.ndarray,
+    profile: tools.GuitarProfile,
+) -> TopKCounts:
+    ref = normalize_tab(reference)
+    pred = normalize_tab(predicted)
+    probs = np.asarray(probabilities)
+    if probs.ndim != 3:
+        raise ValueError(f"Expected probabilities with shape (T, S, C), got {probs.shape}")
+
+    frames = min(ref.shape[-1], pred.shape[-1], probs.shape[0])
+    silence_class = probs.shape[-1] - 1
+    counts = TopKCounts()
+
+    for frame_idx in range(frames):
+        ref_positions = frame_positions(ref, frame_idx)
+        pred_positions = frame_positions(pred, frame_idx)
+        pred_pitch_matches = pitch_counts(profile, pred_positions)
+
+        for (string_idx, fret), ref_count in ref_positions.items():
+            pitch = int(profile.get_pitch(string_idx, fret))
+            string_scores = probs[frame_idx, string_idx]
+            correct_rank = rank_descending(string_scores, fret)
+            pitch_rank = best_pitch_compatible_rank(probs[frame_idx], profile, pitch, silence_class)
+            top1_prob = float(np.max(string_scores))
+            correct_prob = float(string_scores[fret])
+
+            for _ in range(ref_count):
+                counts.ref_notes += 1
+                counts.correct_rank_sum += correct_rank
+                counts.correct_prob_sum += correct_prob
+                counts.string_top1_prob_sum += top1_prob
+                increment_topk(counts, "correct", correct_rank)
+                if pitch_rank is not None:
+                    counts.pitch_compatible_rank_sum += pitch_rank
+                    increment_topk(counts, "pitch_compatible", pitch_rank)
+
+                exact_available = pred_positions.get((string_idx, fret), 0) > 0
+                pitch_available = pred_pitch_matches.get(pitch, 0) > 0
+                if exact_available:
+                    counts.exact_matched_notes += 1
+                    pred_positions[(string_idx, fret)] -= 1
+                    pred_pitch_matches[pitch] -= 1
+                elif pitch_available:
+                    counts.pitch_correct_wrong_notes += 1
+                    pred_pitch_matches[pitch] -= 1
+                    counts.pcw_correct_rank_sum += correct_rank
+                    counts.pcw_margin_top1_minus_correct_sum += top1_prob - correct_prob
+                    increment_topk(counts, "pcw_correct", correct_rank)
+                    if pitch_rank is not None:
+                        counts.pcw_pitch_compatible_rank_sum += pitch_rank
+                        increment_topk(counts, "pcw_pitch_compatible", pitch_rank)
+
+        ref_pitch_matches = pitch_counts(profile, ref_positions)
+        for (string_idx, fret), pred_count in pred_positions.items():
+            if pred_count <= 0:
+                continue
+            pitch = int(profile.get_pitch(string_idx, fret))
+            for _ in range(pred_count):
+                if ref_pitch_matches.get(pitch, 0) > 0:
+                    ref_pitch_matches[pitch] -= 1
+                    continue
+                note_prob = float(probs[frame_idx, string_idx, fret])
+                silence_prob = float(probs[frame_idx, string_idx, silence_class])
+                margin = note_prob - silence_prob
+                counts.extra_notes += 1
+                counts.extra_note_prob_sum += note_prob
+                counts.extra_silence_prob_sum += silence_prob
+                counts.extra_note_margin_sum += margin
+                counts.weak_extra_margin_005 += int(margin <= 0.05)
+                counts.weak_extra_margin_010 += int(margin <= 0.10)
+
+    return counts
+
+
 def resolve_path(path: Path, root: Path) -> Path:
     return path if path.is_absolute() else root / path
 
@@ -386,7 +614,69 @@ def evaluate_checkpoint(
     }
 
 
+def evaluate_topk_checkpoint(
+    config_path: Path,
+    checkpoint_path: Path,
+    selected_tracks: list[TrackCandidate],
+    device_override: str,
+) -> dict[str, Any]:
+    cfg, data_proc, profile, _estimator, model = load_model_for_checkpoint(config_path, checkpoint_path, device_override)
+    dataset = create_synthtab_dataset(cfg, "val", data_proc, profile)
+    dataset.seq_length = None
+    dataset.num_frames = None
+    available = set(dataset.tracks)
+    missing = [track.track_id for track in selected_tracks if track.track_id not in available]
+    if missing:
+        raise ValueError(f"{len(missing)} selected tracks are not present in the active validation set. First missing: {missing[0]}")
+
+    aggregate_counts = TopKCounts()
+    track_reports: list[TopKTrackReport] = []
+    with torch.no_grad():
+        for index, candidate in enumerate(selected_tracks, start=1):
+            print(f"[topk:{checkpoint_path.name}] {index}/{len(selected_tracks)} {candidate.bucket}: {candidate.track_id}", flush=True)
+            track_data = dataset.get_track_data(candidate.track_id)
+            predicted, probabilities = run_raw_tablature(track_data, model)
+            counts = analyze_topk(track_data[tools.KEY_TABLATURE], predicted, probabilities, profile)
+            aggregate_counts.add(counts)
+            metrics = summarize_topk_counts(counts)
+            track_reports.append(
+                TopKTrackReport(
+                    track_id=candidate.track_id,
+                    bucket=candidate.bucket,
+                    source_multi_pitch_f1=candidate.multi_pitch_f1,
+                    source_tablature_f1=candidate.tablature_f1,
+                    source_gap=candidate.gap,
+                    source_ref_silence_ratio=candidate.ref_silence_ratio,
+                    counts=counts,
+                    metrics=metrics,
+                )
+            )
+
+    return {
+        "checkpoint": str(checkpoint_path),
+        "checkpoint_name": checkpoint_path.name,
+        "model_iter": int(getattr(model, "iter", -1)),
+        "num_groups": int(model.dense[-1].num_groups),
+        "num_classes": int(model.dense[-1].num_classes),
+        "silence_class": int(model.dense[-1].num_classes - 1),
+        "tracks": [topk_track_report_to_dict(report) for report in track_reports],
+        "aggregate": summarize_topk_counts(aggregate_counts),
+    }
+
+
 def track_report_to_dict(report: TrackReport) -> dict[str, Any]:
+    return {
+        "track_id": report.track_id,
+        "bucket": report.bucket,
+        "source_multi_pitch_f1": report.source_multi_pitch_f1,
+        "source_tablature_f1": report.source_tablature_f1,
+        "source_gap": report.source_gap,
+        "source_ref_silence_ratio": report.source_ref_silence_ratio,
+        **report.metrics,
+    }
+
+
+def topk_track_report_to_dict(report: TopKTrackReport) -> dict[str, Any]:
     return {
         "track_id": report.track_id,
         "bucket": report.bucket,
@@ -420,6 +710,14 @@ def write_outputs(output_dir: Path, report: dict[str, Any], suffix: str = "") ->
     write_csv(output_dir / f"per_track{suffix_part}.csv", report["checkpoints"])
     write_json(output_dir / f"per_track{suffix_part}.json", report["checkpoints"])
     (output_dir / f"summary{suffix_part}.md").write_text(render_summary(report), encoding="utf-8")
+
+
+def write_topk_outputs(output_dir: Path, report: dict[str, Any], suffix: str = "") -> None:
+    suffix_part = f".{suffix}" if suffix else ""
+    write_json(output_dir / f"aggregate{suffix_part}.json", report)
+    write_csv(output_dir / f"per_track{suffix_part}.csv", report["checkpoints"])
+    write_json(output_dir / f"per_track{suffix_part}.json", report["checkpoints"])
+    (output_dir / f"summary{suffix_part}.md").write_text(render_topk_summary(report), encoding="utf-8")
 
 
 def render_summary(report: dict[str, Any]) -> str:
@@ -466,6 +764,65 @@ def render_summary(report: dict[str, Any]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def render_topk_summary(report: dict[str, Any]) -> str:
+    class_note = "unknown"
+    if report["checkpoints"]:
+        first_checkpoint = report["checkpoints"][0]
+        class_note = (
+            f"{first_checkpoint.get('num_groups')} string groups x "
+            f"{first_checkpoint.get('num_classes')} classes "
+            f"({first_checkpoint.get('silence_class')} is silence)"
+        )
+
+    lines = [
+        "# Logits-Aware Top-K String/Fret Diagnostic",
+        "",
+        f"- Config: `{report['config']}`",
+        f"- Track source experiment: `{report['track_source_experiment']}`",
+        f"- Selected tracks: `{len(report['selected_tracks'])}`",
+        f"- Output layout: `{class_note}`",
+        "",
+        "| Checkpoint | Correct top-1 | Correct top-3 | Correct top-5 | Pitch-compatible top-1 | Pitch-compatible top-3 | Pitch-compatible top-5 | PCW correct top-5 | PCW pitch-compatible top-5 | Avg PCW top1-correct prob | Extra weak <=10% | Avg extra margin |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for checkpoint_report in report["checkpoints"]:
+        agg = checkpoint_report["aggregate"]
+        lines.append(
+            "| "
+            + " | ".join(
+                [
+                    f"`{checkpoint_report['checkpoint_name']}`",
+                    pct(agg["correct_top1_rate"]),
+                    pct(agg["correct_top3_rate"]),
+                    pct(agg["correct_top5_rate"]),
+                    pct(agg["pitch_compatible_top1_rate"]),
+                    pct(agg["pitch_compatible_top3_rate"]),
+                    pct(agg["pitch_compatible_top5_rate"]),
+                    pct(agg["pcw_correct_top5_rate"]),
+                    pct(agg["pcw_pitch_compatible_top5_rate"]),
+                    pct(agg["avg_pcw_top1_minus_correct_prob"]),
+                    pct(agg["weak_extra_margin_010_rate"]),
+                    pct(agg["avg_extra_note_margin"]),
+                ]
+            )
+            + " |"
+        )
+
+    lines.extend(
+        [
+            "",
+            "## Interpretation",
+            "",
+            "- `Correct top-k` ranks the exact reference string/fret inside that string's softmax classes.",
+            "- `Pitch-compatible top-k` ranks the best valid fretboard position for the same MIDI pitch among all non-silence string/fret classes.",
+            "- `PCW` means pitch-correct but string/fret-wrong notes from top-1 predictions.",
+            "- `Avg PCW top1-correct prob` is the probability gap between the chosen top-1 class and the reference string/fret class.",
+            "- `Extra weak <=10%` estimates how often extra notes have weak note-vs-silence confidence.",
+        ]
+    )
+    return "\n".join(lines) + "\n"
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, required=True)
@@ -473,15 +830,21 @@ def main() -> None:
     parser.add_argument("--track-source-experiment", type=Path, required=True)
     parser.add_argument("--max-tracks", type=int, default=20)
     parser.add_argument("--max-ref-silence", type=float, default=0.95)
-    parser.add_argument("--output-dir", type=Path, default=Path("generated/diagnostics/string_fret_lespaul_20tracks"))
+    parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
     parser.add_argument("--dry-run", action="store_true", help="List selected tracks without loading model/checkpoints.")
+    parser.add_argument("--topk", action="store_true", help="Run logits-aware top-k string/fret diagnostics.")
     args = parser.parse_args()
 
     root = Path.cwd()
     config_path = resolve_path(args.config, root)
     source_experiment = resolve_path(args.track_source_experiment, root)
-    output_dir = resolve_path(args.output_dir, root)
+    default_output_dir = (
+        Path("generated/diagnostics/string_fret_topk_lespaul_20tracks")
+        if args.topk
+        else Path("generated/diagnostics/string_fret_lespaul_20tracks")
+    )
+    output_dir = resolve_path(args.output_dir or default_output_dir, root)
     selected_tracks = load_track_candidates(source_experiment, args.max_tracks, args.max_ref_silence)
 
     if args.dry_run:
@@ -500,8 +863,27 @@ def main() -> None:
         if not checkpoint.exists():
             raise FileNotFoundError(f"Missing checkpoint: {checkpoint}")
 
+    if args.topk:
+        checkpoint_reports = []
+        report = {
+            "mode": "topk",
+            "config": str(config_path),
+            "track_source_experiment": str(source_experiment),
+            "selected_tracks": [track.__dict__ for track in selected_tracks],
+            "checkpoints": checkpoint_reports,
+        }
+
+        for checkpoint in checkpoints:
+            checkpoint_reports.append(evaluate_topk_checkpoint(config_path, checkpoint, selected_tracks, args.device))
+            write_topk_outputs(output_dir, report, suffix="partial")
+
+        write_topk_outputs(output_dir, report)
+        print(f"Wrote diagnostics to {output_dir}")
+        return
+
     checkpoint_reports = []
     report = {
+        "mode": "frame",
         "config": str(config_path),
         "track_source_experiment": str(source_experiment),
         "selected_tracks": [track.__dict__ for track in selected_tracks],

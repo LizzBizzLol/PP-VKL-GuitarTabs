@@ -924,3 +924,32 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - string/fret assignment остается реальным bottleneck, но missed/extra notes тоже значимы
   - простой deterministic pitch-to-position post-processing не использовать
   - следующий шаг: logits-aware/top-k string/fret diagnostics или изменение tab head/loss/label representation
+
+## 2026-06-08 22:11 +05:00 — Logits-aware top-k diagnostic completed
+
+- Расширен eval-only скрипт:
+  - `demo_embedding\diagnose_string_fret_frames.py --topk`
+  - снимает raw `SoftmaxGroups` logits/probabilities до `finalize_output`
+  - не меняет `amt_tools`
+  - не запускает training
+- Эксперимент:
+  - active chunk: `electric_clean\lespaul_clean_both`
+  - checkpoint: `training-state-83608.pt`
+  - tracks: same `20` full validation tracks from `STRING_FRET_EXPERIMENT.md`
+  - output layout: `6` string groups x `21` classes, class `20` is silence
+  - generated outputs: `generated\diagnostics\string_fret_topk_lespaul_20tracks`
+- Итоговые top-k метрики:
+  - correct string/fret top-1: `73.64%`
+  - correct string/fret top-3: `95.41%`
+  - correct string/fret top-5: `98.40%`
+  - pitch-compatible top-5: `87.48%`
+  - pitch-correct/tab-wrong correct-position top-5: `99.78%`
+  - pitch-correct/tab-wrong pitch-compatible top-5: `99.19%`
+  - average PCW top1-minus-correct probability gap: `49.12%`
+  - average extra-note margin over silence: `54.74%`
+  - extra notes with margin `<= 10%`: `6.50%`
+- Практический вывод:
+  - модель часто содержит правильную string/fret позицию в top-k, но top-1 decoding выбирает другую
+  - простой threshold/silence calibration не выглядит главным решением: extra notes обычно уверенные
+  - следующий шаг: top-k constrained decoding experiment
+  - если constrained decoding не даст прироста, переходить к tab head/loss/label representation
