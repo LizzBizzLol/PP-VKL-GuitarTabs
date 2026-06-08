@@ -140,6 +140,21 @@ Logits-aware диагностика зафиксирована в `LOGITS_TOPK_E
 
 Следующий шаг: не новый chunk и не canonical hard rule, а top-k constrained decoding. Если constrained decoding не даст прироста, тогда переходить к tab head/loss/label representation.
 
+## Constrained Decoding Experiment
+
+Top-k constrained decoding зафиксирован в `CONSTRAINED_DECODING_EXPERIMENT.md`.
+
+Новый вывод: simple constrained decoder не решает string/fret bottleneck. Лучший вариант `topk5_smooth_medium_dup` поднял exact string/fret F1 только с `65.43%` до `65.78%`, то есть на `+0.35 pp`, хотя pitch F1 вырос до `80.93%`, а `extra/pred` снизился до `25.95%`.
+
+Это значит, что проблема не сводится к простой temporal smoothing или duplicate-pitch suppression. Модель часто держит правильную позицию в top-k, но простой decoder не умеет надежно выбрать ее вместо top-1. Следующий этап должен менять training signal или representation:
+
+- tab head;
+- loss;
+- label representation;
+- возможно, auxiliary pitch/string/fret supervision.
+
+До этого не запускать еще один похожий `electric_clean` long-run вслепую.
+
 ## Repro
 
 Analyzer:

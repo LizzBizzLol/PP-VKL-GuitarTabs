@@ -48,8 +48,9 @@ Eval-only диагностика raw `SoftmaxGroups` logits/probabilities. Це�
 
 - Do not start another SynthTab chunk right now.
 - Do not implement canonical hard post-processing.
-- Next step: top-k constrained decoding experiment using the existing logits.
-- If constrained decoding cannot recover measurable F1, then plan tab head/loss/label representation changes.
+- Top-k constrained decoding is now recorded in `CONSTRAINED_DECODING_EXPERIMENT.md`.
+- It did not recover enough exact string/fret F1: best variant improved exact F1 by only `+0.35 pp`.
+- Next step: plan tab head/loss/label representation changes.
 
 ## Repro
 

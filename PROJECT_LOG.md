@@ -953,3 +953,40 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - простой threshold/silence calibration не выглядит главным решением: extra notes обычно уверенные
   - следующий шаг: top-k constrained decoding experiment
   - если constrained decoding не даст прироста, переходить к tab head/loss/label representation
+
+## 2026-06-08 22:41 +05:00 — Top-k constrained decoding experiment completed
+
+- Расширен eval-only скрипт:
+  - `demo_embedding\diagnose_string_fret_frames.py --decode-experiment`
+  - использует raw `SoftmaxGroups` probabilities до `finalize_output`
+  - проверяет top-k constrained decoding variants без обучения
+  - пишет outputs в ignored `generated\diagnostics`
+- Эксперимент:
+  - active chunk: `electric_clean\lespaul_clean_both`
+  - checkpoint: `training-state-83608.pt`
+  - tracks: same `20` full validation tracks from `STRING_FRET_EXPERIMENT.md`
+  - generated outputs: `generated\diagnostics\string_fret_constrained_lespaul_20tracks`
+  - tracked report: `CONSTRAINED_DECODING_EXPERIMENT.md`
+- Варианты:
+  - `baseline_top1`
+  - `topk3_smooth_light`
+  - `topk5_smooth_light`
+  - `topk5_smooth_medium`
+  - `topk5_smooth_strong`
+  - `topk5_smooth_medium_dup`
+- Итоговые метрики:
+  - baseline exact string/fret F1: `65.43%`
+  - baseline pitch F1: `79.23%`
+  - best exact variant: `topk5_smooth_medium_dup`
+  - best exact F1: `65.78%`
+  - best exact delta: `+0.35 pp`
+  - best pitch F1: `80.93%`
+  - best pitch delta: `+1.70 pp`
+  - best extra/pred: `25.95%`
+  - best extra relative delta: `-9.65%`
+  - accepted variants: none
+- Практический вывод:
+  - constrained decoding немного улучшает pitch F1 и снижает extra notes
+  - exact string/fret F1 почти не растет и не проходит заранее заданный порог `+1 pp`
+  - простой decoder не решает bottleneck
+  - следующий шаг: не новый похожий clean chunk, а маленький эксперимент с tab head/loss/label representation

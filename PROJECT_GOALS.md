@@ -62,6 +62,7 @@
 - Диагностика `electric_clean` просадки зафиксирована в `TAB_HEAD_DIAGNOSTIC.md`: основной bottleneck сейчас string/fret assignment, а не silence-collapse.
 - Маленький string/fret-focused eval experiment зафиксирован в `STRING_FRET_EXPERIMENT.md`: `training-state-83608.pt` лучше `58184` на lespaul subset, но string/fret oracle gap остается около `13.8 pp`.
 - Logits-aware top-k диагностика зафиксирована в `LOGITS_TOPK_EXPERIMENT.md`: correct string/fret есть в top-5 для `98.40%` reference notes и `99.78%` pitch-correct/tab-wrong notes.
+- Top-k constrained decoding experiment зафиксирован в `CONSTRAINED_DECODING_EXPERIMENT.md`: лучший decoder дал только `+0.35 pp` exact string/fret F1 и не прошел acceptance criteria.
 
 Осталось:
 
@@ -78,7 +79,8 @@
 - [x] Диагностировать просадку `electric_clean` и принять решение по tab head/loss/label representation или post-processing.
 - [x] Спланировать и проверить маленький string/fret-focused эксперимент: post-processing diagnostic или изменение tab head/loss/label representation.
 - [x] Спланировать logits-aware/top-k string-fret диагностику или изменение tab head/loss/label representation.
-- [ ] Спланировать top-k constrained decoding experiment перед изменением tab head/loss.
+- [x] Спланировать и проверить top-k constrained decoding experiment перед изменением tab head/loss.
+- [ ] Спланировать маленький tab head/loss/label-representation experiment, потому что constrained decoding не решил string/fret bottleneck.
 - [ ] Подготовить сравнение с внешними сервисами/подходами.
 - [ ] Позже перейти к дообучению на собственных данных.
 

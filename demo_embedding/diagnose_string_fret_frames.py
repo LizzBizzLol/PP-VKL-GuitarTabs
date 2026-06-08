@@ -152,6 +152,24 @@ class TopKTrackReport:
     metrics: dict[str, float | int | str | None] = field(default_factory=dict)
 
 
+@dataclass(frozen=True)
+class DecodeVariant:
+    name: str
+    top_k: int
+    transition_penalty: float
+    duplicate_pitch_penalty: float = 0.0
+
+
+DECODE_VARIANTS = [
+    DecodeVariant("baseline_top1", top_k=1, transition_penalty=0.0),
+    DecodeVariant("topk3_smooth_light", top_k=3, transition_penalty=0.05),
+    DecodeVariant("topk5_smooth_light", top_k=5, transition_penalty=0.05),
+    DecodeVariant("topk5_smooth_medium", top_k=5, transition_penalty=0.15),
+    DecodeVariant("topk5_smooth_strong", top_k=5, transition_penalty=0.35),
+    DecodeVariant("topk5_smooth_medium_dup", top_k=5, transition_penalty=0.15, duplicate_pitch_penalty=0.20),
+]
+
+
 def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8-sig"))
 
@@ -540,6 +558,137 @@ def analyze_topk(
     return counts
 
 
+def decode_baseline_top1(probabilities: np.ndarray) -> np.ndarray:
+    probs = np.asarray(probabilities)
+    if probs.ndim != 3:
+        raise ValueError(f"Expected probabilities with shape (T, S, C), got {probs.shape}")
+    silence_class = probs.shape[-1] - 1
+    decoded = np.argmax(probs, axis=-1).T.astype(np.int64)
+    decoded[decoded == silence_class] = -1
+    return decoded
+
+
+def topk_candidates_for_string(
+    probs: np.ndarray,
+    top_k: int,
+    silence_class: int,
+) -> list[np.ndarray]:
+    candidates: list[np.ndarray] = []
+    for frame_idx in range(probs.shape[0]):
+        frame_probs = probs[frame_idx]
+        top = np.argsort(frame_probs)[::-1][:top_k]
+        if silence_class not in top:
+            top = np.append(top, silence_class)
+        candidates.append(np.unique(top))
+    return candidates
+
+
+def transition_cost(prev_class: int, cur_class: int, silence_class: int, penalty: float) -> float:
+    if prev_class == cur_class or penalty <= 0:
+        return 0.0
+    if prev_class == silence_class or cur_class == silence_class:
+        return penalty
+    return penalty * min(4.0, abs(cur_class - prev_class))
+
+
+def viterbi_decode_string(probs: np.ndarray, top_k: int, transition_penalty: float, silence_class: int) -> np.ndarray:
+    eps = 1e-12
+    candidates = topk_candidates_for_string(probs, top_k=top_k, silence_class=silence_class)
+    scores: dict[int, float] = {int(cls): float(np.log(probs[0, cls] + eps)) for cls in candidates[0]}
+    backpointers: list[dict[int, int]] = []
+
+    for frame_idx in range(1, probs.shape[0]):
+        current_scores: dict[int, float] = {}
+        current_backpointers: dict[int, int] = {}
+        for cur in candidates[frame_idx]:
+            cur_int = int(cur)
+            emit = float(np.log(probs[frame_idx, cur_int] + eps))
+            best_prev = None
+            best_score = -float("inf")
+            for prev, prev_score in scores.items():
+                score = prev_score + emit - transition_cost(prev, cur_int, silence_class, transition_penalty)
+                if score > best_score:
+                    best_score = score
+                    best_prev = prev
+            current_scores[cur_int] = best_score
+            current_backpointers[cur_int] = int(best_prev if best_prev is not None else silence_class)
+        scores = current_scores
+        backpointers.append(current_backpointers)
+
+    last = max(scores, key=scores.get)
+    path = [last]
+    for frame_idx in range(len(backpointers) - 1, -1, -1):
+        last = backpointers[frame_idx][last]
+        path.append(last)
+    path.reverse()
+    return np.asarray(path, dtype=np.int64)
+
+
+def suppress_duplicate_pitches(
+    decoded_classes: np.ndarray,
+    probabilities: np.ndarray,
+    profile: tools.GuitarProfile,
+    penalty: float,
+) -> np.ndarray:
+    if penalty <= 0:
+        return decoded_classes
+    decoded = decoded_classes.copy()
+    silence_class = probabilities.shape[-1] - 1
+    frames, strings = decoded.shape
+
+    for frame_idx in range(frames):
+        by_pitch: dict[int, list[tuple[int, int, float]]] = {}
+        for string_idx in range(strings):
+            fret = int(decoded[frame_idx, string_idx])
+            if fret == silence_class:
+                continue
+            pitch = int(profile.get_pitch(string_idx, fret))
+            prob = float(probabilities[frame_idx, string_idx, fret])
+            by_pitch.setdefault(pitch, []).append((string_idx, fret, prob))
+
+        for duplicates in by_pitch.values():
+            if len(duplicates) <= 1:
+                continue
+            keep = max(duplicates, key=lambda item: item[2])
+            for string_idx, fret, prob in duplicates:
+                if (string_idx, fret, prob) == keep:
+                    continue
+                silence_prob = float(probabilities[frame_idx, string_idx, silence_class])
+                if prob - silence_prob <= penalty:
+                    decoded[frame_idx, string_idx] = silence_class
+
+    return decoded
+
+
+def decode_variant(
+    probabilities: np.ndarray,
+    profile: tools.GuitarProfile,
+    variant: DecodeVariant,
+) -> np.ndarray:
+    probs = np.asarray(probabilities)
+    silence_class = probs.shape[-1] - 1
+    if variant.name == "baseline_top1":
+        return decode_baseline_top1(probs)
+
+    decoded_by_frame = np.zeros((probs.shape[0], probs.shape[1]), dtype=np.int64)
+    for string_idx in range(probs.shape[1]):
+        decoded_by_frame[:, string_idx] = viterbi_decode_string(
+            probs[:, string_idx, :],
+            top_k=variant.top_k,
+            transition_penalty=variant.transition_penalty,
+            silence_class=silence_class,
+        )
+
+    decoded_by_frame = suppress_duplicate_pitches(
+        decoded_by_frame,
+        probs,
+        profile,
+        penalty=variant.duplicate_pitch_penalty,
+    )
+    decoded_by_frame[decoded_by_frame == silence_class] = -1
+    return decoded_by_frame.T
+
+
 def resolve_path(path: Path, root: Path) -> Path:
     return path if path.is_absolute() else root / path
 
@@ -664,6 +813,91 @@ def evaluate_topk_checkpoint(
     }
 
 
+def evaluate_decode_checkpoint(
+    config_path: Path,
+    checkpoint_path: Path,
+    selected_tracks: list[TrackCandidate],
+    device_override: str,
+) -> dict[str, Any]:
+    cfg, data_proc, profile, _estimator, model = load_model_for_checkpoint(config_path, checkpoint_path, device_override)
+    dataset = create_synthtab_dataset(cfg, "val", data_proc, profile)
+    dataset.seq_length = None
+    dataset.num_frames = None
+    available = set(dataset.tracks)
+    missing = [track.track_id for track in selected_tracks if track.track_id not in available]
+    if missing:
+        raise ValueError(f"{len(missing)} selected tracks are not present in the active validation set. First missing: {missing[0]}")
+
+    aggregate_counts = {variant.name: Counts() for variant in DECODE_VARIANTS}
+    per_track_rows: list[dict[str, Any]] = []
+
+    with torch.no_grad():
+        for index, candidate in enumerate(selected_tracks, start=1):
+            print(f"[decode:{checkpoint_path.name}] {index}/{len(selected_tracks)} {candidate.bucket}: {candidate.track_id}", flush=True)
+            track_data = dataset.get_track_data(candidate.track_id)
+            _predicted, probabilities = run_raw_tablature(track_data, model)
+            reference = track_data[tools.KEY_TABLATURE]
+
+            for variant in DECODE_VARIANTS:
+                decoded = decode_variant(probabilities, profile, variant)
+                counts = compare_tablature(reference, decoded, profile)
+                aggregate_counts[variant.name].add(counts)
+                per_track_rows.append(
+                    {
+                        "track_id": candidate.track_id,
+                        "bucket": candidate.bucket,
+                        "variant": variant.name,
+                        "source_multi_pitch_f1": candidate.multi_pitch_f1,
+                        "source_tablature_f1": candidate.tablature_f1,
+                        "source_gap": candidate.gap,
+                        "source_ref_silence_ratio": candidate.ref_silence_ratio,
+                        **summarize_counts(counts),
+                    }
+                )
+
+    variant_reports = []
+    baseline = summarize_counts(aggregate_counts["baseline_top1"])
+    baseline_extra = baseline["extra_share_of_pred"]
+    for variant in DECODE_VARIANTS:
+        metrics = summarize_counts(aggregate_counts[variant.name])
+        exact_delta = float(metrics["exact_f1"] - baseline["exact_f1"])
+        pitch_delta = float(metrics["pitch_f1"] - baseline["pitch_f1"])
+        extra_delta = float(metrics["extra_share_of_pred"] - baseline_extra)
+        extra_relative_delta = float(extra_delta / baseline_extra) if baseline_extra else 0.0
+        passes = (
+            variant.name != "baseline_top1"
+            and exact_delta >= 0.01
+            and pitch_delta >= -0.01
+            and extra_relative_delta <= 0.05
+        )
+        variant_reports.append(
+            {
+                "variant": variant.name,
+                "top_k": variant.top_k,
+                "transition_penalty": variant.transition_penalty,
+                "duplicate_pitch_penalty": variant.duplicate_pitch_penalty,
+                **metrics,
+                "exact_f1_delta": exact_delta,
+                "pitch_f1_delta": pitch_delta,
+                "extra_share_delta": extra_delta,
+                "extra_share_relative_delta": extra_relative_delta,
+                "passes_acceptance": passes,
+            }
+        )
+
+    candidates = [variant for variant in variant_reports if variant["passes_acceptance"]]
+    best = max(candidates, key=lambda item: item["exact_f1_delta"], default=None)
+    return {
+        "checkpoint": str(checkpoint_path),
+        "checkpoint_name": checkpoint_path.name,
+        "model_iter": int(getattr(model, "iter", -1)),
+        "variants": variant_reports,
+        "tracks": per_track_rows,
+        "best_variant": best["variant"] if best else None,
+        "accepted": best is not None,
+    }
+
+
 def track_report_to_dict(report: TrackReport) -> dict[str, Any]:
     return {
         "track_id": report.track_id,
@@ -720,6 +954,30 @@ def write_topk_outputs(output_dir: Path, report: dict[str, Any], suffix: str = "
     (output_dir / f"summary{suffix_part}.md").write_text(render_topk_summary(report), encoding="utf-8")
 
 
+def write_decode_outputs(output_dir: Path, report: dict[str, Any], suffix: str = "") -> None:
+    suffix_part = f".{suffix}" if suffix else ""
+    write_json(output_dir / f"aggregate{suffix_part}.json", report)
+    write_decode_csv(output_dir / f"per_track{suffix_part}.csv", report["checkpoints"])
+    write_json(output_dir / f"per_track{suffix_part}.json", report["checkpoints"])
+    (output_dir / f"summary{suffix_part}.md").write_text(render_decode_summary(report), encoding="utf-8")
+
+
+def write_decode_csv(path: Path, reports: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    rows = []
+    for checkpoint_report in reports:
+        checkpoint_name = checkpoint_report["checkpoint_name"]
+        model_iter = checkpoint_report["model_iter"]
+        for track in checkpoint_report["tracks"]:
+            rows.append({"checkpoint": checkpoint_name, "model_iter": model_iter, **track})
+    if not rows:
+        return
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0].keys()))
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def render_summary(report: dict[str, Any]) -> str:
     lines = [
         "# String/Fret Frame Diagnostic",
@@ -759,6 +1017,56 @@ def render_summary(report: dict[str, Any]) -> str:
             "- `Pitch F1` ignores string/fret placement and scores only the pitch multiset.",
             "- `Oracle Tab F1` is the upper bound if every pitch-correct but position-wrong note were moved to the reference position.",
             "- `Canonical F1` applies a deterministic pitch-to-position rule without logits; if it is worse than exact F1, hard post-processing is not useful.",
+        ]
+    )
+    return "\n".join(lines) + "\n"
+
+
+def render_decode_summary(report: dict[str, Any]) -> str:
+    lines = [
+        "# Top-K Constrained Decoding Experiment",
+        "",
+        f"- Config: `{report['config']}`",
+        f"- Track source experiment: `{report['track_source_experiment']}`",
+        f"- Selected tracks: `{len(report['selected_tracks'])}`",
+        "",
+        "| Variant | Exact F1 | Pitch F1 | Wrong-position/ref | Missed/ref | Extra/pred | Exact delta | Pitch delta | Extra rel delta | Passes |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---|",
+    ]
+    for checkpoint_report in report["checkpoints"]:
+        for variant in checkpoint_report["variants"]:
+            lines.append(
+                "| "
+                + " | ".join(
+                    [
+                        f"`{variant['variant']}`",
+                        pct(variant["exact_f1"]),
+                        pct(variant["pitch_f1"]),
+                        pct(variant["wrong_position_share_of_ref"]),
+                        pct(variant["missed_share_of_ref"]),
+                        pct(variant["extra_share_of_pred"]),
+                        pct(variant["exact_f1_delta"]),
+                        pct(variant["pitch_f1_delta"]),
+                        pct(variant["extra_share_relative_delta"]),
+                        str(variant["passes_acceptance"]).lower(),
+                    ]
+                )
+                + " |"
+            )
+        lines.append("")
+        if checkpoint_report["best_variant"]:
+            lines.append(f"Accepted best variant: `{checkpoint_report['best_variant']}`.")
+        else:
+            lines.append("No variant passed acceptance criteria.")
+
+    lines.extend(
+        [
+            "",
+            "## Acceptance Criteria",
+            "",
+            "- Exact string/fret F1 must improve by at least `+1 pp` over baseline.",
+            "- Pitch F1 must not drop by more than `1 pp`.",
+            "- Extra/pred must not increase by more than `5%` relative.",
         ]
     )
     return "\n".join(lines) + "\n"
@@ -834,16 +1142,20 @@ def main() -> None:
     parser.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
     parser.add_argument("--dry-run", action="store_true", help="List selected tracks without loading model/checkpoints.")
     parser.add_argument("--topk", action="store_true", help="Run logits-aware top-k string/fret diagnostics.")
+    parser.add_argument("--decode-experiment", action="store_true", help="Run top-k constrained decoding experiment.")
     args = parser.parse_args()
+    if args.topk and args.decode_experiment:
+        raise SystemExit("--topk and --decode-experiment are mutually exclusive.")
 
     root = Path.cwd()
     config_path = resolve_path(args.config, root)
     source_experiment = resolve_path(args.track_source_experiment, root)
-    default_output_dir = (
-        Path("generated/diagnostics/string_fret_topk_lespaul_20tracks")
-        if args.topk
-        else Path("generated/diagnostics/string_fret_lespaul_20tracks")
-    )
+    if args.decode_experiment:
+        default_output_dir = Path("generated/diagnostics/string_fret_constrained_lespaul_20tracks")
+    elif args.topk:
+        default_output_dir = Path("generated/diagnostics/string_fret_topk_lespaul_20tracks")
+    else:
+        default_output_dir = Path("generated/diagnostics/string_fret_lespaul_20tracks")
     output_dir = resolve_path(args.output_dir or default_output_dir, root)
     selected_tracks = load_track_candidates(source_experiment, args.max_tracks, args.max_ref_silence)
 
@@ -878,6 +1190,24 @@ def main() -> None:
             write_topk_outputs(output_dir, report, suffix="partial")
 
         write_topk_outputs(output_dir, report)
+        print(f"Wrote diagnostics to {output_dir}")
+        return
+
+    if args.decode_experiment:
+        checkpoint_reports = []
+        report = {
+            "mode": "decode",
+            "config": str(config_path),
+            "track_source_experiment": str(source_experiment),
+            "selected_tracks": [track.__dict__ for track in selected_tracks],
+            "checkpoints": checkpoint_reports,
+        }
+
+        for checkpoint in checkpoints:
+            checkpoint_reports.append(evaluate_decode_checkpoint(config_path, checkpoint, selected_tracks, args.device))
+            write_decode_outputs(output_dir, report, suffix="partial")
+
+        write_decode_outputs(output_dir, report)
         print(f"Wrote diagnostics to {output_dir}")
         return
 
