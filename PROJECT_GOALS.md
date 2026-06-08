@@ -56,6 +56,9 @@
 - Четвертый full chunk `acoustic/luthier_pick/part_1` обучен через resume до `training-state-58184.pt`.
 - Метрики четвертого full chunk сохранены; `tablature F1` вырос до `58.47%`, collapse-to-silence не произошел.
 - Добавлен loader-fix для non-finite audio samples в SynthTab chunks.
+- Пятый full chunk `electric_clean/peregrine_clean_neck` обучен через resume до `training-state-70896.pt`.
+- Шестой full chunk `electric_clean/lespaul_clean_both` обучен через resume до `training-state-83608.pt`.
+- Выполнена оценка после нескольких chunks: похожие `electric_clean` chunks не улучшили качество относительно acoustic peak.
 
 Осталось:
 
@@ -67,7 +70,9 @@
 - [x] Подготовить третий контрастный chunk и проверить его через inspect/resume smoke.
 - [x] Обучить третий контрастный chunk и зафиксировать метрики.
 - [x] Подготовить четвертый acoustic chunk с контролем диска, проверить через inspect/resume smoke, обучить и зафиксировать метрики.
-- [ ] После нескольких chunks оценить, нужны ли изменения в балансировке, AMP, batch size или архитектуре.
+- [x] Обучить пятый и шестой chunks через resume и зафиксировать метрики.
+- [x] После нескольких chunks оценить, нужны ли изменения в балансировке, AMP, batch size или архитектуре.
+- [ ] Диагностировать просадку `electric_clean` и принять решение по tab head/loss/label representation или post-processing.
 - [ ] Подготовить сравнение с внешними сервисами/подходами.
 - [ ] Позже перейти к дообучению на собственных данных.
 

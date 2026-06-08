@@ -1,6 +1,6 @@
 # Error Analysis
 
-Короткая диагностика после четырех meaningful SynthTab Full chunks.
+Короткая диагностика после шести meaningful SynthTab Full chunks.
 
 ## Runs
 
@@ -10,6 +10,8 @@
 | 2 | `electric_distortion/semihollow_clean_finger` | `training-state-26544.pt` | 69.02% | 48.11% | 81.18% | 66.04% | false |
 | 3 | `electric_muted` | `training-state-50372.pt` | 73.07% | 56.25% | 87.25% | 70.79% | false |
 | 4 | `acoustic/luthier_pick/part_1_-_1_to_B_C` | `training-state-58184.pt` | 77.25% | 58.47% | 78.01% | 76.57% | false |
+| 5 | `electric_clean/peregrine_clean_neck` | `training-state-70896.pt` | 72.64% | 50.48% | 81.42% | 67.93% | false |
+| 6 | `electric_clean/lespaul_clean_both` | `training-state-83608.pt` | 73.61% | 51.19% | 81.87% | 67.77% | false |
 
 ## What Changed
 
@@ -18,7 +20,9 @@
 - Третий contrastive chunk `electric_muted` дал заметный прирост: `tablature F1` вырос до `56.25%`, `multi_pitch F1` до `73.07%`.
 - Четвертый acoustic chunk дал дополнительный прирост: `tablature F1` вырос до `58.47%`, `multi_pitch F1` до `77.25%`, `non_silent_accuracy` до `76.57%`.
 - `accuracy` на acoustic chunk ниже, чем на muted, потому что validation менее silence-heavy: `ref_silence_ratio=67.64%` против `78.55%` на muted.
-- `collapse_to_silence=false` на всех четырех chunks, значит anti-collapse параметры работают.
+- Пятый и шестой chunks были похожими `electric_clean` groups и не улучшили качество: `tablature F1` упал до `50.48%` и `51.19%`.
+- `multi_pitch F1` на этих clean chunks тоже ниже acoustic peak: `77.25% -> 72.64% -> 73.61%`.
+- `collapse_to_silence=false` на всех шести chunks, значит anti-collapse параметры работают.
 
 ## Main Failure Mode
 
@@ -30,8 +34,10 @@
 | Distortion | 85.38% | 55.31% | 18.57% | 20.91% |
 | Muted | 90.62% | 63.20% | 13.63% | 16.82% |
 | Acoustic | 85.99% | 65.31% | 17.40% | 18.77% |
+| Peregrine clean | 89.95% | 56.81% | 21.55% | 22.16% |
+| Lespaul clean | 90.70% | 57.21% | 22.21% | 22.42% |
 
-Практический вывод: проблема string/fret assignment остается. `electric_muted` сильнее всего уменьшил MP-Tab gap, а acoustic поднял aggregate F1 и non-silent accuracy, но gap снова стал около `17-19 pp`. Значит правильно выбранные контрастные chunks пока помогают, но после еще одного run стоит снова оценить, не пора ли переходить к tab head/loss/label representation.
+Практический вывод: проблема string/fret assignment остается. `electric_muted` сильнее всего уменьшил MP-Tab gap, acoustic поднял aggregate F1 и non-silent accuracy, а два следующих `electric_clean` chunks снова вернули gap к `~22 pp`. Это сигнал против продолжения похожих clean chunks без изменения диагностики/подхода.
 
 ## Silence Behavior
 
@@ -41,6 +47,8 @@
 | Distortion | 77.62% | 65.21% | -12.41 pp |
 | Muted | 78.55% | 69.20% | -9.35 pp |
 | Acoustic | 67.64% | 53.24% | -14.40 pp |
+| Peregrine clean | 75.09% | 62.19% | -12.90 pp |
+| Lespaul clean | 75.09% | 62.72% | -12.37 pp |
 
 Модель не схлопнулась в silence. Наоборот, она системно предсказывает больше non-silent, чем есть в reference. Это не повод включать `balance_by_silence=true` прямо сейчас: проблема не в трусливом молчании, а в лишней активности и string/fret ошибках.
 
@@ -50,6 +58,8 @@
 - Distortion: среди non-silent tracks `595/807` треков имеют pred silence ниже ref silence больше чем на `10 pp`.
 - Muted: pred silence все еще ниже ref silence, но разрыв сократился до `-9.35 pp`.
 - Acoustic: pred silence снова заметно ниже ref silence, разрыв `-14.40 pp`.
+- Peregrine/Lespaul clean: ref silence совпадает с первым clean validation split (`75.09%`), поэтому clean-to-clean сравнение корректное.
+- Peregrine/Lespaul clean: pred silence остается около `62-63%`, то есть модель не ушла в silence.
 - Under-prediction notes по-прежнему не выглядит основной проблемой: на первых двух runs было только по `6` tracks с pred silence выше ref silence больше чем на `10 pp`.
 
 ## Example Tracks
@@ -78,6 +88,8 @@ Typical tracks still show a large tab gap:
 | Distortion | about 55% | about 80-98% | about 24-43 pp |
 | Muted | about 63% | about 88-97% | about 25-34 pp |
 | Acoustic | about 65% | about 81-96% | about 16-31 pp |
+| Peregrine clean | about 57% | about 95% | about 38 pp |
+| Lespaul clean | about 57% | about 93% | about 36 pp |
 
 Best tracks prove the model can solve some cases:
 
@@ -85,17 +97,18 @@ Best tracks prove the model can solve some cases:
 - Distortion best examples reach `95-100%` tablature F1.
 - Muted best examples reach `99-100%` tablature F1.
 - Acoustic best examples reach `97-99%` tablature F1.
+- Peregrine clean best examples reach `99%` tablature F1.
+- Lespaul clean best examples reach `100%` tablature F1.
 - Failures are not uniform; data shape and tab-position ambiguity matter.
 
 ## Decision
 
-- Do not change architecture immediately, but do not blindly run many more similar chunks.
-- The third and fourth contrastive chunks helped, so the next default step can remain chunk-based scaling.
-- Next resume checkpoint is `training-state-58184.pt`.
-- Prefer the next chunk to be different from the already used data: a new electric_clean timbre/group, another acoustic timbre/group, or a new electric_distortion only if it adds clear data contrast.
-- Keep current baseline settings for the next smoke and long run: `silence_weight=0.1`, `note_weight=1.0`, `sampler=balanced`, `balance_by_group=true`, `balance_by_silence=false`, `batch_size=8`, `use_amp=false`.
-- If the next contrastive chunk stalls or degrades, then shift focus from data scaling to tab head/loss/label representation.
-- Do not enable `balance_by_silence=true` unless a future run shows `collapse_to_silence=true` or pred silence moving toward `1.0`.
+- Stop blind scaling on similar `electric_clean` chunks.
+- Best-by-metrics checkpoint is still `training-state-58184.pt` from acoustic, not the latest `training-state-83608.pt`.
+- Latest technical checkpoint is `training-state-83608.pt`, useful if continuing the chronological training chain.
+- The next engineering step should be targeted diagnostics for string/fret assignment, tab head/loss/label representation, or post-processing.
+- Do not enable `balance_by_silence=true`: pred silence is not close to `1.0`, and collapse-to-silence is false.
+- If another data run is needed later, prefer a clearly contrastive chunk rather than another similar clean group.
 
 ## Repro
 
@@ -107,8 +120,12 @@ Analyzer:
   generated\experiments\full_chunk_electric_distortion_semihollow_clean_finger_28ep_resume_from_12712 `
   generated\experiments\full_chunk_electric_muted_28ep_resume_from_26544 `
   generated\experiments\full_chunk_acoustic_luthier_pick_part1_28ep_resume_from_50372 `
+  generated\experiments\full_chunk_electric_clean_peregrine_clean_neck_28ep_resume_from_58184 `
+  generated\experiments\full_chunk_electric_clean_lespaul_clean_both_28ep_resume_from_70896 `
   --label "Clean chunk" `
   --label "Distortion chunk" `
   --label "Muted chunk" `
-  --label "Acoustic luthier_pick part1"
+  --label "Acoustic luthier_pick part1" `
+  --label "Clean peregrine neck" `
+  --label "Clean lespaul both"
 ```

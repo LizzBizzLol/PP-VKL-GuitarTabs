@@ -826,3 +826,55 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - collapse-to-silence не появился, поэтому базовые параметры и `balance_by_silence=false` оставляем
   - следующий meaningful run должен resume от `training-state-58184.pt`
   - после еще одного контрастного chunk стоит переоценить, продолжать ли scaling или перейти к tab head/loss/label representation
+
+## 2026-06-08 20:25 +05:00 — Fifth and sixth full-chunk runs completed
+
+- Пятый и шестой meaningful SynthTab Full chunks завершены через automated handoff:
+  - 5th chunk: `electric_clean\peregrine_clean_neck`
+  - 6th chunk: `electric_clean\lespaul_clean_both`
+  - оба прошли download/verify, extract, inspect, resume smoke и long train
+  - BOM-проблемы в runtime configs не повторились: smoke configs писались через UTF-8 without BOM
+- Пятый chunk `electric_clean\peregrine_clean_neck`:
+  - experiment: `generated\experiments\full_chunk_electric_clean_peregrine_clean_neck_28ep_resume_from_58184`
+  - train tracks: `3632`
+  - val tracks: `908`
+  - epochs target: `140`
+  - overall chunk iter range: `58184 -> 70896`
+  - final continuation start iter по итоговому `summary.json`: `69988`
+  - final iter: `70896`
+  - final continuation runtime по `summary.json`: `01:03:33`
+  - final checkpoint: `generated\experiments\full_chunk_electric_clean_peregrine_clean_neck_28ep_resume_from_58184\models\training-state-70896.pt`
+  - `multi_pitch f1 = 0.7264`
+  - `tablature f1 = 0.5048`
+  - `tablature accuracy = 0.8142`
+  - `pred_silence_ratio = 0.6219`
+  - `ref_silence_ratio = 0.7509`
+  - `non_silent_accuracy = 0.6793`
+  - `collapse_to_silence = false`
+- Шестой chunk `electric_clean\lespaul_clean_both`:
+  - experiment: `generated\experiments\full_chunk_electric_clean_lespaul_clean_both_28ep_resume_from_70896`
+  - train tracks: `3632`
+  - val tracks: `908`
+  - epochs target: `168`
+  - start iter: `70896`
+  - final iter: `83608`
+  - runtime по `summary.json`: `11:57:34`
+  - final checkpoint: `generated\experiments\full_chunk_electric_clean_lespaul_clean_both_28ep_resume_from_70896\models\training-state-83608.pt`
+  - `multi_pitch f1 = 0.7361`
+  - `tablature f1 = 0.5119`
+  - `tablature accuracy = 0.8187`
+  - `pred_silence_ratio = 0.6272`
+  - `ref_silence_ratio = 0.7509`
+  - `non_silent_accuracy = 0.6777`
+  - `collapse_to_silence = false`
+- Сравнение с acoustic peak:
+  - `tablature f1`: `0.5847 -> 0.5048 -> 0.5119`
+  - `multi_pitch f1`: `0.7725 -> 0.7264 -> 0.7361`
+  - `non_silent_accuracy`: `0.7657 -> 0.6793 -> 0.6777`
+  - `collapse_to_silence` не появился
+- Практический вывод:
+  - технически chunk-based workflow и automated handoff сработали
+  - два похожих `electric_clean` chunks после acoustic не улучшили качество
+  - лучший checkpoint по метрикам пока остается `training-state-58184.pt` от acoustic run
+  - последний технический checkpoint цепочки: `training-state-83608.pt`
+  - следующий шаг: не запускать еще один похожий clean chunk вслепую, а диагностировать string/fret bottleneck и распределение ошибок
