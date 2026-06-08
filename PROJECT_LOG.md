@@ -900,3 +900,27 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - `balance_by_silence=true` не включать
   - следующий похожий `electric_clean` long-run вслепую не запускать
   - следующий полезный шаг: маленький string/fret-focused эксперимент, post-processing diagnostic или план изменения tab head/loss/label representation
+
+## 2026-06-08 21:42 +05:00 — String/fret frame experiment completed
+
+- Добавлен eval-only диагностический скрипт:
+  - `demo_embedding\diagnose_string_fret_frames.py`
+  - запускает inference на выбранных validation tracks
+  - не обучает модель
+  - пишет outputs в ignored `generated\diagnostics`
+- Эксперимент:
+  - active chunk: `electric_clean\lespaul_clean_both`
+  - tracks: `20` full validation tracks
+  - selection: `10` worst high-gap, `5` typical, `5` best
+  - excluded: tracks with `ref_silence_ratio > 95%`
+  - checkpoints compared: `training-state-58184.pt` and `training-state-83608.pt`
+- Итоговые frame-level метрики:
+  - `training-state-58184.pt`: exact string/fret F1 `61.67%`, pitch-only F1 `73.65%`, canonical F1 `55.13%`
+  - `training-state-83608.pt`: exact string/fret F1 `65.43%`, pitch-only F1 `79.23%`, canonical F1 `58.71%`
+  - oracle upper bound for `83608`: `79.23%`, то есть potential string/fret gain about `13.80 pp`
+  - canonical hard post-processing хуже exact output: `58.71%` vs `65.43%`
+- Практический вывод:
+  - на active clean-domain subset latest checkpoint `training-state-83608.pt` лучше `training-state-58184.pt`
+  - string/fret assignment остается реальным bottleneck, но missed/extra notes тоже значимы
+  - простой deterministic pitch-to-position post-processing не использовать
+  - следующий шаг: logits-aware/top-k string/fret diagnostics или изменение tab head/loss/label representation

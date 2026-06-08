@@ -124,6 +124,14 @@ Best tracks prove the model can solve some cases:
 - использовать `training-state-83608.pt` только если нужно продолжать хронологическую training chain;
 - следующим шагом планировать маленький string/fret-focused эксперимент или post-processing diagnostic.
 
+## String/Fret Frame Experiment
+
+Маленький frame-level эксперимент зафиксирован в `STRING_FRET_EXPERIMENT.md`.
+
+Новый вывод: на одинаковой lespaul-подвыборке latest checkpoint `training-state-83608.pt` лучше `training-state-58184.pt` (`65.43%` exact string/fret F1 против `61.67%`), но oracle pitch-to-tab upper bound остается выше (`79.23%`). Значит продолжение обучения улучшило active clean-domain subset, но string/fret placement все еще ограничивает качество.
+
+Canonical hard post-processing не подходит: он хуже exact output (`58.71%` против `65.43%`). Следующий шаг должен быть logits-aware/top-k diagnostic или изменение tab head/loss/label representation.
+
 ## Repro
 
 Analyzer:
