@@ -50,7 +50,9 @@ Eval-only диагностика raw `SoftmaxGroups` logits/probabilities. Це�
 - Do not implement canonical hard post-processing.
 - Top-k constrained decoding is now recorded in `CONSTRAINED_DECODING_EXPERIMENT.md`.
 - It did not recover enough exact string/fret F1: best variant improved exact F1 by only `+0.35 pp`.
-- Next step: plan tab head/loss/label representation changes.
+- Small tab loss experiment is now recorded in `TAB_LOSS_EXPERIMENT.md`.
+- It also did not pass acceptance: best loss-only variant improved exact F1 by only `+0.55 pp` over matched CE control.
+- Next step: plan tab head / label representation changes.
 
 ## Repro
 

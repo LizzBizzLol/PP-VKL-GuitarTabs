@@ -155,6 +155,14 @@ Top-k constrained decoding зафиксирован в `CONSTRAINED_DECODING_EXP
 
 До этого не запускать еще один похожий `electric_clean` long-run вслепую.
 
+## Tab Loss Experiment
+
+Small tab loss experiment зафиксирован в `TAB_LOSS_EXPERIMENT.md`.
+
+Новый вывод: simple loss-only tuning не решил bottleneck. Focal CE был лучшим вариантом, но дал только `+0.55 pp` exact string/fret F1 против matched CE control (`65.11%` против `64.56%`), ниже acceptance-порога `+1 pp`. Текущий position-margin loss почти нейтрален (`64.58%`).
+
+Следующий инженерный шаг должен быть не еще один похожий loss-only run, а изменение tab head или label representation: например auxiliary pitch supervision, separate string/fret heads или representation, которая явно учитывает неоднозначность одинакового pitch на разных позициях грифа.
+
 ## Repro
 
 Analyzer:

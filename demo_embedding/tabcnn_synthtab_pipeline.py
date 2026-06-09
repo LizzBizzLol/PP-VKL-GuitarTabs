@@ -24,7 +24,6 @@ from amt_tools.evaluate import (
     validate,
 )
 from amt_tools.features import CQT
-from amt_tools.models import TabCNN
 from amt_tools.inference import run_offline
 from amt_tools.transcribe import ComboEstimator, StackedMultiPitchCollapser, TablatureWrapper
 
@@ -34,6 +33,7 @@ if str(CURRENT_DIR) not in sys.path:
 
 from GuitarSet import GuitarSet
 from SynthTab import SynthTab, load_stacked_notes_jams
+from tabcnn import TabCNN
 from train import train
 
 
@@ -83,6 +83,10 @@ class TrainConfig:
     balance_by_group: bool = True
     balance_by_silence: bool = False
     use_amp: bool = False
+    tab_loss_mode: str = "ce"
+    focal_gamma: float = 1.5
+    position_margin_weight: float = 0.05
+    position_margin: float = 0.5
 
 
 @dataclass
@@ -369,6 +373,10 @@ def build_model(cfg: PipelineConfig, data_proc: CQT, profile: tools.GuitarProfil
         profile=profile,
         in_channels=data_proc.get_num_channels(),
         device=device.index if device.type == "cuda" else "cpu",
+        tab_loss_mode=cfg.train.tab_loss_mode,
+        focal_gamma=cfg.train.focal_gamma,
+        position_margin_weight=cfg.train.position_margin_weight,
+        position_margin=cfg.train.position_margin,
     )
     if cfg.train.use_class_weights:
         output_layer = model.dense[-1]

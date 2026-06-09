@@ -3,6 +3,7 @@ from amt_tools import tools
 
 # Regular imports
 import torch
+import torch.nn.functional as F
 from torch import nn
 
 class ResBlock(nn.Module):
@@ -34,7 +35,18 @@ class TabCNN(TranscriptionModel):
     Implements the TabCNN model (http://archives.ismir.net/ismir2019/paper/000033.pdf).
     """
 
-    def __init__(self, dim_in, profile, in_channels=1, model_complexity=1, device='cpu'):
+    def __init__(
+        self,
+        dim_in,
+        profile,
+        in_channels=1,
+        model_complexity=1,
+        device='cpu',
+        tab_loss_mode='ce',
+        focal_gamma=1.5,
+        position_margin_weight=0.05,
+        position_margin=0.5,
+    ):
         """
         Initialize the model and establish parameter defaults in function signature.
 
@@ -47,6 +59,10 @@ class TabCNN(TranscriptionModel):
 
         # Initialize a flag to check whether to pad input features
         self.online = False
+        self.tab_loss_mode = tab_loss_mode
+        self.focal_gamma = focal_gamma
+        self.position_margin_weight = position_margin_weight
+        self.position_margin = position_margin
 
         # Number of filters for each stage
         nf1 = 32 * self.model_complexity
@@ -106,6 +122,91 @@ class TabCNN(TranscriptionModel):
             # 2nd fully-connected
             SoftmaxGroups(self.fc_embedding_size, num_groups, num_classes)
         )
+
+        self.pitch_positions = self._build_pitch_positions(num_groups, num_classes)
+
+    def _build_pitch_positions(self, num_groups, num_classes):
+        pitch_positions = {}
+        for group in range(num_groups):
+            for fret in range(num_classes - 1):
+                pitch = int(self.profile.get_pitch(group, fret))
+                pitch_positions.setdefault(pitch, []).append((group, fret))
+        return pitch_positions
+
+    def _reference_labels(self, reference, num_classes):
+        labels = reference.clone()
+        labels[labels == -1] = num_classes - 1
+        return labels.long()
+
+    def _weighted_focal_loss(self, estimated, reference, output_layer):
+        num_groups = output_layer.num_groups
+        num_classes = output_layer.num_classes
+        batch_size = estimated.size(0)
+        logits = estimated.view(-1, num_groups, num_classes).float()
+        labels = self._reference_labels(reference, num_classes)
+        weight = output_layer.weights.view(num_groups, -1) if output_layer.weights is not None else None
+        loss = 0
+
+        for group in range(num_groups):
+            group_logits = logits[:, group]
+            group_labels = labels[:, group].flatten()
+            ce = F.cross_entropy(
+                group_logits,
+                group_labels,
+                weight=weight[group] if weight is not None else None,
+                reduction='none',
+            )
+            probabilities = torch.softmax(group_logits, dim=-1)
+            pt = probabilities.gather(1, group_labels.unsqueeze(1)).squeeze(1).clamp_min(1e-8)
+            loss += ((1.0 - pt) ** self.focal_gamma) * ce
+
+        loss = loss.view(batch_size, -1)
+        loss = torch.mean(loss, dim=-1)
+        return torch.mean(loss)
+
+    def _position_margin_loss(self, estimated, reference, output_layer):
+        num_groups = output_layer.num_groups
+        num_classes = output_layer.num_classes
+        logits = estimated.view(estimated.size(0), -1, num_groups, num_classes).float()
+        labels = self._reference_labels(reference, num_classes).transpose(-2, -1)
+        penalties = []
+
+        for group in range(num_groups):
+            for fret in range(num_classes - 1):
+                mask = labels[:, :, group] == fret
+                if not torch.any(mask):
+                    continue
+                pitch = int(self.profile.get_pitch(group, fret))
+                alternatives = [
+                    (alt_group, alt_fret)
+                    for alt_group, alt_fret in self.pitch_positions.get(pitch, [])
+                    if not (alt_group == group and alt_fret == fret)
+                ]
+                if not alternatives:
+                    continue
+                correct_logits = logits[:, :, group, fret][mask]
+                alt_scores = torch.stack(
+                    [logits[:, :, alt_group, alt_fret][mask] for alt_group, alt_fret in alternatives],
+                    dim=-1,
+                )
+                best_alt = torch.max(alt_scores, dim=-1).values
+                penalties.append(F.relu(self.position_margin - correct_logits + best_alt))
+
+        if not penalties:
+            return estimated.new_tensor(0.0)
+        return torch.mean(torch.cat(penalties))
+
+    def get_tablature_loss(self, estimated, reference):
+        tablature_output_layer = self.dense[-1]
+        if self.tab_loss_mode == 'ce':
+            return tablature_output_layer.get_loss(estimated, reference)
+        if self.tab_loss_mode == 'focal_ce':
+            return self._weighted_focal_loss(estimated, reference, tablature_output_layer)
+        if self.tab_loss_mode == 'ce_plus_position_margin':
+            ce_loss = tablature_output_layer.get_loss(estimated, reference)
+            margin_loss = self._position_margin_loss(estimated, reference, tablature_output_layer)
+            return ce_loss + self.position_margin_weight * margin_loss
+        raise ValueError(f"Unsupported tab_loss_mode: {self.tab_loss_mode}")
 
     def toggle_online(self):
         """
@@ -233,7 +334,7 @@ class TabCNN(TranscriptionModel):
         if tools.KEY_TABLATURE in batch.keys():
             # Extract the ground-truth, calculate the loss and add it to the dictionary
             tablature_ref = batch[tools.KEY_TABLATURE]
-            tablature_loss = tablature_output_layer.get_loss(tablature_est, tablature_ref)
+            tablature_loss = self.get_tablature_loss(tablature_est, tablature_ref)
             output[tools.KEY_LOSS] = {tools.KEY_LOSS_TOTAL : tablature_loss}
 
         # Finalize tablature estimation

@@ -46,7 +46,9 @@ Acceptance criterion: exact string/fret F1 must improve by at least `+1 pp`, pit
 
 - Do not promote constrained decoding as an inference fix.
 - Do not start another similar `electric_clean` chunk as the next step.
-- Next engineering step: plan a small tab head/loss/label-representation experiment.
+- Small tab loss experiment is now recorded in `TAB_LOSS_EXPERIMENT.md`.
+- Simple focal CE / position-margin loss tuning did not pass acceptance.
+- Next engineering step: plan a tab head / label-representation experiment.
 - Keep `training-state-83608.pt` as the active clean-domain diagnostic checkpoint, but best aggregate model is still `training-state-58184.pt` until a better validated run appears.
 
 ## Repro

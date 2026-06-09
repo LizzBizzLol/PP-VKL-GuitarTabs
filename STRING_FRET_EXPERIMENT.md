@@ -43,7 +43,9 @@ Raw counts for `training-state-83608.pt`:
 - Logits-aware top-k diagnostics are now recorded in `LOGITS_TOPK_EXPERIMENT.md`.
 - Top-k constrained decoding is now recorded in `CONSTRAINED_DECODING_EXPERIMENT.md`.
 - Correct string/fret is usually available in top-k, but simple smoothing/duplicate-suppression decoding did not produce enough exact F1 gain.
-- The next useful engineering step is a small tab head/loss/label-representation experiment.
+- Small tab loss experiment is now recorded in `TAB_LOSS_EXPERIMENT.md`.
+- Simple focal CE / position-margin loss tuning did not produce enough exact F1 gain.
+- The next useful engineering step is a tab head / label-representation experiment.
 - Blindly adding another similar `electric_clean` chunk is still not justified.
 
 ## Repro

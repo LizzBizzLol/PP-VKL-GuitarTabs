@@ -990,3 +990,32 @@ Generated smoke outputs live under `generated/experiments/` and remain ignored b
   - exact string/fret F1 почти не растет и не проходит заранее заданный порог `+1 pp`
   - простой decoder не решает bottleneck
   - следующий шаг: не новый похожий clean chunk, а маленький эксперимент с tab head/loss/label representation
+
+## 2026-06-09 22:15 +05:00 — Small tab loss experiment completed
+
+- Добавлен opt-in API для tab loss modes:
+  - default `train.tab_loss_mode = "ce"` сохраняет старое поведение
+  - `train.tab_loss_mode = "focal_ce"`
+  - `train.tab_loss_mode = "ce_plus_position_margin"`
+  - `train.focal_gamma = 1.5`
+  - `train.position_margin_weight = 0.05`
+  - `train.position_margin = 0.5`
+- Эксперимент:
+  - active chunk: `electric_clean\lespaul_clean_both`
+  - resume checkpoint: `training-state-83608.pt`
+  - train subset: `800` tracks
+  - budget: `1` epoch, `100` optimizer steps per variant
+  - diagnostic subset: same `20` tracks from `STRING_FRET_EXPERIMENT.md`
+  - outputs kept ignored under `generated\experiments\tab_loss_ablation_lespaul_*` and `generated\diagnostics\tab_loss_ablation_lespaul_*`
+  - tracked report: `TAB_LOSS_EXPERIMENT.md`
+- Результаты на 20-track diagnostic:
+  - `control_ce_1ep`: exact F1 `64.56%`, pitch F1 `77.15%`, extra/pred `31.56%`
+  - `focal_ce_g1p5_1ep`: exact F1 `65.11%`, pitch F1 `77.41%`, extra/pred `31.18%`
+  - `position_margin_l005_m050_1ep`: exact F1 `64.58%`, pitch F1 `77.11%`, extra/pred `31.61%`
+  - best delta vs matched CE control: focal CE `+0.55 pp` exact F1
+  - accepted variants: none
+- Практический вывод:
+  - focal CE слегка лучше matched control, но не проходит порог `+1 pp`
+  - текущий position-margin loss почти нейтрален
+  - full validation для этих variants не запускался по decision rules
+  - следующий шаг: plan tab head / label-representation experiment, а не продолжать simple loss-only tuning
